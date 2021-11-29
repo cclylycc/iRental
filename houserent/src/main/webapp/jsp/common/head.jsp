@@ -20,36 +20,37 @@
     <script src="/assets/js/select2.min.js"></script>
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/slider-bg.js"></script>
+    <script src="/assets/js/script.js"></script>
 
 
 </head>
 <body class="yellow-skin">
-    <div class="header header-light dark-text">
-        <div class="container">
-            <nav class="navigation navigation-landscape">
-                <div class="nav-header">
-                    <a class="nav-brand" href="/">爱租房</a>
-                </div>
-                <div class="nav-menus-wrapper">
-                    <ul class="nav-menu">
-                        <li><a href="/" style="font-size: 15px;">首页</a></li>
-                        <li><a href="/" style="font-size: 15px;">整租</a></li>
-                        <li><a href="/" style="font-size: 15px;">合租</a></li>
-                        <li><a href="/" style="font-size: 15px;">新房推荐</a></li>
-                        <li><a href="/" style="font-size: 15px;">开始体验</a></li>
-                        <li><a href="/" style="font-size: 15px;">用户反馈</a></li>
-                    </ul>
-                </div>
-                <ul class="nav-menu nav-menu-social align-to-right">
-                    <li>
-                        <a href="#" class="text-blue">
-                        <i class="fas fa-user-circle mr-1"></i><span class="dn-lg">登录</span></a>
-                    </li>
-                    <li class="add-listing dark-bg">
-                        <a href="#" class="theme-cl" data-toggle="modal" data-target="#signup">
-                        <i class="fas fa-arrow-alt-circle-right mr-1"></i><span class="dn-lg">注册</span></a>
-                    </li>
+<div class="header header-light dark-text">
+    <div class="container">
+        <nav class="navigation navigation-landscape">
+            <div class="nav-header">
+                <a class="nav-brand" href="/">爱租房</a>
+            </div>
+            <div class="nav-menus-wrapper">
+                <ul class="nav-menu">
+                    <li><a href="/" style="font-size: 15px;">首页</a></li>
+                    <li><a href="/" style="font-size: 15px;">整租</a></li>
+                    <li><a href="/" style="font-size: 15px;">合租</a></li>
+                    <li><a href="/" style="font-size: 15px;">新房推荐</a></li>
+                    <li><a href="/" style="font-size: 15px;">开始体验</a></li>
+                    <li><a href="/" style="font-size: 15px;">用户反馈</a></li>
                 </ul>
+            </div>
+            <ul class="nav-menu nav-menu-social align-to-right">
+                <li>
+                    <a href="#" class="text-blue">
+                        <i class="fas fa-user-circle mr-1"></i><span class="dn-lg">登录</span></a>
+                </li>
+                <li class="add-listing dark-bg">
+                    <a href="#" class="theme-cl" data-toggle="modal" data-target="#signup">
+                        <i class="fas fa-arrow-alt-circle-right mr-1"></i><span class="dn-lg">注册</span></a>
+                </li>
+            </ul>
             </nav>
         </div>
     </div>

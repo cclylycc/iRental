@@ -25,25 +25,57 @@
                             <div class="form-group">
                                 <label>姓名</label>
                                 <div class="input-with-icon">
-                                    <input type="text" name="userDisplayName" class="form-content" placeholder="姓名">
+                                    <input type="text" name="userDisplayName" class="form-control" placeholder="姓名">
                                     <i class="ti-user"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>电子邮箱</label>
                                 <div class="input-with-icon">
-                                    <input type="email" name="email" class="form-content" placeholder="电子邮箱，用于找回密码">
+                                    <input type="email" name="email" class="form-control" placeholder="电子邮箱，用于找回密码">
                                     <i class="ti-user"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>手机号</label>
                                 <div class="input-with-icon">
-                                    <input type="text" name="phone" class="form-content" placeholder="手机号">
+                                    <input type="text" name="phone" class="form-control" placeholder="手机号">
+                                    <i class="ti-mobile"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>账号</label>
+                                <div class="input-with-icon">
+                                    <input type="text" name="userName" class="form-control" placeholder="登录账号">
                                     <i class="ti-user"></i>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>密码</label>
+                                <div class="input-with-icon">
+                                    <input type="password" name="userPass" class="form-control" placeholder="登录密码">
+                                    <i class="ti-unlock"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>角色</label>
+                                <div class="input-with-icon">
+                                    <div class="simple">
+                                        <select name="role" class="form-control">
+                                            <option value="customer">我是租客</option>
+                                            <option value="owner">我是房东</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="submitRegister()" class="btn btn-md full-width pop-login bg-2">
+                            立即注册
+                        </button>
                     </div>
                 </form>
             </div>
