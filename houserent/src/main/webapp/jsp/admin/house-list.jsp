@@ -7,7 +7,7 @@
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="dashboard-body">
                     <div class="frm_submit_block">
-                        <h4>房屋管理&nbsp<a href="/admin/house/publish" class="btn btn-thme bg-2 btn-sm">发布新房屋</a></h4>
+                        <h4>房屋管理&nbsp<a href="/admin/house/publish" class="btn btn-thme bg-2 btn-sm">发布新房源</a></h4>
                     </div>
                 </div>
             </div>

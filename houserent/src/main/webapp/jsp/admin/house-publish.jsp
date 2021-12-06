@@ -14,7 +14,15 @@
                                         <div class="submit-page form-simple">
                                             <div class="frm_submit_block">
                                                 <h3>基本信息</h3>
-
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>出租类型</label>
+                                                        <select name="rentType" class="form-control">
+                                                            <option value="whole">整租</option>
+                                                            <option value="share">合租</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>房屋结构</h3>
@@ -39,7 +47,8 @@
                                             <div class="form-group">
                                                 <div class="col-lg-12 col-md-12">
                                                     <button class="btn btn-theme bg-2" type="button"
-                                                            onclick=""></button>
+                                                            onclick="">发布
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
