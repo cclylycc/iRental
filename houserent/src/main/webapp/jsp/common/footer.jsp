@@ -12,7 +12,7 @@
 <div class="modal" id="signup">
     <div class="modal-dialog">
         <header>
-            <div class="hm-nav">
+            <div class="hm_nav">
                 <h3 class="hm_nav_title">注册</h3>
                 <span class="mod-close" data-dismiss="modal"><i class="ti-close"></i></span>
             </div>
@@ -81,4 +81,49 @@
             </div>
         </div>
     </div>
+
+</div>
+
+
+<%--登录--%>
+<div class="modal" id="login">
+    <div class="modal-dialog">
+        <header>
+            <div class="hm_nav">
+                <h3 class="hm_nav_title">登录</h3>
+                <span class="mod-close" data-dismiss="modal"><i class="ti-close"></i></span>
+            </div>
+        </header>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>账号</label>
+                                <div class="input-with-icon">
+                                    <input type="text" name="userName" class="form-control" placeholder="请输入账号">
+                                    <i class="ti-user"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>密码</label>
+                                <div class="input-with-icon">
+                                    <input type="password" name="userPass" class="form-control" placeholder="请输入密码">
+                                    <i class="ti-unlock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="submitLogin()" class="btn btn-md full-width pop-login bg-2">
+                            立即登录
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>

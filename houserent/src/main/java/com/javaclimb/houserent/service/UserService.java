@@ -8,4 +8,9 @@ import com.javaclimb.houserent.entity.User;
  * */
 public interface UserService extends BaseService<User, Long> {
 
+    /*
+     * 根据用户名查询用户
+     * */
+    User findByUserName(String userName);
+
 }

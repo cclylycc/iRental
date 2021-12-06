@@ -68,5 +68,8 @@ public class User extends BaseEntity {
      * 职业
      * */
     private String job;
-
+    /*
+     * 性别
+     * */
+    private String sex;
 }
