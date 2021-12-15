@@ -22,22 +22,167 @@
                                                             <option value="share">合租</option>
                                                         </select>
                                                     </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>月租金 <a href="#" class="tip-topdata"
+                                                                      data-tip="日租金 = 月租金 / 30"><i class="ti-help"></i></a></label>
+                                                        <input type="number" name="monthRent" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>所属城市</label>
+                                                        <select name="city" class="form-control">
+                                                            <option value="北京">北京</option>
+                                                            <option value="上海">上海</option>
+                                                            <option value="广州">广州</option>
+                                                            <option value="深圳">深圳</option>
+                                                            <option value="天津">天津</option>
+                                                            <option value="武汉">武汉</option>
+                                                            <option value="长沙">长沙</option>
+                                                            <option value="杭州">杭州</option>
+                                                            <option value="重庆">重庆</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>房屋标题信息 <a href="#" class="tip-topdata"
+                                                                         data-tip="如：合租-渝中花园-4居室-3卧室-高层"><i
+                                                                class="ti-help"></i></a></label>
+                                                        <input type="text" name="title" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-8">
+                                                        <label>房屋详细地址信息 <a href="#" class="tip-topdata"
+                                                                           data-tip="如：重庆市九龙坡区渝中花园88栋A楼808室"><i
+                                                                class="ti-help"></i></a></label>
+                                                        <input type="text" name="address" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            经纬度坐标<a
+                                                                href="https://api.map.baidu.com/lbsapi/getpoint/index.html"
+                                                                target="_blank">获取金纬度</a>
+                                                            <a href="#" class="tip-topdata"
+                                                               data-tip="如：113.123456,22.5678"><i
+                                                                    class="ti-help"></i></a></label>
+                                                        <input type="text" name="longitudeLatitude"
+                                                               class="form-control">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>房屋结构</h3>
-
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>房产证号</label>
+                                                        <input type="text" name="certificateNo" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>面积 <a href="#" class="tip-topdata"
+                                                                     data-tip="整租类型时为整个房屋面积，合租类型是为单间面积"><i
+                                                                class="ti-help"></i></a></label>
+                                                        <input type="text" name="area" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>朝向</label>
+                                                        <input type="text" name="direction" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>是否有空调</label>
+                                                        <select name="hasAirConditioner" class="form-control">
+                                                            <option value="1">有空调</option>
+                                                            <option value="0">无空调</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>卧室数量</label>
+                                                        <select name="bedroomNum" class="form-control">
+                                                            <option value="1">1个</option>
+                                                            <option value="2">2个</option>
+                                                            <option value="3">3个</option>
+                                                            <option value="4">4个</option>
+                                                            <option value="5">5个</option>
+                                                            <option value="6">6个</option>
+                                                            <option value="7">7个</option>
+                                                            <option value="8">8个</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>客厅数量</label>
+                                                        <select name="livingRoomNum" class="form-control">
+                                                            <option value="1">1个</option>
+                                                            <option value="2">2个</option>
+                                                            <option value="3">3个</option>
+                                                            <option value="4">4个</option>
+                                                            <option value="5">5个</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>厨房数量</label>
+                                                        <select name="kitchenNum" class="form-control">
+                                                            <option value="1">1个</option>
+                                                            <option value="2">2个</option>
+                                                            <option value="3">3个</option>
+                                                            <option value="4">4个</option>
+                                                            <option value="5">5个</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>卫生间数量</label>
+                                                        <select name="toiletNum" class="form-control">
+                                                            <option value="1">1个</option>
+                                                            <option value="2">2个</option>
+                                                            <option value="3">3个</option>
+                                                            <option value="4">4个</option>
+                                                            <option value="5">5个</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
+
                                             <div class="frm_submit_block">
                                                 <h3>建筑信息</h3>
-
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>建成年份</label>
+                                                        <input type="number" name="buildYear" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>所在楼层</label>
+                                                        <input type="text" name="floor" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>总楼层</label>
+                                                        <input type="text" name="maxFloor" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>是否有电梯</label>
+                                                        <select name="hasElevator" class="form-control">
+                                                            <option value="1">有电梯</option>
+                                                            <option value="0">无电梯</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                >
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>联系人信息</h3>
-
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>联系人姓名</label>
+                                                        <input type="text" name="contactName" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>联系人电话</label>
+                                                        <input type="text" name="contactPhone" class="form-control">
+                                                    </div>
+                                                </div>
+                                                >
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>房屋描述</h3>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label>房屋详细描述</label>
+                                                        <textarea name="content" class="form-control ht-120"></textarea>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                             <div class="frm_submit_block">
@@ -47,7 +192,7 @@
                                             <div class="form-group">
                                                 <div class="col-lg-12 col-md-12">
                                                     <button class="btn btn-theme bg-2" type="button"
-                                                            onclick="">发布
+                                                            onclick="submitHouse()">发布
                                                     </button>
                                                 </div>
                                             </div>

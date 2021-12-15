@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Slf4j
 @SpringBootApplication
 @EnableScheduling
-@MapperScan("com.example.ssm.rental.mapper")
+@MapperScan("com.javaclimb.houserent.mapper")
 public class Application {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Application.class, args);

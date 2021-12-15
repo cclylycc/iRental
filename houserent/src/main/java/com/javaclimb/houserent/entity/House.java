@@ -145,7 +145,7 @@ public class House extends BaseEntity {
     private String contactName;
 
     /*
-     * 联系人手机号
+     * 联系人电话
      * */
     private String contactPhone;
 

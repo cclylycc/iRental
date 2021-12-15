@@ -21,15 +21,15 @@ public class BaseController {
         return user;
     }
 
-    /*
-     * 获取当前用户ID
-     * */
+    //
+//    /*
+//     * 获取当前用户ID
+//     * */
     public Long getLoginUserId() {
         User user = getLoginUser();
         if (user == null) {
             return null;
-        } else {
-            return user.getId();
         }
+        return user.getId();
     }
 }

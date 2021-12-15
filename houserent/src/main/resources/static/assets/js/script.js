@@ -36,3 +36,23 @@ function submitLogin() {
 
 }
 
+
+/*
+* 房屋信息保存
+* */
+function submitHouse() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/publish/submit",
+        async: false,
+        data: $("#houseForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.href = "/admin/house";
+            }
+        }
+    });
+
+}
+
