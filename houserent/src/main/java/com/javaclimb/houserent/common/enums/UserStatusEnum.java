@@ -28,4 +28,8 @@ public enum UserStatusEnum {
     public void setValue(Integer value) {
         this.value = value;
     }
+
+
+
+
 }

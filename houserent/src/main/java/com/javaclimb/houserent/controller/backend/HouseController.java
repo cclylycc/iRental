@@ -1,16 +1,24 @@
 package com.javaclimb.houserent.controller.backend;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javaclimb.houserent.common.base.BaseController;
+import com.javaclimb.houserent.common.constant.Constant;
 import com.javaclimb.houserent.common.dto.JsonResult;
 import com.javaclimb.houserent.common.enums.HouseStatusEnum;
+import com.javaclimb.houserent.common.util.PageUtil;
 import com.javaclimb.houserent.entity.House;
 import com.javaclimb.houserent.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /*
  * 房屋控制器
@@ -25,7 +33,17 @@ public class HouseController extends BaseController {
      * 进入房屋管理页面
      * */
     @RequestMapping("")
-    public String houseList() {
+    public String houseList(@RequestParam(value = "page",defaultValue = "1")Long pageNumber, @RequestParam(value = "size",defaultValue = "6")Long pageSize, Model model) {
+        Page page = PageUtil.initMpPage(pageNumber,pageSize);
+        House condition = new House();
+        //如果登录用户是管理员，可以查询所有房屋；如果登录用户不是管理员，可以查询自己上传的房屋。
+        if(!loginUserIsAdmin()){
+            condition.setUserId(getLoginUserId());
+        }
+        Page<House> housePage = houseService.findAll(page,condition);
+        model.addAttribute("pageInfo",housePage);
+        model.addAttribute("pagePrefix","/admin/house?");
+        model.addAttribute("isAdmin",loginUserIsAdmin());
         return "admin/house-list";
     }
 
@@ -42,11 +60,20 @@ public class HouseController extends BaseController {
      * */
     @RequestMapping("/publish/submit")
     @ResponseBody
-    public JsonResult publishSubmit(House house) {
+    public JsonResult publishSubmit(House house, @RequestParam("key")String key, HttpSession session) {
         try {
             house.setCreateTime(new Date());
             house.setUserId(getLoginUserId());
             house.setStatus(HouseStatusEnum.NOT_CHECK.getValue());
+            //获取轮播图
+            String sessionKey = Constant.SESSION_IMG_PREFIX + key;
+            List<String> imgList =(List<String>) session.getAttribute(sessionKey);
+            if (imgList != null && imgList.size() > 0) {
+                //设置轮播图，转换成JSON格式存储
+                house.setSlideUrl(JSON.toJSONString(imgList));
+                //将第一个图放到缩略图中
+                house.setThumbnailUrl(imgList.get(0));
+            }
             houseService.insertOrUpdate(house);
         } catch (Exception e) {
             return JsonResult.error("发布失败，请填写完整信息");

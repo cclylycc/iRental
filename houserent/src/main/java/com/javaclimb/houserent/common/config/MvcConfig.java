@@ -1,5 +1,6 @@
 package com.javaclimb.houserent.common.config;
 
+import com.javaclimb.houserent.common.constant.Constant;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,6 +21,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/uploads/**").addResourceLocations("file:///" + Constant.UPLOADS_PATH);
+
     }
 
     @Bean

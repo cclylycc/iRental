@@ -22,7 +22,7 @@ public class House extends BaseEntity {
     /*
      * 出租类型
      * */
-    private String rentId;
+    private String rentType;
 
     /*
      * 房屋名称

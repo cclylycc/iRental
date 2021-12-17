@@ -21,4 +21,8 @@ public class Constant {
     public static final String UPLOADS_PATH = System.getProperties().getProperty("user.home") + UPLOADS_ABSOLUTEPATH;
 
 
+    /*
+    * 图片session的前缀
+    * */
+    public static final String SESSION_IMG_PREFIX = "SESSION_IMG_";
 }

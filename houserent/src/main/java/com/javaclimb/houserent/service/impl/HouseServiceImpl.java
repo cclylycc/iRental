@@ -28,7 +28,11 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public QueryWrapper<House> getQueryWrapper(House house) {
-        return null;
+        QueryWrapper<House> queryWrapper = new QueryWrapper<>();
+        if(house != null && house.getUserId() != null){
+            queryWrapper.eq("user_id",house.getUserId());
+        }
+        return queryWrapper;
     }
 
     @Override

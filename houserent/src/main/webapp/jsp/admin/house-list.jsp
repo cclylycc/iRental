@@ -9,6 +9,53 @@
                     <div class="frm_submit_block">
                         <h4>房屋管理&nbsp<a href="/admin/house/publish" class="btn btn-thme bg-2 btn-sm">发布新房源</a></h4>
                     </div>
+                    <div class="row">
+                        <c:forEach items="${pageInfo.records}" var="c">
+                            <div class="col-lg-4">
+                                <div class="dashboard_property_list">
+                                    <div class="dashboard_property_list_thumb">
+                                        <img src="${c.thumbnailUrl}" class="img-fluid"/>
+                                        <c:choose>
+                                        <c:when test="${c.status == 0}">
+                                            <span class="dashboard_pr_status">未租出</span>
+                                        </c:when>
+                                        <c:when test="${c.status == 1}">
+                                            <span class="dashboard_pr_status published">已租出</span>
+                                        </c:when>
+                                        <c:when test="${c.status == -1}">
+                                            <span class="dashboard_pr_status expire">已下架</span>
+                                        </c:when>
+                                        <c:when test="${c.status == -2}">
+                                            <span class="dashboard_pr_status expire">待审核</span>
+                                        </c:when>
+                                        <c:when test="${c.status == -3}">
+                                            <span class="dashboard_pr_status expire">审核不通过</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="dashboard_pr_status">未知状态</span>
+                                        </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div class="dashboard_property_list_content">
+                                        <h4>${c.title}</h4>
+                                        <span><i class="ti-location-pin"></i>${c.address}</span>
+                                    </div>
+                                    <div class="dashboard_property_list_footer">
+                                        <a href="#" title="查看">&nbsp;<i class="ti-eye"></i>&nbsp;</a>
+                                        <%--已租出的房子无法修改信息--%>
+                                        <c:if test="${c.status != 1}">
+                                            <a href="#" title="编辑">&nbsp;<i class="ti-pencil"></i>&nbsp;</a>
+                                        </c:if>
+                                        <%--已下架的房屋可以上架功能--%>
+                                        <c:if test="${c.status != -1}">
+                                            <a href="#" title="上架">&nbsp;<i class="ti-control-play"></i>&nbsp;</a>
+                                        </c:if>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>

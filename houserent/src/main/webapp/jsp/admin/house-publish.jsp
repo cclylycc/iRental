@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
+<link rel="stylesheet" href="/assets/plugins/bootstrap-fileinput/css/fileinput.min.css">
+<script src="/assets/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+<script src="/assets/plugins/bootstrap-fileinput/js/locales/zh.js"></script>
 <section class="p-0">
     <div class="container-fluid p-0">
         <div class="row">
@@ -10,6 +13,7 @@
                         <div class="container">
                             <div class="row">
                                 <form id="houseForm">
+                                    <input type="hidden" id="key" name="key">
                                     <div class="col-lg-12 col-md-12">
                                         <div class="submit-page form-simple">
                                             <div class="frm_submit_block">
@@ -159,7 +163,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                >
+
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>联系人信息</h3>
@@ -173,7 +177,7 @@
                                                         <input type="text" name="contactPhone" class="form-control">
                                                     </div>
                                                 </div>
-                                                >
+
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>房屋描述</h3>
@@ -187,7 +191,11 @@
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>轮播图上传</h3>
-
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <input type="file" name="file" id="file" multiple class="file-loading"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg-12 col-md-12">
@@ -208,4 +216,17 @@
     </div>
 </section>
 <%@ include file="../common/footer.jsp" %>
+<script>
+    $(function () {
+        var timestamp = Date.parse(new Date());
+        $("#key").val(timestamp);
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl: '/file/upload?key='+timestamp, //上传地址
+                allowedFileExtensions: ['png','jpg','jpeg','gif'], //允许上传的文件拓展名
+                showUpload: true, //显示可以批量上传按钮
+                showCaption: false //不显示标题
+        });
 
+    });
+</script>
