@@ -7,7 +7,7 @@
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="dashboard-body">
                     <div class="frm_submit_block">
-                        <h4>房屋管理&nbsp<a href="/admin/house/publish" class="btn btn-thme bg-2 btn-sm">发布新房源</a></h4>
+                        <h4>房屋管理&nbsp<a href="/admin/house/publish" class="btn btn-theme bg-2 btn-sm">发布新房源</a></h4>
                     </div>
                     <div class="row">
                         <c:forEach items="${pageInfo.records}" var="c">
@@ -42,19 +42,36 @@
                                     </div>
                                     <div class="dashboard_property_list_footer">
                                         <a href="#" title="查看">&nbsp;<i class="ti-eye"></i>&nbsp;</a>
-                                        <%--已租出的房子无法修改信息--%>
+                                            <%--已租出的房子无法修改信息--%>
                                         <c:if test="${c.status != 1}">
                                             <a href="#" title="编辑">&nbsp;<i class="ti-pencil"></i>&nbsp;</a>
                                         </c:if>
-                                        <%--已下架的房屋可以上架功能--%>
+                                            <%--已下架的房屋可以上架功能--%>
                                         <c:if test="${c.status != -1}">
                                             <a href="#" title="上架">&nbsp;<i class="ti-control-play"></i>&nbsp;</a>
                                         </c:if>
-                                    </div>
+                                            <%--已下架的房屋可以下架功能--%>
+                                        <c:if test="${c.status == 0}">
+                                            <a href="#" title="下架">&nbsp;<i class="ti-control-pause"></i>&nbsp;</a>
+                                        </c:if>
+                                            <%--删除房屋--%>
+                                        <c:if test="${c.status != 1}">
+                                            <a href="#" title="删除">&nbsp;<i class="ti-close"></i>&nbsp;</a>
+                                        </c:if>
+                                        <c:if test="${isAdmin && c.status == -2}">
+                                            <a href="#" title="审核通过">&nbsp;<i class="ti-arrow-up"></i>&nbsp;</a>
+                                            <a href="#" title="审核驳回">&nbsp;<i class="ti-arrow-down"></i>&nbsp;</a>
 
+                                        </c:if>
+                                    </div>
                                 </div>
                             </div>
                         </c:forEach>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <%@ include file="../common/page.jsp" %>
+                        </div>
                     </div>
                 </div>
             </div>
