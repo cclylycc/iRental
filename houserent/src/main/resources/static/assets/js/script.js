@@ -56,3 +56,104 @@ function submitHouse() {
 
 }
 
+/*
+* 下架房屋
+* */
+function downHouse(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/down",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload = "/admin/house";
+            }
+        }
+    });
+}
+
+/*
+* 上架房屋
+* */
+function upHouse(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/up",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload = "/admin/house";
+            }
+        }
+    });
+}
+
+
+/*
+* 房屋审核通过
+* */
+function checkPassHouse(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/checkPass",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}
+
+/*
+* 房屋审核驳回
+* */
+function checkRejectHouse(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/checkReject",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*
+* 删除房屋
+* */
+function deleteHouse(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/house/delete",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}

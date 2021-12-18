@@ -23,7 +23,7 @@ public class BaseController {
     }
 
 
-     /*
+    /*
      * 获取当前用户ID
      * */
     public Long getLoginUserId() {
@@ -35,14 +35,42 @@ public class BaseController {
     }
 
     /*
-    * 判断当前用户是管理员
-    * */
-    public boolean loginUserIsAdmin(){
+     * 判断当前用户是管理员
+     * */
+    public boolean loginUserIsAdmin() {
         User user = getLoginUser();
-        if(user == null){
+        if (user == null) {
             return false;
         }
         return UserRoleEnum.ADMIN.getValue().equalsIgnoreCase(user.getRole());
+    }
+
+    /*
+     * 渲染404页面
+     * */
+    public String renderNotFound() {
+        return "forward:/404";
+    }
+
+    /*
+     * 渲染403页面 无权限
+     * */
+    public String renderNotAllowAccess() {
+        return "forward:/403";
+    }
+
+    /*
+     * 渲染500页面
+     * */
+    public String renderServerException() {
+        return "forward:/500";
+    }
+
+    /*
+     * 其他异常
+     * */
+    public String renderError() {
+        return "forward:/error";
     }
 
 }

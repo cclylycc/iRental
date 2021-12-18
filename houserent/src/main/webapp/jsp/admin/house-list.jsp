@@ -22,18 +22,18 @@
                                         <c:when test="${c.status == 1}">
                                             <span class="dashboard_pr_status published">已租出</span>
                                         </c:when>
-                                        <c:when test="${c.status == -1}">
-                                            <span class="dashboard_pr_status expire">已下架</span>
-                                        </c:when>
-                                        <c:when test="${c.status == -2}">
-                                            <span class="dashboard_pr_status expire">待审核</span>
-                                        </c:when>
-                                        <c:when test="${c.status == -3}">
-                                            <span class="dashboard_pr_status expire">审核不通过</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <span class="dashboard_pr_status">未知状态</span>
-                                        </c:otherwise>
+                                            <c:when test="${c.status == -1}">
+                                                <span class="dashboard_pr_status expire">已下架</span>
+                                            </c:when>
+                                            <c:when test="${c.status == -2}">
+                                                <span class="dashboard_pr_status expire">待审核</span>
+                                            </c:when>
+                                            <c:when test="${c.status == -3}">
+                                                <span class="dashboard_pr_status expire">审核不通过</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="dashboard_pr_status">未知状态</span>
+                                            </c:otherwise>
                                         </c:choose>
                                     </div>
                                     <div class="dashboard_property_list_content">
@@ -41,26 +41,33 @@
                                         <span><i class="ti-location-pin"></i>${c.address}</span>
                                     </div>
                                     <div class="dashboard_property_list_footer">
-                                        <a href="#" title="查看">&nbsp;<i class="ti-eye"></i>&nbsp;</a>
+                                        <a href="/house/detail/${c.id}" title="查看">&nbsp;<i
+                                                class="ti-eye"></i>&nbsp;</a>
                                             <%--已租出的房子无法修改信息--%>
                                         <c:if test="${c.status != 1}">
-                                            <a href="#" title="编辑">&nbsp;<i class="ti-pencil"></i>&nbsp;</a>
+                                            <a href="/admin/house/publish?id=${c.id}" title="编辑">&nbsp;<i
+                                                    class="ti-pencil"></i>&nbsp;</a>
                                         </c:if>
                                             <%--已下架的房屋可以上架功能--%>
-                                        <c:if test="${c.status != -1}">
-                                            <a href="#" title="上架">&nbsp;<i class="ti-control-play"></i>&nbsp;</a>
+                                        <c:if test="${c.status == -1}">
+                                            <a href="javascript:void(0)" onclick="upHouse(${c.id})" title="上架">&nbsp;<i
+                                                    class="ti-control-play"></i>&nbsp;</a>
                                         </c:if>
-                                            <%--已下架的房屋可以下架功能--%>
+                                            <%--已上架的房屋可以下架功能--%>
                                         <c:if test="${c.status == 0}">
-                                            <a href="#" title="下架">&nbsp;<i class="ti-control-pause"></i>&nbsp;</a>
+                                            <a href="javascript:void(0)" onclick="downHouse(${c.id})"
+                                               title="下架">&nbsp;<i class="ti-control-pause"></i>&nbsp;</a>
                                         </c:if>
                                             <%--删除房屋--%>
                                         <c:if test="${c.status != 1}">
-                                            <a href="#" title="删除">&nbsp;<i class="ti-close"></i>&nbsp;</a>
+                                            <a href="javascript:void(0)" onclick="deleteHouse(${c.id})" title="删除">&nbsp;<i
+                                                    class="ti-close"></i>&nbsp;</a>
                                         </c:if>
                                         <c:if test="${isAdmin && c.status == -2}">
-                                            <a href="#" title="审核通过">&nbsp;<i class="ti-arrow-up"></i>&nbsp;</a>
-                                            <a href="#" title="审核驳回">&nbsp;<i class="ti-arrow-down"></i>&nbsp;</a>
+                                            <a href="javascript:void(0)" onclick="checkPassHouse(${c.id})" title="审核通过">&nbsp;<i
+                                                    class="ti-arrow-up"></i>&nbsp;</a>
+                                            <a href="javascript:void(0)" onclick="checkRejectHouse(${c.id})"
+                                               title="审核驳回">&nbsp;<i class="ti-arrow-down"></i>&nbsp;</a>
 
                                         </c:if>
                                     </div>
