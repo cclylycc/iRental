@@ -4,6 +4,8 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/admin/house-list.jsp" value="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/admin" />
+        <entry key="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front/house-detail.jsp" value="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front" />
+        <entry key="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front/house-map.jsp" value="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front" />
         <entry key="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front/index.jsp" value="file://$PROJECT_DIR$/houserent/src/main/webapp/jsp/front" />
       </map>
     </option>

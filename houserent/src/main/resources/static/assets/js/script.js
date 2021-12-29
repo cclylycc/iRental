@@ -157,3 +157,46 @@ function deleteHouse(id) {
         }
     });
 }
+
+/*
+* 收藏房屋提交
+* */
+function submitMark(id) {
+    $.ajax({
+        type: "POST",
+        url: "/mark/submit",
+        async: false,
+        data: {
+            "houseId": id
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.msg == "请先登录") {
+                window.location.href = "/";
+            }
+        }
+    });
+}
+
+/*
+* 创建房屋订单
+* */
+function createOrder() {
+    var houseId = $("#houseId").val();
+    var endDate = $("#endDate").val();
+    $.ajax({
+        type: "POST",
+        url: "/order/create",
+        async: false,
+        data: {
+            "houseId": houseId,
+            "endDate": endDate
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.msg == "请先登录") {
+                window.location.href = "/";
+            }
+        }
+    });
+}

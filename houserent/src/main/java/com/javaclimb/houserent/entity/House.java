@@ -1,11 +1,13 @@
 package com.javaclimb.houserent.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.javaclimb.houserent.common.base.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /*
  * 房屋信息
@@ -149,5 +151,15 @@ public class House extends BaseEntity {
      * */
     private String contactPhone;
 
+    /*
+     * 轮播图列表
+     * */
+    @TableField(exist = false)
+    private List<String> slideImgList;
 
+    /*
+     * 合租房屋列表
+     * */
+    @TableField(exist = false)
+    private List<House> shareHouseList;
 }

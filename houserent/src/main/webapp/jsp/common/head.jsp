@@ -6,11 +6,13 @@
 <html>
 <head>
     <title>爱租房</title>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/moment.min.js"></script>
     <script src="/assets/js/daterangepicker.js"></script>
     <script src="/assets/js/dropzone.js"></script>
     <script src="/assets/js/imagesloaded.js"></script>
@@ -18,7 +20,6 @@
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
     <script src="/assets/js/lightbox.js"></script>
     <script src="/assets/js/markerclusterer.js"></script>
-    <script src="/assets/js/moment.min.js"></script>
     <script src="https://lib.baomitu.com/morris.js/0.5.1/morris.js"></script>
     <script src="/assets/js/raphael.min.js"></script>
     <script src="/assets/js/select2.min.js"></script>

@@ -8,6 +8,7 @@ import com.javaclimb.houserent.mapper.HouseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -30,7 +31,7 @@ public class HouseServiceImpl implements HouseService {
     public QueryWrapper<House> getQueryWrapper(House house) {
         QueryWrapper<House> queryWrapper = new QueryWrapper<>();
         if(house != null && house.getUserId() != null){
-            queryWrapper.eq("user_id",house.getUserId());
+            queryWrapper.eq("user_id", house.getUserId());
         }
         return queryWrapper;
     }
@@ -40,4 +41,12 @@ public class HouseServiceImpl implements HouseService {
         return null;
     }
 
+    @Override
+    public List<House> findByUserIdAndCertificateNoAndRentType(Long userId, String certificateNo, String rentType) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("user_id", userId);
+        queryWrapper.eq("certificate_no", certificateNo);
+        queryWrapper.eq("rent_type", rentType);
+        return houseMapper.selectList(queryWrapper);
+    }
 }
