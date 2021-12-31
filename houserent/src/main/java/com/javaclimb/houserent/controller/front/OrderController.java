@@ -14,6 +14,7 @@ import com.javaclimb.houserent.service.OrderService;
 import com.javaclimb.houserent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,7 +68,7 @@ public class OrderController extends BaseController {
         }
 
         //退租日期
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date endDate;
         try {
             endDate = sdf.parse(endDateStr);
@@ -78,7 +79,7 @@ public class OrderController extends BaseController {
         Date startDate = new Date();
         //计算总共天数
         Integer dayNum = DateUtil.daysBetween(startDate, endDate);
-        if (dayNum <= Constant.MIN_RENT_DAYS) {
+        if (dayNum < Constant.MIN_RENT_DAYS) {
             return JsonResult.error("最少租住" + Constant.MIN_RENT_DAYS + "天");
         }
 
@@ -98,4 +99,32 @@ public class OrderController extends BaseController {
 
         return JsonResult.success("订单创建成功，请签订合同。", order.getId());
     }
+
+    /*
+     * 查看合同信息
+     * */
+    @RequestMapping("/order/agreement/view")
+    public String agreementView(@RequestParam(value = "orderId") Long orderId, Model model) {
+        if (getLoginUser() == null) {
+            return "redirect:/";
+        }
+        //订单不存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return renderNotFound();
+        }
+        //登录用户不是该订单的租客、房东或管理员，就无权限查看。
+        if (!Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId()) && !loginUserIsAdmin()) {
+            return renderNotAllowAccess();
+        }
+        //该订单的房屋信息
+        order.setHouse(houseService.get(order.getHouseId()));
+        //该订单的租客信息
+        order.setCustomerUser(userService.get(order.getCustomerUserId()));
+        //该订单的房东信息
+        order.setOwnerUser(userService.get(order.getOwnerUserId()));
+        model.addAttribute("order", order);
+        return "front/agreement";
+    }
+
 }

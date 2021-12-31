@@ -197,6 +197,10 @@ function createOrder() {
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
+            //如果创建成功，跳转到签订合同页面。
+            if (data.code == 1) {
+                window.location.href = "/order/agreement/view?orderId=" + data.result;
+            }
         }
     });
 }
