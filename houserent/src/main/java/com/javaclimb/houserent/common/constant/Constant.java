@@ -22,7 +22,12 @@ public class Constant {
 
 
     /*
-    * 图片session的前缀
-    * */
+     * 图片session的前缀
+     * */
     public static final String SESSION_IMG_PREFIX = "SESSION_IMG_";
+
+    /*
+     * 最小租住天数
+     * */
+    public static final Integer MIN_RENT_DAYS = 1;
 }

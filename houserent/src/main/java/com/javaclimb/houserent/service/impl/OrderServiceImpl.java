@@ -2,6 +2,7 @@ package com.javaclimb.houserent.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.javaclimb.houserent.common.enums.OrderStatusEnum;
 import com.javaclimb.houserent.entity.Order;
 import com.javaclimb.houserent.mapper.OrderMapper;
 import com.javaclimb.houserent.service.OrderService;
@@ -37,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
     public Order getCurrentEffectiveOrder(Long houseId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("house_id", houseId);
-        queryWrapper.eq("status", 0);
+        queryWrapper.eq("status", OrderStatusEnum.NORMAL);
         return orderMapper.selectOne(queryWrapper);
     }
 }
