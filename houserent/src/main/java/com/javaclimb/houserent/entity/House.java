@@ -162,4 +162,10 @@ public class House extends BaseEntity {
      * */
     @TableField(exist = false)
     private List<House> shareHouseList;
+
+    /*
+     * 该房屋的订单
+     * */
+    @TableField(exist = false)
+    private Order currentOrder;
 }

@@ -44,7 +44,7 @@
                                 <a href="javascript:void(0)" onclick="confirmAgreement(${order.id})"
                                    class="btn btn-primary">我已阅读并同意上述合同</a>
                             </c:when>
-                            <c:when test="${order.status==-1}">待付款</c:when>
+                            <c:when test="${order.status==-1}"><a href="/order/pay?orderId=${order.id}">去付款</a></c:when>
                             <c:when test="${order.status==0}">合同已生效</c:when>
                             <c:when test="${order.status==1}">合同已到期</c:when>
                             <c:when test="${order.status==2}">已申请退租</c:when>

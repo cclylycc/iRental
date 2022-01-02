@@ -45,6 +45,7 @@ public class HouseController extends BaseController {
         model.addAttribute("pageInfo", housePage);
         model.addAttribute("pagePrefix", "/admin/house?");
         model.addAttribute("isAdmin", loginUserIsAdmin());
+        model.addAttribute("tab", "house-list");
         return "admin/house-list";
     }
 

@@ -124,7 +124,24 @@
                                                             <div class="comment-details">
                                                                 <a href="/house/detail/${c.id}" target="_blank"><h4
                                                                         class="author-name">${c.title}</h4></a>
-                                                                <div class="comment-text">暂未租出</div>
+                                                                <c:choose>
+                                                                    <c:when test="${c.currentOrder!=null}">
+                                                                        <div class="comment-text">
+                                                                            <p>
+                                                                                性别：${c.currentOrder.customerUser.sex}，职业：${c.currentOrder.customerUser.job}</p>
+                                                                            <p>
+                                                                                爱好：${c.currentOrder.customerUser.hobby}</p>
+                                                                            <p>
+                                                                                个人说明：${c.currentOrder.customerUser.userDesc}</p>
+                                                                            <p>入住日期：<fmt:formatDate
+                                                                                    value="${c.currentOrder.startDate}"
+                                                                                    pattern="yyyy-MM-dd"></fmt:formatDate></p>
+                                                                        </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <div class="comment-text">暂未租出</div>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                             </div>
                                                         </article>
                                                     </li>
@@ -208,7 +225,6 @@
                                             <div class="cld-box">
                                                 <i class="ti-calendar"></i>
                                                 <input type="text" name="checkout" id="endDate" class="form-control"/>
-                                                <input type="hidden" id="houseId" value="${house.id}">
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +259,46 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="agent-_blocks_wrap b-0">
+                            <div class="side-block-header">
+                                <h3 class="title">联系房东</h3>
+                            </div>
+                            <div class="side-block-body">
+                                <form id="contactForm">
+                                    <input type="hidden" id="houseId" name="houseId" value="${house.id}">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" placeholder="我的姓名">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="email" placeholder="我的邮箱">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="phone"
+                                                       placeholder="我的手机号">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-6">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="content"
+                                                          placeholder="想要发的信息内容"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-6">
+                                            <div class="form-group">
+                                                <a href="javascript:void(0)" onclick="submitContact()"
+                                                   class="btn btn-md full-width btn-theme bg-2">发送邮件咨询</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

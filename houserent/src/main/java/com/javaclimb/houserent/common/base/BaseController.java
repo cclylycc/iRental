@@ -46,6 +46,29 @@ public class BaseController {
     }
 
     /*
+     * 判断当前用户是租客
+     * */
+    public boolean loginUserIsCustomer() {
+        User user = getLoginUser();
+        if (user == null) {
+            return false;
+        }
+        return UserRoleEnum.CUSTOMER.getValue().equalsIgnoreCase(user.getRole());
+    }
+
+    /*
+     * 判断当前用户是房东
+     * */
+    public boolean loginUserIsOwner() {
+        User user = getLoginUser();
+        if (user == null) {
+            return false;
+        }
+        return UserRoleEnum.OWNER.getValue().equalsIgnoreCase(user.getRole());
+    }
+
+
+    /*
      * 渲染404页面
      * */
     public String renderNotFound() {

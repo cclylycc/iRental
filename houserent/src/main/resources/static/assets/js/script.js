@@ -204,3 +204,92 @@ function createOrder() {
         }
     });
 }
+
+/*
+* 完成签订合同步骤
+* */
+function confirmAgreement(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/order/agreement/submit",
+        async: false,
+        data: {
+            "orderId": orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.msg == "请先登录") {
+                window.location.href = "/";
+            }
+            //如果创建成功，跳转到支付页面。
+            if (data.code == 1) {
+                window.location.href = "/order/pay?orderId=" + data.result;
+            }
+        }
+    });
+}
+
+
+/*
+* 模拟支付成功
+* */
+function submitPay(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/order/pay/submit",
+        async: false,
+        data: {
+            "orderId": orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            if (data.msg == "请先登录") {
+                window.location.href = "/";
+            }
+            //如果支付成功，跳转到我的家页面。
+            if (data.code == 1) {
+                window.location.href = "/admin/home";
+            }
+        }
+    });
+}
+
+
+/*
+* 发送邮件联系房东
+* */
+function submitContact() {
+    $.ajax({
+        type: "POST",
+        url: "/house/contact",
+        async: false,
+        data: $('#contactForm').serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.msg == "请先登录") {
+                window.location.href = "/";
+            }
+            //如果发送成功，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+/*个人信息保存*/
+function submitProfile() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/profile/submit",
+        async: false,
+        data: $('#profileForm').serialize(),
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}

@@ -1,6 +1,7 @@
 package com.javaclimb.houserent.common.config;
 
 import com.javaclimb.houserent.common.constant.Constant;
+import com.javaclimb.houserent.common.interceptor.AdminInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -37,10 +38,13 @@ public class MvcConfig implements WebMvcConfigurer {
     }
 
     /*
-    *
-    * */
+     *
+     * */
     @Override
-    public void addInterceptors(InterceptorRegistry registry){
-
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AdminInterceptor())
+                .addPathPatterns("/admin/profile")
+                .addPathPatterns("/admin/house")
+                .addPathPatterns("/admin/order");
     }
 }

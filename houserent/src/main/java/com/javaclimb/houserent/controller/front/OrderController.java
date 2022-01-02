@@ -6,6 +6,7 @@ import com.javaclimb.houserent.common.dto.JsonResult;
 import com.javaclimb.houserent.common.enums.HouseStatusEnum;
 import com.javaclimb.houserent.common.enums.OrderStatusEnum;
 import com.javaclimb.houserent.common.util.DateUtil;
+import com.javaclimb.houserent.common.util.MailUtil;
 import com.javaclimb.houserent.entity.House;
 import com.javaclimb.houserent.entity.Order;
 import com.javaclimb.houserent.entity.User;
@@ -125,6 +126,161 @@ public class OrderController extends BaseController {
         order.setOwnerUser(userService.get(order.getOwnerUserId()));
         model.addAttribute("order", order);
         return "front/agreement";
+    }
+
+
+    /*
+     * 签订合同
+     * */
+    @RequestMapping("/order/agreement/submit")
+    @ResponseBody
+    public JsonResult agreementSubmit(@RequestParam(value = "orderId") Long orderId, Model model) {
+        if (getLoginUser() == null) {
+            return JsonResult.error("用户未登录");
+        }
+        //订单不存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+
+        House house = houseService.get(order.getHouseId());
+        if (house == null) {
+            return JsonResult.error("房屋信息不存在");
+        }
+
+        //登录用户不是该订单的租客、房东或管理员，就无权限查看。
+        if (!Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId()) && !loginUserIsAdmin()) {
+            return JsonResult.error("没有权限");
+        }
+
+        if (Objects.equals(house.getStatus(), HouseStatusEnum.HAS_RENT.getValue())) {
+            return JsonResult.error("房屋已被租出或未释放");
+        }
+
+        Order checkOrder = orderService.getCurrentEffectiveOrder(order.getHouseId());
+        if (checkOrder != null) {
+            return JsonResult.error("房屋已被租出或未释放");
+        }
+
+        User ownerUser = userService.get(house.getUserId());
+        if (ownerUser == null) {
+            return JsonResult.error("房东用户不存在");
+        }
+        order.setStatus(OrderStatusEnum.NOT_PAY.getValue());
+        orderService.update(order);
+        return JsonResult.success("合同签订成功，请支付订单", orderId);
+    }
+
+    /*
+     * 转向支付页面
+     * */
+    @RequestMapping("/order/pay")
+    public String pay(@RequestParam(value = "orderId") Long orderId, Model model) {
+        if (getLoginUser() == null) {
+            return "redirect:/";
+        }
+        //订单不存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return renderNotFound();
+        }
+        //登录用户不是该订单的租客、房东或管理员，就无权限查看。
+        if (!Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId()) && !loginUserIsAdmin()) {
+            return renderNotAllowAccess();
+        }
+        House house = houseService.get(order.getHouseId());
+        if (house == null) {
+            return renderNotFound();
+        }
+        //该订单的房屋信息
+        order.setHouse(houseService.get(order.getHouseId()));
+        model.addAttribute("order", order);
+        return "front/pay";
+    }
+
+
+    /*
+     * 模拟支付
+     * */
+    @RequestMapping("/order/pay/submit")
+    @ResponseBody
+    public JsonResult paySubmit(@RequestParam(value = "orderId") Long orderId) {
+        if (getLoginUser() == null) {
+            return JsonResult.error("用户未登录");
+        }
+        //订单不存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+
+        House house = houseService.get(order.getHouseId());
+        if (house == null) {
+            return JsonResult.error("房屋信息不存在");
+        }
+
+        //登录用户不是该订单的租客、房东或管理员，就无权限查看。
+        if (!Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId()) && !loginUserIsAdmin()) {
+            return JsonResult.error("没有权限");
+        }
+
+        if (Objects.equals(house.getStatus(), HouseStatusEnum.HAS_RENT.getValue())) {
+            return JsonResult.error("房屋已被租出或未释放");
+        }
+
+        Order checkOrder = orderService.getCurrentEffectiveOrder(order.getHouseId());
+        if (checkOrder != null) {
+            return JsonResult.error("房屋已被租出或未释放");
+        }
+
+        User ownerUser = userService.get(house.getUserId());
+        if (ownerUser == null) {
+            return JsonResult.error("房东用户不存在");
+        }
+        order.setStatus(OrderStatusEnum.NORMAL.getValue());
+        orderService.update(order);
+
+        //更新房屋状态和开始、结束时间
+        house.setStatus(HouseStatusEnum.HAS_RENT.getValue());
+        house.setLastOrderStartTime(order.getStartDate());
+        house.setLastOrderEndTime(order.getEndDate());
+        houseService.update(house);
+        return JsonResult.success("支付成功，开始联系房东入住吧");
+    }
+
+    /*
+     * 联系房东
+     * */
+    @RequestMapping("/house/contact")
+    @ResponseBody
+    public JsonResult contact(@RequestParam("houseId") Long houseId, @RequestParam("name") String name,
+                              @RequestParam("phone") String phone, @RequestParam("email") String email,
+                              @RequestParam("content") String content) {
+        if (getLoginUser() == null) {
+            return JsonResult.error("用户未登录");
+        }
+        House house = houseService.get(houseId);
+        if (house == null) {
+            return JsonResult.error("房屋信息不存在");
+        }
+        User owner = userService.get(house.getUserId());
+        if (owner == null) {
+            return JsonResult.error("房东不存在");
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("姓名：").append(name).append("<br/>");
+        sb.append("手机号：").append(phone).append("<br/>");
+        sb.append("邮箱：").append(email).append("<br/>");
+        sb.append("内容：").append(content).append("<br/>");
+        sb.append("所属链接（复制在地址栏打开）：").append("http://localhost:9999/house/detail/").append(houseId);
+        try {
+            MailUtil.sendEmail(owner.getEmail(), "来自" + name + "的租房咨询", sb.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.error("邮件发送失败");
+        }
+        return JsonResult.success("邮件发送成功");
     }
 
 }
