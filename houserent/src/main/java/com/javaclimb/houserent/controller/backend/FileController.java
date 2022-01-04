@@ -18,18 +18,18 @@ import java.util.List;
 import java.util.Map;
 
 /*
-* 文件上传控制器
-* */
+ * 文件上传控制器
+ * */
 @Controller
 @RequestMapping("/file")
 public class FileController extends BaseController {
     /*
-    * 文件上传
-    * */
-    @RequestMapping(value = "/upload" ,method = RequestMethod.POST)
+     * 文件上传
+     * */
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult upload(@RequestParam("file") MultipartFile file, @RequestParam("key")String key, HttpSession session){
-        Map<String,String> map = new HashMap<>();
+    public JsonResult upload(@RequestParam("file") MultipartFile file, @RequestParam("key") String key, HttpSession session) {
+        Map<String, String> map = new HashMap<>();
         try {
             map = FileUtil.upload(file);
         } catch (Exception e) {
@@ -39,12 +39,12 @@ public class FileController extends BaseController {
         String filePath = map.get("filePath");
         //将图片URL存在SESSION里面
         String sessionKey = Constant.SESSION_IMG_PREFIX + key;
-        List<String> imgList =(List<String>) session.getAttribute(sessionKey);
+        List<String> imgList = (List<String>) session.getAttribute(sessionKey);
         if (imgList == null) {
             imgList = new ArrayList<>();
         }
         imgList.add(filePath);
-        session.setAttribute(sessionKey,imgList);
+        session.setAttribute(sessionKey, imgList);
         return JsonResult.success("上传成功！");
     }
 }

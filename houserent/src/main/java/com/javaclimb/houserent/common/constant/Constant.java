@@ -30,4 +30,9 @@ public class Constant {
      * 最小租住天数
      * */
     public static final Integer MIN_RENT_DAYS = 1;
+
+    /*
+     * 首页显示房屋数量
+     */
+    public static final Integer INDEX_HOUSE_NUM = 6;
 }

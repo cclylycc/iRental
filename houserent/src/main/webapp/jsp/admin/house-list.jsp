@@ -16,12 +16,12 @@
                                     <div class="dashboard_property_list_thumb">
                                         <img src="${c.thumbnailUrl}" class="img-fluid"/>
                                         <c:choose>
-                                        <c:when test="${c.status == 0}">
-                                            <span class="dashboard_pr_status">未租出</span>
-                                        </c:when>
-                                        <c:when test="${c.status == 1}">
-                                            <span class="dashboard_pr_status published">已租出</span>
-                                        </c:when>
+                                            <c:when test="${c.status == 0}">
+                                                <span class="dashboard_pr_status">未租出</span>
+                                            </c:when>
+                                            <c:when test="${c.status == 1}">
+                                                <span class="dashboard_pr_status published">已租出</span>
+                                            </c:when>
                                             <c:when test="${c.status == -1}">
                                                 <span class="dashboard_pr_status expire">已下架</span>
                                             </c:when>

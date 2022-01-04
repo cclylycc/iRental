@@ -3,8 +3,8 @@ package com.javaclimb.houserent.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.javaclimb.houserent.entity.House;
-import com.javaclimb.houserent.service.HouseService;
 import com.javaclimb.houserent.mapper.HouseMapper;
+import com.javaclimb.houserent.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public QueryWrapper<House> getQueryWrapper(House house) {
         QueryWrapper<House> queryWrapper = new QueryWrapper<>();
-        if(house != null && house.getUserId() != null){
+        if (house != null && house.getUserId() != null) {
             queryWrapper.eq("user_id", house.getUserId());
         }
         return queryWrapper;
@@ -48,5 +48,14 @@ public class HouseServiceImpl implements HouseService {
         queryWrapper.eq("certificate_no", certificateNo);
         queryWrapper.eq("rent_type", rentType);
         return houseMapper.selectList(queryWrapper);
+    }
+
+    /*
+     * rentType 租房类型
+     * limit 限制多少条
+     * */
+    @Override
+    public List<House> findTopList(String rentType, Integer limit) {
+        return houseMapper.findTopList(rentType, limit);
     }
 }

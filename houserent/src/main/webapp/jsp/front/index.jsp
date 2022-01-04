@@ -1,4 +1,111 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
+<div class="image-cover hero_banner" style="background: #334ACA url('/assets/img/banner-3.jpg') no-repeat;"
+     data-overlay="1">
+    <div class="container">
+        <h1 class="big-header-capt mb-0">开始您美好的租房生活吧！</h1>
+        <p class="text-center mb-5">搜索您所在的城市的小区或房屋类型</p>
+        <div class="full_search_box nexio_search lightanic_search hero_search-radius modern">
+            <div class="search_hero_wrapping">
+                <form action="/house">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label>小区名称</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="address" name="address" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <label>城市名称</label>
+                                <div class="input-with-icon">
+                                    <select name="city" id="city" class="form-control">
+                                        <option value="">不限</option>
+                                        <option value="北京">北京</option>
+                                        <option value="上海">上海</option>
+                                        <option value="广州">广州</option>
+                                        <option value="深圳">深圳</option>
+                                        <option value="天津">天津</option>
+                                        <option value="武汉">武汉</option>
+                                        <option value="长沙">长沙</option>
+                                        <option value="杭州">杭州</option>
+                                        <option value="重庆">重庆</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <div class="form-group">
+                                <label>租房类型</label>
+                                <div class="input-with-icon">
+                                    <select name="rentType" id="selectRentType" class="form-control">
+                                        <option value="">不限</option>
+                                        <option value="whole">整租</option>
+                                        <option value="share">合租</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label>月租金范围</label>
+                                <div class="input-with-icon">
+                                    <select name="priceRange" id="price" class="form-control">
+                                        <option value="">不限</option>
+                                        <option value="0;999">1000以内</option>
+                                        <option value="1000;1999">1000-1999</option>
+                                        <option value="2000;3999">2000-3999</option>
+                                        <option value="4000;5999">4000-5999</option>
+                                        <option value="6000;7999">6000-7999</option>
+                                        <option value="8000;9999">8000-9999</option>
+                                        <option value="10000;14999">10000-14999</option>
+                                        <option value="15000;19999">15000-19999</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 small-padd">
+                            <div class="form-group none">
+                                <button type="submit" class="btn search-btn">搜索</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="gray-simple">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="sec-heading center">
+                <h2>最新整租</h2>
+                <p>给你推荐了一些最新发布的整租房屋信息</p>
+            </div>
+        </div>
+        <div class="row">
+            <c:forEach items="${recentWholeHouseList}" var="c">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="single_property_style property_style_2 modern">
+                        <div class="listing_thumb_wrapper">
+                            <a href="/house/detail/${c.id}"><img src="${c.thumbnailUrl}" class="img-fluid mx-auto"></a>
+                        </div>
+                        <div class="property_caption_wrappers pb-0">
+                            <div class="pr_type_status">
+                                <h4 class="pr-property_title mb-1"><a href="/house/detail/${c.id}">${c.title}</a></h4>
+                                <div class="listing-location-name">
+                                    <a href="/house/detail/${c.id}">${c.address}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
+
 <%@ include file="../common/footer.jsp" %>
 

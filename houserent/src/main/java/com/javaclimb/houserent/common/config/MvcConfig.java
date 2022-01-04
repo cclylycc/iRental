@@ -11,14 +11,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /*
-* 前端配置类
-* */
+ * 前端配置类
+ * */
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
     /*
-    * 配置静态资源访问路径
-    * */
+     * 配置静态资源访问路径
+     * */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
@@ -28,9 +28,9 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Bean
     /*
-    * 配置jsp的访问前后端
-    * */
-    public InternalResourceViewResolver setupViewResolver(){
+     * 配置jsp的访问前后端
+     * */
+    public InternalResourceViewResolver setupViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/jsp/");
         resolver.setSuffix(".jsp");

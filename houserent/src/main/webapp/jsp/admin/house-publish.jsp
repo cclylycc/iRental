@@ -348,12 +348,12 @@
     $(function () {
         var timestamp = Date.parse(new Date());
         $("#key").val(timestamp);
-            $("#file").fileinput({
-                language: 'zh', //设置语言
-                uploadUrl: '/file/upload?key='+timestamp, //上传地址
-                allowedFileExtensions: ['png','jpg','jpeg','gif'], //允许上传的文件拓展名
-                showUpload: true, //显示可以批量上传按钮
-                showCaption: false //不显示标题
+        $("#file").fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/file/upload?key=' + timestamp, //上传地址
+            allowedFileExtensions: ['png', 'jpg', 'jpeg', 'gif'], //允许上传的文件拓展名
+            showUpload: true, //显示可以批量上传按钮
+            showCaption: false //不显示标题
         });
 
     });

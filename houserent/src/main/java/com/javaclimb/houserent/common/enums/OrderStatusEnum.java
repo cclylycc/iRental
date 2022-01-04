@@ -11,7 +11,7 @@ public enum OrderStatusEnum {
 
     NORMAL(0),
 
-    FINIS(1),
+    FINISH(1),
 
     END_APPLY(2),
 
@@ -22,6 +22,7 @@ public enum OrderStatusEnum {
     NOT_AGREEMENT(-2),
 
     CUSTOMER_CANCEL(-3);
+
 
     private Integer value;
 

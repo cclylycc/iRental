@@ -2,7 +2,12 @@ package com.javaclimb.houserent.controller.backend;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javaclimb.houserent.common.base.BaseController;
+import com.javaclimb.houserent.common.dto.JsonResult;
+import com.javaclimb.houserent.common.enums.HouseStatusEnum;
+import com.javaclimb.houserent.common.enums.OrderStatusEnum;
+import com.javaclimb.houserent.common.util.DateUtil;
 import com.javaclimb.houserent.common.util.PageUtil;
+import com.javaclimb.houserent.entity.House;
 import com.javaclimb.houserent.entity.Order;
 import com.javaclimb.houserent.service.HouseService;
 import com.javaclimb.houserent.service.OrderService;
@@ -11,7 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Date;
+import java.util.Objects;
 
 /*
  * 后端订单控制器
@@ -55,7 +65,103 @@ public class OrderController extends BaseController {
         }
         model.addAttribute("pageInfo", orderPage);
         model.addAttribute("tab", "order-list");
-        model.addAttribute("pagePrefix", "admin/order?");
+        model.addAttribute("pagePrefix", "/admin/order?");
         return "admin/order-list";
     }
+
+    /*
+     * 取消订单
+     * */
+    @RequestMapping(value = "/cancel", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult cancelOrder(@RequestParam("orderId") Long orderId) {
+        //校验订单是否存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+        //登录用户不是该订单所属租客、管理员、该订单所属房东，不能取消订单。
+        if (!loginUserIsAdmin() && !Objects.equals(getLoginUserId(), order.getCustomerUserId()) && Objects.equals(getLoginUserId(), order.getOwnerUserId())) {
+            return JsonResult.error("没有权限");
+        }
+        order.setStatus(OrderStatusEnum.CUSTOMER_CANCEL.getValue());
+        orderService.update(order);
+        return JsonResult.success("取消成功");
+    }
+
+
+    /*
+     * 申请退租
+     * */
+    @RequestMapping(value = "/end", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult endOrder(@RequestParam("orderId") Long orderId) {
+        //校验订单是否存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+        //登录用户不是该订单所属租客、管理员、该订单所属房东，不能取消订单。
+        if (!loginUserIsAdmin() && !Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId())) {
+            return JsonResult.error("没有权限");
+        }
+        order.setStatus(OrderStatusEnum.END_APPLY.getValue());
+        orderService.update(order);
+        return JsonResult.success("申请退租成功，请联系房东审核");
+    }
+
+
+    /*
+     * 退租申请：通过
+     * */
+    @RequestMapping(value = "/endPass", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult endOrderPass(@RequestParam("orderId") Long orderId) {
+        //校验订单是否存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+        //登录用户不是该订单所属租客、管理员、该订单所属房东，不能取消订单。
+        if (!loginUserIsAdmin() && !Objects.equals(getLoginUserId(), order.getOwnerUserId())) {
+            return JsonResult.error("没有权限");
+        }
+        order.setStatus(OrderStatusEnum.FINISH.getValue());
+        Date date = new Date();
+        int dayNum = DateUtil.daysBetween(order.getStartDate(), date);
+        order.setDayNum(dayNum);
+        order.setTotalAmount(order.getMonthRent() / 30 * dayNum);
+        order.setEndDate(date);
+        orderService.update(order);
+
+        //将房屋的状态变更一下，未租出状态
+        House house = houseService.get(order.getHouseId());
+        if (house != null && Objects.equals(house.getStatus(), HouseStatusEnum.HAS_RENT.getValue())) {
+            house.setStatus(HouseStatusEnum.NOT_RENT.getValue());
+            house.setLastOrderEndTime(date);
+            houseService.update(house);
+        }
+        return JsonResult.success("退租成功");
+    }
+
+    /*
+     * 退租申请 拒绝
+     * */
+    @RequestMapping(value = "/endReject", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult endOrderReject(@RequestParam("orderId") Long orderId) {
+        //校验订单是否存在
+        Order order = orderService.get(orderId);
+        if (order == null) {
+            return JsonResult.error("订单不存在");
+        }
+        //登录用户不是该订单所属租客、管理员、该订单所属房东，不能取消订单。
+        if (!loginUserIsAdmin() && !Objects.equals(getLoginUserId(), order.getOwnerUserId())) {
+            return JsonResult.error("没有权限");
+        }
+        order.setStatus(OrderStatusEnum.END_APPLY_REJECT.getValue());
+        orderService.update(order);
+        return JsonResult.success("操作成功，退租申请已拒绝");
+    }
+
 }

@@ -293,3 +293,82 @@ function submitProfile() {
         }
     });
 }
+
+/*取消订单*/
+function cancelOrder(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/order/cancel",
+        async: false,
+        data: {
+            'orderId': orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*申请退租*/
+function endOrder(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/order/end",
+        async: false,
+        data: {
+            'orderId': orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*退租申请 通过*/
+function endOrderPass(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/order/endPass",
+        async: false,
+        data: {
+            'orderId': orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*退租申请 拒绝*/
+function endOrderReject(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/order/endReject",
+        async: false,
+        data: {
+            'orderId': orderId
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
