@@ -2,6 +2,9 @@
 
 本项目是基于Springboot的民宿（房屋）租赁系统。使用了Springboot + JSP + MySQL + Mybatis + HTML/CSS/JS 进行开发。本项目已作为本人的毕业设计项目进行开发，基本每日更新。
 
+### 开发进度
+65%
+
 ### 基础环境 :speech_balloon: 
 IntelliJ IDEA
 JDK 1.8
