@@ -5,6 +5,7 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width"/>
     <title>爱租房</title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styles.css">

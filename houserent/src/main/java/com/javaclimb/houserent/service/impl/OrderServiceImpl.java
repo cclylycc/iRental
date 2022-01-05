@@ -9,6 +9,7 @@ import com.javaclimb.houserent.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -40,5 +41,10 @@ public class OrderServiceImpl implements OrderService {
         queryWrapper.eq("house_id", houseId);
         queryWrapper.eq("status", OrderStatusEnum.NORMAL);
         return orderMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    public List<Order> findOverDueOrderList() {
+        return orderMapper.findOverDueOrderList();
     }
 }

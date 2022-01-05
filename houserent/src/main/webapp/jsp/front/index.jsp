@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
-<div class="image-cover hero_banner" style="background: #334ACA url('/assets/img/banner-3.jpg') no-repeat;"
+<div class="image-cover hero_banner" style="background: #334ACA url('/assets/img/bg-3000.jpg') no-repeat;"
      data-overlay="1">
     <div class="container">
-        <h1 class="big-header-capt mb-0">开始您美好的租房生活吧！</h1>
-        <p class="text-center mb-5">搜索您所在的城市的小区或房屋类型</p>
+        <h1 class="big-header-capt mb-0">美好生活 从爱租房出发</h1>
+        <p class="text-center mb-5">立即搜索您所在城市的房屋类型</p>
         <div class="full_search_box nexio_search lightanic_search hero_search-radius modern">
             <div class="search_hero_wrapping">
                 <form action="/house">
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="property-real-price">
                                     <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent}<span
-                                            class="price_status">/月</span></a>
+                                            class="price_status">/月 - ￥${c.monthRent/30}/日</span></a>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="property-real-price">
                                     <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent}<span
-                                            class="price_status">/月</span></a>
+                                            class="price_status">/月 - ￥${c.monthRent/30}/日</span></a>
                                 </div>
                             </div>
                         </div>
