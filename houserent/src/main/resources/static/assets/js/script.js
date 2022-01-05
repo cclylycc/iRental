@@ -372,3 +372,81 @@ function endOrderReject(orderId) {
         }
     });
 }
+
+
+/*取消收藏功能*/
+function cancelMark(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/mark/cancel",
+        async: false,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*删除新闻功能*/
+function deleteNews(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/news/delete",
+        async: false,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*
+* 房屋信息保存
+* */
+function submitNews() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/news/publish/submit",
+        async: false,
+        data: $("#newsForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.href = "/admin/news";
+            }
+        }
+    });
+}
+
+
+/*
+* 提交用户反馈
+* */
+function submitFeedback() {
+    $.ajax({
+        type: "POST",
+        url: "/feedback/submit",
+        async: false,
+        data: $("#feedbackForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}

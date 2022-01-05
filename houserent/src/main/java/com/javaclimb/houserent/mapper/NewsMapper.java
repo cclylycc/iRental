@@ -1,13 +1,12 @@
 package com.javaclimb.houserent.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.javaclimb.houserent.entity.Mark;
+import com.javaclimb.houserent.entity.News;
 import org.apache.ibatis.annotations.Mapper;
 
 /*
- * 收藏Mapper层
+ * 新闻资讯Mapper
  * */
 @Mapper
-public interface MarkMapper extends BaseMapper<Mark> {
-
+public interface NewsMapper extends BaseMapper<News> {
 }

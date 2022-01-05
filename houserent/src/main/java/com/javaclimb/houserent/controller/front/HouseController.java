@@ -1,8 +1,11 @@
 package com.javaclimb.houserent.controller.front;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javaclimb.houserent.common.base.BaseController;
 import com.javaclimb.houserent.common.enums.HouseRentTypeEnum;
+import com.javaclimb.houserent.common.util.PageUtil;
+import com.javaclimb.houserent.common.vo.HouseSearchVO;
 import com.javaclimb.houserent.entity.House;
 import com.javaclimb.houserent.entity.Order;
 import com.javaclimb.houserent.entity.User;
@@ -80,5 +83,18 @@ public class HouseController extends BaseController {
         model.addAttribute("latitude", arr[1]);
         model.addAttribute("address", house.getAddress());
         return "front/house-map";
+    }
+
+    /*
+     * 房屋列表
+     * */
+    @RequestMapping("/house")
+    public String houseList(HouseSearchVO houseSearchVO, Model model) {
+        Page page = PageUtil.initMpPage(houseSearchVO.getPage(), houseSearchVO.getSize());
+        Page<House> housePage = houseService.getHousePage(houseSearchVO, page);
+        model.addAttribute("pageInfo", housePage);
+        model.addAttribute("houseSearchVO", houseSearchVO);
+        model.addAttribute("pagePrefix", houseSearchVO.getPagePrefix());
+        return "front/house-list";
     }
 }

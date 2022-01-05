@@ -39,11 +39,10 @@
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
                     <li><a href="/" style="font-size: 15px;">首页</a></li>
-                    <li><a href="/" style="font-size: 15px;">整租</a></li>
-                    <li><a href="/" style="font-size: 15px;">合租</a></li>
-                    <li><a href="/" style="font-size: 15px;">新房推荐</a></li>
-                    <li><a href="/" style="font-size: 15px;">开始体验</a></li>
-                    <li><a href="/" style="font-size: 15px;">用户反馈</a></li>
+                    <li><a href="/house?rentType=whole" style="font-size: 15px;">整租</a></li>
+                    <li><a href="/house?rentType=share" style="font-size: 15px;">合租</a></li>
+                    <li><a href="/news" style="font-size: 15px;">新闻资讯</a></li>
+                    <li><a href="/feedback" style="font-size: 15px;">用户反馈</a></li>
                 </ul>
             </div>
             <c:choose>
@@ -81,10 +80,10 @@
                                             <a href="/admin/house">
                                                 <i class="ti-layers"></i>房屋管理
                                             </a>
-                                            <a href="#">
+                                            <a href="/admin/order">
                                                 <i class="ti-gift"></i>订单管理
                                             </a>
-                                            <a href="#">
+                                            <a href="/admin/news">
                                                 <i class="ti-info"></i>新闻管理
                                             </a>
                                             <a href="/login/logout">
@@ -96,13 +95,13 @@
                                     <%--房东--%>
                                     <c:when test="${sessionScope.user.role == 'owner'}">
                                         <div class="dropdown-menu pull-right animated flipInX">
-                                            <a href="#">
+                                            <a href="/admin/profile">
                                                 <i class="ti-user"></i>个人信息
                                             </a>
-                                            <a href="#">
+                                            <a href="/admin/house">
                                                 <i class="ti-layers"></i>房屋管理
                                             </a>
-                                            <a href="#">
+                                            <a href="/admin/order">
                                                 <i class="ti-gift"></i>订单管理
                                             </a>
                                             <a href="/login/logout">
@@ -113,13 +112,13 @@
                                     <%--租客--%>
                                     <c:when test="${sessionScope.user.role == 'customer'}">
                                         <div class="dropdown-menu pull-right animated flipInX">
-                                            <a href="#">
+                                            <a href="/admin/profile">
                                                 <i class="ti-user"></i>个人信息
                                             </a>
-                                            <a href="#">
-                                                <i class="ti-home"></i>亲爱的家
+                                            <a href="/admin/home">
+                                                <i class="ti-home"></i>我的家
                                             </a>
-                                            <a href="#">
+                                            <a href="/admin/mark">
                                                 <i class="ti-bookmark"></i>我的收藏
                                             </a>
                                             <a href="/login/logout">

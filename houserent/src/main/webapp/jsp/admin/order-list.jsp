@@ -32,7 +32,7 @@
                                                                  pattern="yyyy-MM-dd"></fmt:formatDate><br/>
                                             到期时间:<fmt:formatDate value="${c.endDate}"
                                                                  pattern="yyyy-MM-dd"></fmt:formatDate>
-                                        </span>
+                                            </span>
                                             <span></span>
                                             <span class="table-property-price">
                                             总金额:￥${c.totalAmount}<br/>

@@ -105,7 +105,7 @@
                     </div>
 
                     <c:if test="${house.rentType=='share'}">
-                        <div class="property_block_wrap style-2">
+                        <div class="property_block_wrap style-2" id="shareHouse">
                             <div data-toggle="collapse" href="#clThree" class="property_block_wrap_header">
                                 <h4 class="property_block_title">合租信息</h4>
                             </div>

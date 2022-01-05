@@ -1,6 +1,8 @@
 package com.javaclimb.houserent.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.javaclimb.houserent.common.vo.HouseSearchVO;
 import com.javaclimb.houserent.entity.House;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,5 +22,11 @@ public interface HouseMapper extends BaseMapper<House> {
     @Select("select * from t_house where status = 0 and rent_type = #{rentType} order by create_time desc limit #{limit}")
     List<House> findTopList(@Param("rentType") String rentType, @Param("limit") Integer limit);
 
+    /*
+     * 搜索房屋
+     * 一个参数的时候可以不写@Param，两个或两个以上必须要写@param
+     * 复杂点的SQL，最好写在XML中，HouseMapper.xml
+     * */
+    List<House> searchHouse(@Param("houseSearchVO") HouseSearchVO houseSearchVO, @Param("page") Page page);
 
 }
