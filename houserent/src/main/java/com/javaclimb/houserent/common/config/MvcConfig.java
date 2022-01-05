@@ -44,15 +44,20 @@ public class MvcConfig implements WebMvcConfigurer {
      * */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new CustomerInterceptor())
+        registry.addInterceptor(new CustomerInterceptor()) //三个都可以的
                 .addPathPatterns("/admin/profile")
                 .addPathPatterns("/admin/home")
-                .addPathPatterns("/admin/order");
-
+                .addPathPatterns("/admin/order")
+                .addPathPatterns("/admin/mark")
+                .addPathPatterns("/admin/password")
+                .addPathPatterns("/admin/feedback");
         registry.addInterceptor(new OwnerInterceptor())
                 .addPathPatterns("/admin/house");
+        registry.addInterceptor(new AdminInterceptor()) //仅限管理员
+                .addPathPatterns("/admin/news")
+                .addPathPatterns("/admin/news/publish")
+                .addPathPatterns("/admin/user");
 
-        registry.addInterceptor(new AdminInterceptor())
-                .addPathPatterns("/abc");
+
     }
 }

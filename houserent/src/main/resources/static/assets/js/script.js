@@ -450,3 +450,107 @@ function submitFeedback() {
         }
     });
 }
+
+/*
+* 给回复提交的ID赋值
+* */
+function showReplyModal(id) {
+    $("#feedbackId").val(id);
+}
+
+/*
+* 回复反馈
+* */
+function feedbackReplySumbit() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/feedback/reply/submit",
+        async: false,
+        data: $("#feedbackForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*删除反馈*/
+function deleteFeedback(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/feedback/delete",
+        async: false,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*禁用用户*/
+function disableUser(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/user/disable",
+        async: false,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*启用用户*/
+function enableUser(id) {
+    $.ajax({
+        type: "POST",
+        url: "/admin/user/enable",
+        async: false,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            alert(data.msg)
+            //如果更新，刷新当前页面
+            if (data.code == 1) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+
+/*
+* 修改密码
+* */
+function submitPassword() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/password/submit",
+        async: false,
+        data: $("#passwordForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}

@@ -44,6 +44,30 @@
                         </a>
                     </li>
                 </c:if>
+                <c:if test="${sessionScope.user.role != 'admin'}">
+                    <li <c:if test="${tab == 'feedback-list'}"> class="active"</c:if>>
+                        <a href="/admin/feedback" style="color: white">
+                            <i class="ti-alert"></i>&nbsp我的反馈
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.role == 'admin'}">
+                    <li <c:if test="${tab == 'user-list'}"> class="active"</c:if>>
+                        <a href="/admin/user" style="color: white">
+                            <i class="ti-user"></i>&nbsp用户管理
+                        </a>
+                    </li>
+                </c:if>
+                <li <c:if test="${tab == 'password'}"> class="active"</c:if>>
+                    <a href="/admin/password" style="color: white">
+                        <i class="ti-unlock"></i>&nbsp密码修改
+                    </a>
+                </li>
+                <li>
+                    <a href="/login/logout">
+                        <i class="ti-power-off"></i>&nbsp退出登录
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

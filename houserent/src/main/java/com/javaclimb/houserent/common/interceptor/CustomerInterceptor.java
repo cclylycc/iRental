@@ -1,7 +1,6 @@
 package com.javaclimb.houserent.common.interceptor;
 
 import com.javaclimb.houserent.common.constant.Constant;
-import com.javaclimb.houserent.common.enums.UserRoleEnum;
 import com.javaclimb.houserent.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -23,7 +22,6 @@ public class CustomerInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect("/");
             return false;
         }
-
-        return UserRoleEnum.CUSTOMER.getValue().equalsIgnoreCase(user.getRole());
+        return true;
     }
 }

@@ -23,7 +23,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect("/");
             return false;
         }
-        //如果用户登录，但不是管理员，拦截
+        //如果用户不是管理员，拦截
         return UserRoleEnum.ADMIN.getValue().equalsIgnoreCase(user.getRole());
     }
 }
