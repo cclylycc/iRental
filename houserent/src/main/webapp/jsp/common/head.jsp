@@ -27,8 +27,6 @@
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/slider-bg.js"></script>
     <script src="/assets/js/script.js"></script>
-
-
 </head>
 <body class="yellow-skin">
 <div class="header header-light dark-text">
@@ -42,6 +40,7 @@
                     <li><a href="/" style="font-size: 15px;">首页</a></li>
                     <li><a href="/house?rentType=whole" style="font-size: 15px;">整租</a></li>
                     <li><a href="/house?rentType=share" style="font-size: 15px;">合租</a></li>
+                    <li><a href="/admin/order" style="font-size: 15px;">行程</a></li>
                     <li><a href="/news" style="font-size: 15px;">新闻资讯</a></li>
                     <li><a href="/feedback" style="font-size: 15px;">用户反馈</a></li>
                 </ul>
@@ -78,6 +77,9 @@
                                     <%--管理员--%>
                                     <c:when test="${sessionScope.user.role == 'admin'}">
                                         <div class="dropdown-menu pull-right animated flipInX">
+                                            <a href="/admin/control">
+                                                <i class="ti-align-center"></i>后台首页
+                                            </a>
                                             <a href="/admin/house">
                                                 <i class="ti-layers"></i>房屋管理
                                             </a>
@@ -86,6 +88,12 @@
                                             </a>
                                             <a href="/admin/news">
                                                 <i class="ti-info"></i>新闻管理
+                                            </a>
+                                            <a href="/admin/mark">
+                                                <i class="ti-bookmark"></i>收藏管理
+                                            </a>
+                                            <a href="/admin/user">
+                                                <i class="ti-user"></i>用户管理
                                             </a>
                                             <a href="/login/logout">
                                                 <i class="ti-power-off"></i>退出登录
@@ -127,7 +135,14 @@
                                             </a>
                                         </div>
                                     </c:when>
-
+                                    <%--未知状态用户--%>
+                                    <c:otherwise>
+                                        <div class="dropdown-menu pull-right animated flipInX">
+                                            <a href="/login/logout">
+                                                <i class="ti-power-off"></i>退出登录
+                                            </a>
+                                        </div>
+                                    </c:otherwise>
                                 </c:choose>
                             </div>
                         </li>

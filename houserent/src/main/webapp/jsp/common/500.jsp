@@ -5,7 +5,6 @@
         <div class="row justify-content-center">
             <div class="col-lg=6 col-md-10">
                 <div class="text-center">
-                    <img src="/assets/img/500.png" class="img-fluid"><br><br>
                     <h2>服务器出现错误...请稍后再试。</h2>
                     <a href="/" class="btn btn-theme bg-2">返回首页</a>
                 </div>

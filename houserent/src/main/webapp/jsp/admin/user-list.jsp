@@ -48,11 +48,11 @@
                                     <td class="action">
                                         <c:choose>
                                             <c:when test="${c.status == 1}">
-                                                <a href="/javascript:void(0)" onclick="disableUser(${c.id})"
+                                                <a href="javascript:void(0)" onclick="disableUser(${c.id})"
                                                    class="text-danger">禁用</a>
                                             </c:when>
                                             <c:when test="${c.status == 0}">
-                                                <a href="/javascript:void(0)" onclick="enableUser(${c.id})"
+                                                <a href="javascript:void(0)" onclick="enableUser(${c.id})"
                                                    class="text-success">启用</a>
                                             </c:when>
                                         </c:choose>

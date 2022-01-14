@@ -46,37 +46,149 @@
                                                                     <c:if test="${house.city == '北京'}">selected</c:if>>
                                                                 北京
                                                             </option>
-                                                            <option value="上海"
-                                                                    <c:if test="${house.city == '上海'}">selected</c:if>>
-                                                                上海
-                                                            </option>
-                                                            <option value="广州"
-                                                                    <c:if test="${house.city == '广州'}">selected</c:if>>
-                                                                广州
-                                                            </option>
-                                                            <option value="深圳"
-                                                                    <c:if test="${house.city == '深圳'}">selected</c:if>>
-                                                                深圳
-                                                            </option>
                                                             <option value="天津"
                                                                     <c:if test="${house.city == '天津'}">selected</c:if>>
                                                                 天津
                                                             </option>
-                                                            <option value="武汉"
-                                                                    <c:if test="${house.city == '武汉'}">selected</c:if>>
-                                                                武汉
+                                                            <option value="河北"
+                                                                    <c:if test="${house.city == '河北'}">selected</c:if>>
+                                                                河北
                                                             </option>
-                                                            <option value="长沙"
-                                                                    <c:if test="${house.city == '长沙'}">selected</c:if>>
-                                                                长沙
+                                                            <option value="山西"
+                                                                    <c:if test="${house.city == '山西'}">selected</c:if>>
+                                                                山西
                                                             </option>
-                                                            <option value="杭州"
-                                                                    <c:if test="${house.city == '杭州'}">selected</c:if>>
-                                                                杭州
+                                                            <option value="内蒙古"
+                                                                    <c:if test="${house.city == '内蒙古'}">selected</c:if>>
+                                                                内蒙古
+                                                            </option>
+                                                            <option value="辽宁"
+                                                                    <c:if test="${house.city == '辽宁'}">selected</c:if>>
+                                                                辽宁
+                                                            </option>
+                                                            <option value="吉林"
+                                                                    <c:if test="${house.city == '吉林'}">selected</c:if>>
+                                                                吉林
+                                                            </option>
+                                                            <option value="黑龙江"
+                                                                    <c:if test="${house.city == '黑龙江'}">selected</c:if>>
+                                                                黑龙江
+                                                            </option>
+                                                            <option value="上海"
+                                                                    <c:if test="${house.city == '上海'}">selected</c:if>>
+                                                                上海
+                                                            </option>
+                                                            <option value="江苏"
+                                                                    <c:if test="${house.city == '江苏'}">selected</c:if>>
+                                                                江苏
+                                                            </option>
+                                                            <option value="浙江"
+                                                                    <c:if test="${house.city == '浙江'}">selected</c:if>>
+                                                                浙江
+                                                            </option>
+                                                            <option value="安徽"
+                                                                    <c:if test="${house.city == '安徽'}">selected</c:if>>
+                                                                安徽
+                                                            </option>
+                                                            <option value="福建"
+                                                                    <c:if test="${house.city == '福建'}">selected</c:if>>
+                                                                福建
+                                                            </option>
+                                                            <option value="江西"
+                                                                    <c:if test="${house.city == '江西'}">selected</c:if>>
+                                                                江西
+                                                            </option>
+                                                            <option value="山东"
+                                                                    <c:if test="${house.city == '山东'}">selected</c:if>>
+                                                                山东
+                                                            </option>
+                                                            <option value="河南"
+                                                                    <c:if test="${house.city == '河南'}">selected</c:if>>
+                                                                河南
+                                                            </option>
+                                                            <option value="湖北"
+                                                                    <c:if test="${house.city == '湖北'}">selected</c:if>>
+                                                                湖北
+                                                            </option>
+                                                            <option value="湖南"
+                                                                    <c:if test="${house.city == '湖南'}">selected</c:if>>
+                                                                湖南
+                                                            </option>
+                                                            <option value="广东"
+                                                                    <c:if test="${house.city == '广东'}">selected</c:if>>
+                                                                广东
+                                                            </option>
+                                                            <option value="广西"
+                                                                    <c:if test="${house.city == '广西'}">selected</c:if>>
+                                                                广西
+                                                            </option>
+                                                            <option value="海南"
+                                                                    <c:if test="${house.city == '海南'}">selected</c:if>>
+                                                                海南
                                                             </option>
                                                             <option value="重庆"
                                                                     <c:if test="${house.city == '重庆'}">selected</c:if>>
                                                                 重庆
+                                                            </option>
+                                                            <option value="四川"
+                                                                    <c:if test="${house.city == '四川'}">selected</c:if>>
+                                                                四川
+                                                            </option>
+                                                            <option value="贵州"
+                                                                    <c:if test="${house.city == '贵州'}">selected</c:if>>
+                                                                贵州
+                                                            </option>
+                                                            <option value="云南"
+                                                                    <c:if test="${house.city == '云南'}">selected</c:if>>
+                                                                云南
+                                                            </option>
+                                                            <option value="西藏"
+                                                                    <c:if test="${house.city == '西藏'}">selected</c:if>>
+                                                                西藏
+                                                            </option>
+                                                            <option value="陕西"
+                                                                    <c:if test="${house.city == '陕西'}">selected</c:if>>
+                                                                陕西
+                                                            </option>
+                                                            <option value="甘肃"
+                                                                    <c:if test="${house.city == '甘肃'}">selected</c:if>>
+                                                                甘肃
+                                                            </option>
+                                                            <option value="青海"
+                                                                    <c:if test="${house.city == '青海'}">selected</c:if>>
+                                                                青海
+                                                            </option>
+                                                            <option value="宁夏"
+                                                                    <c:if test="${house.city == '宁夏'}">selected</c:if>>
+                                                                宁夏
+                                                            </option>
+                                                            <option value="新疆"
+                                                                    <c:if test="${house.city == '新疆'}">selected</c:if>>
+                                                                新疆
+                                                            </option>
+                                                            <option value="香港"
+                                                                    <c:if test="${house.city == '香港'}">selected</c:if>>
+                                                                香港
+                                                            </option>
+                                                            <option value="澳门"
+                                                                    <c:if test="${house.city == '澳门'}">selected</c:if>>
+                                                                澳门
+                                                            </option>
+                                                            <option value="台湾"
+                                                                    <c:if test="${house.city == '台湾'}">selected</c:if>>
+                                                                台湾
+                                                            </option>
+                                                            <option value="英国"
+                                                                    <c:if test="${house.city == '英国'}">selected</c:if>>
+                                                                英国
+                                                            </option>
+                                                            <option value="美国"
+                                                                    <c:if test="${house.city == '美国'}">selected</c:if>>
+                                                                美国
+                                                            </option>
+                                                            <option value="西班牙"
+                                                                    <c:if test="${house.city == '西班牙'}">selected</c:if>>
+                                                                西班牙
                                                             </option>
                                                         </select>
                                                     </div>
@@ -318,6 +430,7 @@
                                             </div>
                                             <div class="frm_submit_block">
                                                 <h3>轮播图上传</h3>
+                                                <p>请使用PNG JPG JPEG GIF类型的图片上传</p>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <input type="file" name="file" id="file" multiple

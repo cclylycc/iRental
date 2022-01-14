@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
-<div class="image-cover hero_banner" style="background: #334ACA url('/assets/img/b-1.jpg') no-repeat;"
+<div class="image-cover hero_banner" style="background: #334ACA url('/assets/img/news-img.jpg') no-repeat;"
      data-overlay="1">
     <div class="container">
         <h1 class="big-header-capt mb-0">${news.title}</h1>

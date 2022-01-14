@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
+<link rel="stylesheet" href="/assets/plugins/bootstrap-fileinput/css/fileinput.min.css">
+<script src="/assets/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+<script src="/assets/plugins/bootstrap-fileinput/js/locales/zh.js"></script>
 <section class="p-0">
     <div class="container-fluid p-0">
         <div class="row">
@@ -11,6 +14,14 @@
                         <div class="frm_submit_wrap">
                             <form id="profileForm">
                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>头像</label>
+                                        <input type="hidden" id="key" name="key">
+                                        <img src="${user.userAvatar}" class="avatar-70" style="border-radius: 100px;">
+                                        <span><input type="file" name="file" id="file" multiple
+                                                     class="file-loading"/></span>
+                                        <p>注意：如果需要修改头像，请上传<strong>一张图片</strong>即可</p>
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label>账号</label>
                                         <input type="text" class="form-control" name="userName" value="${user.userName}"
@@ -96,5 +107,18 @@
     </div>
 </section>
 
+<script>
+    $(function () {
+        var timestamp = Date.parse(new Date());
+        $("#key").val(timestamp);
+        $("#file").fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/file/upload?key=' + timestamp, //上传地址
+            allowedFileExtensions: ['png', 'jpg', 'jpeg', 'gif'], //允许上传的文件拓展名
+            showUpload: true, //显示可以批量上传按钮
+            showCaption: false //不显示标题
+        });
+    });
+</script>
 
 <%@ include file="../common/footer.jsp" %>

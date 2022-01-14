@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.javaclimb.houserent.mapper.HouseMapper">
-    <select id="searchHouse" resultType="com.javaclimb.houserent.entity.House">
+<mapper namespace="com.irental.houserent.mapper.HouseMapper">
+    <select id="searchHouse" resultType="com.irental.houserent.entity.House">
         select * from t_house
         <where>
             1=1

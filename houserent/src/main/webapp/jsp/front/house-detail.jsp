@@ -5,7 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="prt_detail_three_clicks">
-                    <div class="pdt_clicks_price"><h4>￥${house.monthRent}/月</h4></div>
+                    <div class="pdt_clicks_price"><h4>￥${house.monthRent}/月</h4>
+                        <p class="price_status">折算 ￥${house.monthRent/30}/日</p></div>
                     <div class="pdt_clicks_title"><h3>${house.title}</h3></div>
                     <div class="pdt_clicks_location"><i class="ti-location-pin"></i>${house.address}
                     </div>
@@ -17,7 +18,7 @@
         <c:forEach items="${house.slideImgList}" var="url">
             <div class="featured_slick_padd">
                 <a href="${url}" class="mfp-gallery">
-                    <img src="${url}" style="width: 100%;height: 400px;" class="img-fluid mx-auto"/>
+                    <img src="${url}" style="width: 100%;height: 450px;" class="img-fluid mx-auto"/>
                 </a>
             </div>
         </c:forEach>

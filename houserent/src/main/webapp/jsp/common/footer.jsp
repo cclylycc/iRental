@@ -1,8 +1,53 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer class="dark-footer skin-dark-footer style-2" style="padding-top: 0;">
+    <style>
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Shift', sans-serif;
+        }
+    </style>
     <div class="footer-bottom">
         <div class="container">
-            <p class="mb-0" style="color: white">©2021 爱租房 版权所有 All Rights Reserved.</p>
+            <div class="row">
+                <div class="col-12">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="/assets/img/logo/ihouse.png" width="200px;" height="50px;"><br>
+                    <p style="font-family: 'Shift', sans-serif;">
+                        爱租房（iRental）是一家联系旅游人士和家有空房出租的房主的服务型网站，它可以为用户提供多样的住宿信息。iRental是一个旅行房屋租赁社区，用户可通过网络或手机应用程序发布、搜索度假房屋租赁信息并完成在线预定程序。</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 style="font-family: 'Shift', sans-serif;font-size: 18px;font-weight: bold;">爱租房</h4>
+                    <a>工作机会</a><br>
+                    <a href="/news">新闻</a><br>
+                    <a>政策</a><br>
+                </div>
+                <div class="col-md-3">
+                    <h4 style="font-family: 'Shift', sans-serif;font-size: 18px;font-weight: bold;">出租</h4>
+                    <a>为什么要出租？</a><br>
+                    <a>待客之道</a><br>
+                    <a>房东义务</a><br>
+                </div>
+                <div class="col-md-3">
+                    <h4 style="font-family: 'Shift', sans-serif;font-size: 18px;font-weight: bold;">客服支持</h4>
+                    <a href="/feedback">帮助</a><br>
+                    <a href="/feedback">反馈</a><br>
+                    <a href="/feedback">联系我们</a><br>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0" style="color: white;font-family: 'Shift', sans-serif;text-align: center;">©2021 爱租房
+                        版权所有 All Rights Reserved.</p>
+
+                </div>
+            </div>
         </div>
     </div>
 </footer>
