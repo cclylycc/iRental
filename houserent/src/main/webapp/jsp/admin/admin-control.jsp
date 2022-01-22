@@ -41,8 +41,8 @@
                                             </div>
                                             <div class="col-7 d-flex align-items-center">
                                                 <div class="numbers">
-                                                    <p class="card-category">房东人数</p>
-                                                    <h4 class="card-title">${ownerCount}</h4>
+                                                    <p class="card-category">上线房屋数</p>
+                                                    <h4 class="card-title">${houseCount}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                             <div class="col-7 d-flex align-items-center">
                                                 <div class="numbers">
                                                     <p class="card-category">用户反馈</p>
-                                                    <h4 class="card-title">1303</h4>
+                                                    <h4 class="card-title">${userFeedbackCount}</h4>
                                                 </div>
                                             </div>
                                         </div>

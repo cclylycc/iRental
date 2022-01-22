@@ -43,6 +43,9 @@ public class FeedbackController extends BaseController {
         if (loginUser == null) {
             return JsonResult.error("请先登录");
         }
+        if (contactName.equals("") || contactEmail.equals("") || title.equals("") || content.equals("")) {
+            return JsonResult.error("请完善内容后再提交");
+        }
         Feedback feedback = new Feedback();
         feedback.setContactEmail(contactEmail);
         feedback.setContactName(contactName);

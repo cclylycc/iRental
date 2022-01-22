@@ -7,9 +7,12 @@ import com.irental.houserent.entity.Order;
 import com.irental.houserent.service.HouseService;
 import com.irental.houserent.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /*
@@ -17,6 +20,8 @@ import java.util.List;
  * 若到期，即结束。
  * */
 @Component
+@Configuration      //1.主要用于标记配置类，兼备Component的效果。
+@EnableScheduling   // 2.开启定时任务
 public class TimerTask {
     @Autowired
     private OrderService orderService;
@@ -43,5 +48,6 @@ public class TimerTask {
                 houseService.update(house);
             }
         }
+        System.out.println("执行静态定时任务时间: " + LocalDateTime.now());
     }
 }

@@ -37,7 +37,7 @@
                                         </c:choose>
                                     </div>
                                     <div class="dashboard_property_list_content">
-                                        <h4>${c.title}</h4>
+                                        <h4><a href="/house/detail/${c.id}">${c.title}</a></h4>
                                         <span><i class="ti-location-pin"></i>${c.address}</span>
                                     </div>
                                     <div class="dashboard_property_list_footer">

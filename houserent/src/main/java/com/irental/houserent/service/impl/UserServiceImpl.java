@@ -53,4 +53,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.findOwnerNums();
     }
 
+    @Override
+    public String userFeedbackCount() {
+        return userMapper.userFeedbackCount();
+    }
+
+
 }

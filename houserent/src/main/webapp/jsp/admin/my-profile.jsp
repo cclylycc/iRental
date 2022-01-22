@@ -23,7 +23,7 @@
                                         <p>注意：如果需要修改头像，请上传<strong>一张图片</strong>即可</p>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>账号</label>
+                                        <label>账号（UID:${user.id}）</label>
                                         <input type="text" class="form-control" name="userName" value="${user.userName}"
                                                disabled>
                                     </div>
@@ -41,7 +41,7 @@
                                         <input type="text" class="form-control" name="phone" value="${user.phone}">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>身份证号码</label>
+                                        <label>身份证号码 / 护照</label>
                                         <input type="text" class="form-control" name="idCard" value="${user.idCard}">
                                     </div>
                                     <div class="form-group col-md-6">

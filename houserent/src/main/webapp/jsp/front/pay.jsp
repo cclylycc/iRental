@@ -22,7 +22,7 @@
                     <div class="tip">
                         <div class="ico-scan-ali"></div>
                         <div class="tip-text">
-                            打开支付宝[扫一扫]
+                            <p>打开 <strong>支付宝[扫一扫]</strong></p>
                         </div>
                         <div class="tip-text">
                             <button onclick="submitPay(${order.id})" class="btn btn-small btn-success"
@@ -31,15 +31,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
-
 <%@ include file="../common/footer.jsp" %>
-<script>
-
-</script>
 </body>
 </html>

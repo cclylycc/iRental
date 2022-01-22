@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="/assets/plugins/bootstrap-fileinput/css/fileinput.min.css">
 <script src="/assets/plugins/bootstrap-fileinput/js/fileinput.js"></script>
 <script src="/assets/plugins/bootstrap-fileinput/js/locales/zh.js"></script>
+<!--富文本编辑器wangEditor-->
+<link href="https://cdn.staticfile.org/wangEditor/10.0.13/wangEditor.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/wangEditor/10.0.13/fonts/w-e-icon.woff" rel="stylesheet">
+<script src="https://cdn.staticfile.org/wangEditor/10.0.13/wangEditor.min.js"></script>
 <section class="p-0">
     <div class="container-fluid p-0">
         <div class="row">
@@ -421,9 +425,14 @@
                                                 <h3>房屋描述</h3>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label>房屋详细描述</label>
-                                                        <textarea name="content"
-                                                                  class="form-control ht-120">${house.content}</textarea>
+                                                        <label>请对您将要租赁的房屋进行详细描述（如配套设施、周边情况等）</label>
+                                                        <textarea name="content" class="form-control ht-120"
+                                                                  id="content"
+                                                                  style="display: none;">${house.content}</textarea>
+                                                        <%--富文本编辑器测试区域--%>
+                                                        <div id="div1">
+                                                            <p>${house.content}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -470,4 +479,17 @@
         });
 
     });
+</script>
+<%--同步修改textarea中的H5内容--%>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#div1')
+    var $text1 = $('#content')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $text1.val(html)
+    }
+    editor.create()
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html())
 </script>

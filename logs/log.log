@@ -1,17 +1,21 @@
-2022-01-14 13:23:23.311  INFO 16132 --- [restartedMain] com.irental.houserent.Application        : Starting Application on Chrislee with PID 16132 (E:\Finaldesign\houserent\houserent\target\classes started by chris in E:\Finaldesign\houserent)
-2022-01-14 13:23:23.315  INFO 16132 --- [restartedMain] com.irental.houserent.Application        : No active profile set, falling back to default profiles: default
-2022-01-14 13:23:23.359  INFO 16132 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-01-14 13:23:23.359  INFO 16132 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-01-14 13:23:24.308  INFO 16132 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
-2022-01-14 13:23:24.327  INFO 16132 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-01-14 13:23:24.327  INFO 16132 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
-2022-01-14 13:23:24.550  INFO 16132 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2022-01-14 13:23:24.554  INFO 16132 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-01-14 13:23:24.554  INFO 16132 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1195 ms
-2022-01-14 13:23:24.671  INFO 16132 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2022-01-14 13:23:24.775  INFO 16132 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-01-14 13:23:25.683  INFO 16132 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2022-01-14 13:23:25.736  INFO 16132 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-01-14 13:23:25.788  INFO 16132 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
-2022-01-14 13:23:27.723  INFO 16132 --- [restartedMain] com.irental.houserent.Application        : Started Application in 4.78 seconds (JVM running for 6.25)
-2022-01-14 13:23:27.726  INFO 16132 --- [restartedMain] com.irental.houserent.Application        : House rental system started at http://localhost:9999
+2022-01-22 18:26:10.301  INFO 7148 --- [restartedMain] com.irental.houserent.Application        : Starting Application on Chrislee with PID 7148 (E:\Finaldesign\houserent\houserent\target\classes started by chris in E:\Finaldesign\houserent)
+2022-01-22 18:26:10.307  INFO 7148 --- [restartedMain] com.irental.houserent.Application        : No active profile set, falling back to default profiles: default
+2022-01-22 18:26:10.355  INFO 7148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-22 18:26:10.356  INFO 7148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-22 18:26:13.324  INFO 7148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2022-01-22 18:26:13.343  INFO 7148 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-22 18:26:13.343  INFO 7148 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2022-01-22 18:26:13.647  INFO 7148 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-01-22 18:26:13.652  INFO 7148 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-22 18:26:13.652  INFO 7148 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3296 ms
+2022-01-22 18:26:13.774  INFO 7148 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-01-22 18:26:13.917  INFO 7148 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-01-22 18:26:14.863  INFO 7148 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-01-22 18:26:15.580  INFO 7148 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-22 18:26:15.631  INFO 7148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2022-01-22 18:26:15.634  INFO 7148 --- [restartedMain] com.irental.houserent.Application        : Started Application in 5.891 seconds (JVM running for 7.698)
+2022-01-22 18:26:15.637  INFO 7148 --- [restartedMain] com.irental.houserent.Application        : House rental system started at http://localhost:9999
+2022-01-22 18:26:19.782  INFO 7148 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-22 18:26:19.782  INFO 7148 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-22 18:26:19.791  INFO 7148 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2022-01-22 18:29:00.017  WARN 7148 --- [scheduling-1] c.a.druid.pool.DruidAbstractDataSource   : discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/houserent?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&allowMultiQueries=true, version : 1.2.8, lastPacketReceivedIdleMillis : 60003

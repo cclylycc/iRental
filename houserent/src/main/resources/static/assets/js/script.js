@@ -9,8 +9,8 @@ function submitRegister() {
         data: $("#registerForm").serialize(),
         success: function (data) {
             alert(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
+            if (data.code == 1) { //如果成功，前往更新资料
+                window.location.href = "/admin/profile";
             }
         }
     });
@@ -33,7 +33,6 @@ function submitLogin() {
             }
         }
     });
-
 }
 
 

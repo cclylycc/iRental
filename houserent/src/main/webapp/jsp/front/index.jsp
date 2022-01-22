@@ -121,30 +121,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="sec-heading center">
-                <%--根据用户IP获取位置--%>
-                <script type="text/javascript"
-                        src="http://api.map.baidu.com/api?v=2.0&ak=hVcoW3dblL1f6u6lyYfWi5mdxjIuBIhu"></script>
-                <!--加载鼠标绘制工具-->
-                <script type="text/javascript"
-                        src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-                <script type="text/javascript">
-                    //百度地图API功能
-                    var map = new BMap.Map('map');
-                    //获得当前城市
-                    var myCity = new BMap.LocalCity();
-                    myCity.get(myFun);
-
-                    function myFun(result) {
-                        var cityName = result.name;
-                        var realCityName = cityName.replace("市", "");
-                        var toRealCityName = realCityName.replace("省", "");
-                        var a = toRealCityName + "优质房源";
-                        cityLocation.innerHTML = a;
-                    }
-                </script>
-                <%--//根据用户IP获取位置 完--%>
-                <input id="locationCity" type="hidden"/>
-                <h2 id="cityLocation"></h2>
+                <h2>${userLocation}优质房源</h2>
                 <p><i class="ti-location-pin"></i>根据您的位置推荐的优质房源</p>
             </div>
         </div>
@@ -169,8 +146,8 @@
                                             </div>
                                         </div>
                                         <div class="property-real-price">
-                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent}<span
-                                                    class="price_status">/月 - ￥${c.monthRent/30}/日</span></a>
+                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent/30}<span
+                                                    class="price_status">/天 - ￥${c.monthRent}/月</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +181,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                <a href="/house" class="btn btn-theme arrow-btn bg-2">查看更多
+                <a href="/house?city=${userLocation}" class="btn btn-theme arrow-btn bg-2">查看${userLocation}更多
                     <span><i class="ti-arrow-right"></i></span>
                 </a>
             </div>
@@ -242,8 +219,8 @@
                                             </div>
                                         </div>
                                         <div class="property-real-price">
-                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent}<span
-                                                    class="price_status">/月 - ￥${c.monthRent/30}/日</span></a>
+                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent/30}<span
+                                                    class="price_status">/天 - ￥${c.monthRent}/月</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -316,8 +293,8 @@
                                             </div>
                                         </div>
                                         <div class="property-real-price">
-                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent}<span
-                                                    class="price_status">/月 - ￥${c.monthRent/30}/日</span></a>
+                                            <a href="/house/detail/${c.id}" class="cl-blue">￥${c.monthRent/30}<span
+                                                    class="price_status">/天 - ￥${c.monthRent}/月</span></a>
                                         </div>
                                     </div>
                                 </div>

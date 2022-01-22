@@ -18,7 +18,7 @@ public class getLocation {
 
         try {//腾讯IP定位（普通）接口  10,000次/日   5次/秒
 
-            url = new URL("http://apis.map.qq.com/ws/location/v1/ip?key=CGSBZ-4BFWJ-NSXF6-KDQUW-AZHPE-S6F3N\n");
+            url = new URL("https://apis.map.qq.com/ws/location/v1/ip?key=CGSBZ-4BFWJ-NSXF6-KDQUW-AZHPE-S6F3N\n");
 
             connection = (HttpURLConnection) url.openConnection();// 新建连接实例
 

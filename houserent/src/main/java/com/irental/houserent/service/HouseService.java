@@ -30,4 +30,9 @@ public interface HouseService extends BaseService<House, Long> {
      * 获取房屋的分页数据
      * */
     Page<House> getHousePage(HouseSearchVO houseSearchVO, Page<House> page);
+
+    /*
+     * 管理员面板获取上线房屋数量
+     * */
+    String houseCount();
 }

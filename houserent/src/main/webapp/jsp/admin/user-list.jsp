@@ -23,8 +23,8 @@
                                 <tr>
                                     <td>
                                         <span>
-                                        ${c.userName} ${c.userDisplayName}</span><br>
-                                        <span>${c.idCard}</span>
+                                        ID:${c.id} 用户名:${c.userName} 姓名:${c.userDisplayName}</span><br>
+                                        <span>证件号:${c.idCard}</span>
                                     </td>
                                     <td>
                                         <span>${c.email}</span><br>

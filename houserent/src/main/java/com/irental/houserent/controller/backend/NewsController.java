@@ -57,6 +57,7 @@ public class NewsController extends BaseController {
         return "admin/news-publish";
     }
 
+
     /*
      * 发布新闻资讯提交
      * */
@@ -89,6 +90,7 @@ public class NewsController extends BaseController {
 
         return JsonResult.success("发布成功", news.getId());
     }
+
 
     /*
      * 删除新闻资讯

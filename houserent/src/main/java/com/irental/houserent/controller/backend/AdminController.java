@@ -3,12 +3,12 @@ package com.irental.houserent.controller.backend;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irental.houserent.common.base.BaseController;
 import com.irental.houserent.common.util.PageUtil;
+import com.irental.houserent.entity.Feedback;
 import com.irental.houserent.entity.User;
-import com.irental.houserent.service.NewsService;
+import com.irental.houserent.service.FeedbackService;
+import com.irental.houserent.service.HouseService;
 import com.irental.houserent.service.OrderService;
 import com.irental.houserent.service.UserService;
-import com.irental.houserent.entity.Feedback;
-import com.irental.houserent.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class AdminController extends BaseController {
     private UserService userService;
 
     @Autowired
-    private NewsService newsService;
+    private HouseService houseService;
 
     @Autowired
     private OrderService orderService;
@@ -51,11 +51,14 @@ public class AdminController extends BaseController {
 
         String userCount = userService.findAllUserNums();
         String ownerCount = userService.findOwnerNums();
+        String userFeedbackCount = userService.userFeedbackCount();
+        String orderNum = orderService.orderNum();
+        String houseCount = houseService.houseCount();
 
         model.addAttribute("userCount", userCount);
         model.addAttribute("ownerCount", ownerCount);
-
-        String orderNum = orderService.orderNum();
+        model.addAttribute("houseCount", houseCount);
+        model.addAttribute("userFeedbackCount", userFeedbackCount);
         model.addAttribute("orderNum", orderNum);
         return "admin/admin-control";
     }

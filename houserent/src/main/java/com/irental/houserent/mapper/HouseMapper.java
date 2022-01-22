@@ -34,4 +34,10 @@ public interface HouseMapper extends BaseMapper<House> {
      * */
     @Select("select * from t_house where status = 0 and city = #{location} order by create_time desc limit #{limit}")
     List<House> findByLocation(@Param("location") String location, @Param("limit") Integer limit);
+
+    /*
+     * 管理员面板数据展示 - 上线房屋数量
+     * */
+    @Select("select count(id) from t_house where status = 0;")
+    String houseCount();
 }

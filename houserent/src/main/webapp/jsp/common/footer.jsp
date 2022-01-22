@@ -29,8 +29,8 @@
                 </div>
                 <div class="col-md-3">
                     <h4 style="font-family: 'Shift', sans-serif;font-size: 18px;font-weight: bold;">出租</h4>
-                    <a>为什么要出租？</a><br>
-                    <a>待客之道</a><br>
+                    <a href="/news/detail/9">为什么要出租？</a><br>
+                    <a href="/news/detail/10">待客之道</a><br>
                     <a>房东义务</a><br>
                 </div>
                 <div class="col-md-3">

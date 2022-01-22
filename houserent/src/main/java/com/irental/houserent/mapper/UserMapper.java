@@ -19,4 +19,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("select count(id) as owner_num from t_user where role = 'owner';")
     String findOwnerNums();
+
+    @Select("select count(id) as feedback_num from t_feedback;")
+    String userFeedbackCount();
 }
