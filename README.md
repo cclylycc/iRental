@@ -8,7 +8,6 @@
 
 
 ### 开发进度
-99.99%
 基础功能已经开发完成，支付功能暂未完成。
 
 ### 基础环境 :speech_balloon:
@@ -42,12 +41,12 @@
 
 
 ### 预览截图
-![输入图片说明](houserent/src/main/resources/static/assets/img/shoot1.jpg)
 
-![输入图片说明](houserent/src/main/resources/static/assets/img/shoot2.jpg)
+![输入图片说明](houserent/src/main/resources/static/assets/img/logo/QQ%E6%88%AA%E5%9B%BE20220122182634.jpg)
+![输入图片说明](houserent/src/main/resources/static/assets/img/logo/QQ%E6%88%AA%E5%9B%BE20220122182722.jpg)
 
 ### 测试实例
-Demo: [爱租房 - 实例测试](http://rent.fransty.com)
+Demo: 暂时下架。
 | 管理员   |        |
 |-------|--------|
 | 用户名   | 密码     |
