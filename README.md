@@ -60,11 +60,11 @@
  **如果是本地测试，仅需要完成第1、2、3步即可。** 
 
 ### 预览截图
-![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot1.jpg)
-![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot2.jpg)
-![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot3.jpg)
-![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot4.jpg)
-![输入图片说明](houserent/src/main/resources/static/assets/img/space/shoot5.jpg)
+![爱租房项目前端首页](houserent/src/main/resources/static/assets/img/space/screenshoot1.jpg)
+![爱租房项目房屋介绍页面](houserent/src/main/resources/static/assets/img/space/screenshoot2.jpg)
+![爱租房项目后台管理面板](houserent/src/main/resources/static/assets/img/space/screenshoot3.jpg)
+![爱租房项目支付管理功能](houserent/src/main/resources/static/assets/img/space/screenshoot4.jpg)
+![爱租房项目房屋管理](houserent/src/main/resources/static/assets/img/space/shoot5.jpg)
 
 
 ### 测试实例
