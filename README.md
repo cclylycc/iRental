@@ -1,14 +1,27 @@
 ### 简介 :wave:
-![输入图片说明](https://img.shields.io/badge/license-MIT-brightgreen) ![输入图片说明](https://img.shields.io/badge/release-v1.0.0-red)
-
-
 - 本项目是基于Springboot开发的一款房屋租赁系统。
 - 使用Springboot + JSP + MySQL + MybatisPlus + HTML/CSS/JS/bootstrap 进行开发。
-- TIP:本项目已作为本人的 **2022年毕业设计项目** 进行开发，目前项目已经趋于完结，剩下的就是修复BUG和更新一些小功能。
+- TIP:本项目已作为本人的 **2022年毕业设计项目 ，请勿用作自己的毕业设计！**
+- 目前此项目已经趋于完结，剩下的内容就是修复BUG和更新一些小功能。
 
 
 ### 开发进度
-基础功能已经开发完成，支付功能暂未完成。
+ **前端页面功能** 
+- 房屋整租、合租功能
+- 房屋搜索功能
+- 新闻咨询版块
+- 用户反馈版块
+- 定位推荐房屋功能
+- 旅游胜地推荐功能
+ **后台管理面板** 
+- 个人信息管理
+- 房屋管理
+- 订单管理
+- 支付管理
+- 收藏功能
+- 新闻管理
+- 反馈管理
+- 密码修改
 
 ### 基础环境 :speech_balloon:
 - IntelliJ IDEA
