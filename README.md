@@ -45,6 +45,7 @@
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot2.jpg)
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot3.jpg)
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot4.jpg)
+![输入图片说明](houserent/src/main/resources/static/assets/img/space/shoot5.jpg)
 
 
 ### 测试实例
@@ -59,4 +60,4 @@ Demo: 暂时下架。
 **注意：**
 
 1. 请勿修改账号和密码，以便于其他用户进行测试。
-1. 请勿对实例服务器进行不友好行为，谢谢！![输入图片说明]
+1. 请勿对实例服务器进行不友好行为，谢谢！
