@@ -109,8 +109,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-12 col-md-12">
-                                            <button class="btn btn-theme bg-2" type="button"
-                                                    onclick="redeemGiftCard()">确认兑换
+                                            <button class="btn btn-theme bg-2" type="button" onclick="redeemGiftCard()">确认兑换
                                             </button>
                                             <span>温馨提示：充值后的余额是不可退还的。</span>
                                         </div>
