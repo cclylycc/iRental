@@ -73,4 +73,9 @@ public class User extends BaseEntity {
      * */
     private String sex;
 
+    /*
+     * 现金余额
+     * */
+    private double balance;
+
 }

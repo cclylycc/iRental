@@ -110,5 +110,4 @@ public class UserController extends BaseController {
         session.setAttribute(Constant.SESSION_USER_KEY, userService.get(getLoginUserId()));
         return JsonResult.success("密码修改成功");
     }
-
 }

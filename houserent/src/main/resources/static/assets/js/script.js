@@ -553,3 +553,21 @@ function submitPassword() {
         }
     });
 }
+
+/*
+* REDEEM 兑换充值卡 充值到用户账号余额
+* */
+function redeemGiftCard() {
+    $.ajax({
+        type: "POST",
+        url: "/admin/giftcard/redeem",
+        async: false,
+        data: $("#giftcardForm").serialize(),
+        success: function (data) {
+            alert(data.msg)
+            if (data.code == 1) { //如果成功，刷新页面
+                window.location.reload();
+            }
+        }
+    });
+}

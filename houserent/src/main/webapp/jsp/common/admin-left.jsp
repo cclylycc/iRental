@@ -42,6 +42,11 @@
                         <i class="ti-gift"></i>&nbsp订单管理
                     </a>
                 </li>
+                <li <c:if test="${tab == 'payment'}"> class="active"</c:if>>
+                    <a href="/admin/payment" style="color: white">
+                        <i class="ti-money"></i>&nbsp支付管理
+                    </a>
+                </li>
                 <li <c:if test="${tab == 'mark-list'}"> class="active"</c:if>>
                     <a href="/admin/mark" style="color: white">
                         <i class="ti-bookmark"></i>&nbsp我的收藏
