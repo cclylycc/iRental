@@ -5,7 +5,7 @@
 - 目前此项目已经趋于完结，剩下的内容就是修复BUG和更新一些小功能。
 
 
-### 开发进度
+### 功能开发进度
 
  **前端页面功能** 
 
@@ -34,7 +34,7 @@
 - Mysql 5.8
 
 
-### 功能列表
+### 功能介绍
 
 1. 用户：租客、房东、管理员
 1. 新闻：发布新闻内容、旅游攻略等栏目
@@ -54,9 +54,11 @@
 1. 下载项目文件、解压
 1. 打开开发工具进行导入（推荐IDEA）
 1. 修改数据库配置、邮件发送等配置
-1. 运行
+1. 打包成Jar包或War包
+1. 上传至服务器后运行Jar包即可
 
-
+ **如果是本地测试，仅需要完成第1、2、3步即可。
+** 
 ### 预览截图
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot1.jpg)
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot2.jpg)
