@@ -57,8 +57,8 @@
 1. 打包成Jar包或War包
 1. 上传至服务器后运行Jar包即可
 
- **如果是本地测试，仅需要完成第1、2、3步即可。
-** 
+ **如果是本地测试，仅需要完成第1、2、3步即可。** 
+
 ### 预览截图
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot1.jpg)
 ![输入图片说明](houserent/src/main/resources/static/assets/img/space/screenshoot2.jpg)
@@ -69,6 +69,7 @@
 
 ### 测试实例
 Demo: 暂时下架。
+
 | 管理员   |        |
 |-------|--------|
 | 用户名   | 密码     |
