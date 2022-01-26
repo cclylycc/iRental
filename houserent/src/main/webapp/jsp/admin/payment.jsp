@@ -12,7 +12,7 @@
                         <div class="col-lg-9 col-md-9">
                             <h3>支付管理</h3>
                             <div class="pay">
-                                <!--主内容开始编辑-->
+                                <!--在线充值功能-->
                                 <div class="tr_recharge">
                                     <div class="tr_rechtext">
                                         <p class="te_retit"><img src="/assets/payment/images/coin.png" alt=""/>充值中心
@@ -65,20 +65,15 @@
                                             <div class="tr_rechcho form-group" id="pmt_01">
                                                 <span>充值方式：</span>
                                                 <label class="am-radio">
-                                                    <input type="radio" name="radio1" value="" disabled data-am-ucheck
+                                                    <input type="radio" name="radio1" value="" data-am-ucheck
                                                            required
                                                     ><img
                                                         src="/assets/payment/images/wechatpay.png">
                                                 </label>
                                                 <label class="am-radio" style="margin-right:30px;">
-                                                    <input type="radio" name="radio1" value="" disabled data-am-ucheck
-                                                    ><img
-                                                        src="/assets/payment/images/zfbpay.png">
-                                                </label>
-                                                <label class="am-radio" style="margin-right:30px;">
                                                     <input type="radio" name="radio1" value="" data-am-ucheck
                                                     ><img
-                                                        src="/assets/payment/images/giftcard.png">
+                                                        src="/assets/payment/images/zfbpay.png">
                                                 </label>
                                             </div>
                                             <div class="tr_rechnum">
@@ -86,37 +81,57 @@
                                                 <p class="rechnum">0.00元</p>
                                             </div>
                                         </div>
-                                        <div class="tr_paybox">
-                                            <input type="submit" value="确认支付" class="tr_pay am-btn" disabled/>
-                                            <span>温馨提示：充值后的余额是不可退还的。</span>
-                                        </div>
+                                    <div class="tr_paybox">
+                                        <input type="submit" value="确认支付" class="tr_pay am-btn"/>
+                                        <span>温馨提示：充值后的余额是不可退还的。</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <form class="am-form" id="giftcardForm">
-                            <div class="col-lg-9 col-md-8">
-                                <div class="submit-page form-simple">
-                                    <div class="frm_submit_block">
-                                        <h3>礼品卡充值</h3>
-                                        <p><strong>在下方输入您的代码以兑换余额</strong></p>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <input type="text" name="series" class="form-control" placeholder="代码或 PIN">
+                                <%--礼品卡兑换--%>
+                                <div class="tr_recharge">
+                                    <div class="tr_rechtext">
+                                        <p class="te_retit"><img src="/assets/payment/images/coin.png" alt=""/>礼品卡充值
+                                        </p>
+                                        <p>1.您可以通过官方购买的礼品卡为您的账号充值。</p>
+                                    </div>
+                                    <div class="tr_rechbox">
+                                        <div class="tr_rechhead">
+                                            <img src="${user.userAvatar}"/>
+                                            <p>充值帐号：
+                                                <a>${user.userName}</a>
+                                            </p>
+                                            <div class="tr_rechheadcion">
+                                                <img src="/assets/payment/images/coin.png" alt=""/>
+                                                <span>当前余额：<span>${user.balance}元</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="tr_rechcho form-group" id="giftcard">
+                                            <span>充值方式：</span>
+                                            <label class="am-radio" style="margin-right:30px;">
+                                                <input type="radio" name="radio1" value="" data-am-ucheck checked><img
+                                                    src="/assets/payment/images/giftcard.png">
+                                            </label>
+                                        </div>
+                                        <form class="am-form" id="giftcardForm">
+                                            <p><strong>在下方输入您的代码以兑换余额</strong></p>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <input type="text" name="series" class="form-control"
+                                                           placeholder="代码或 PIN">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="tr_paybox">
+                                            <div class="col-lg-12 col-md-12">
+                                                <button class="tr_pay am-btn" type="button" onclick="redeemGiftCard()">
+                                                    确认兑换
+                                                </button>
+                                                <span>温馨提示：充值后的余额是不可退还的。</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-lg-12 col-md-12">
-                                            <button class="btn btn-theme bg-2" type="button" onclick="redeemGiftCard()">确认兑换
-                                            </button>
-                                            <span>温馨提示：充值后的余额是不可退还的。</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

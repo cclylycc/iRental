@@ -32,12 +32,22 @@ public class GiftcardServiceImpl implements GiftcardService {
     }
 
     @Override
-    public String checkValidGiftcard(String series, Integer status) {
-        return giftcardMapper.checkValidGiftcard(series,status);
+    public Double checkValidGiftcard(String series, Integer status) {
+        return giftcardMapper.checkValidGiftcard(series, status);
     }
 
     @Override
     public void redeemGiftcard(String series, Integer status, Date date, String user) {
         giftcardMapper.redeemGiftcard(series, status, date, user);
+    }
+
+    @Override
+    public Double currentBalance(String user) {
+        return giftcardMapper.currentBalance(user);
+    }
+
+    @Override
+    public void addToUserBalance(String balance, String user) {
+        giftcardMapper.addToUserBalance(balance, user);
     }
 }

@@ -76,6 +76,6 @@ public class User extends BaseEntity {
     /*
      * 现金余额
      * */
-    private double balance;
+    private Double balance;
 
 }

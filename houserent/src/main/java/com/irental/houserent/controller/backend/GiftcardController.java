@@ -38,14 +38,18 @@ public class GiftcardController extends BaseController {
             return JsonResult.error("您还未登录！");
         }
         //判断序列号 是否存在、有效
-        String redeem_value = giftcardService.checkValidGiftcard(series, GiftcardStatusEnum.NORMAL.getValue());
-        if (Objects.equals(redeem_value, null) || Objects.equals(redeem_value,"")) {
+        Double redeem_value = giftcardService.checkValidGiftcard(series, GiftcardStatusEnum.NORMAL.getValue());
+        if (Objects.equals(redeem_value, null) || Objects.equals(redeem_value, "")) {
             return JsonResult.error("兑换码不存在或已被使用或已到期");
         }
         Date date = new Date();
         //进行兑换，将礼品卡设置为 status = -1已使用并且，将使用者设置为当前用户
-        giftcardService.redeemGiftcard(series,GiftcardStatusEnum.USED.getValue(),date,user.getUserName());
+        giftcardService.redeemGiftcard(series, GiftcardStatusEnum.USED.getValue(), date, user.getUserName());
+        Double currentBalance = giftcardService.currentBalance(user.getUserName());
 
-        return JsonResult.success("兑换成功！礼品卡为您兑换了" + redeem_value+"元");
+        String afterBalance = String.format("%.2f", redeem_value + currentBalance);
+        giftcardService.addToUserBalance(afterBalance, user.getUserName());
+
+        return JsonResult.success("兑换成功！礼品卡为您兑换了" + redeem_value + "元");
     }
 }

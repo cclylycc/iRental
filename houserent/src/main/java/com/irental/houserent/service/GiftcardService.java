@@ -10,7 +10,11 @@ import java.util.Date;
  * */
 public interface GiftcardService extends BaseService<Giftcard, Long> {
 
-    String checkValidGiftcard(String series, Integer status);
+    Double checkValidGiftcard(String series, Integer status);
 
     void redeemGiftcard(String series, Integer status, Date date, String user);
+
+    Double currentBalance(String user);
+
+    void addToUserBalance(String balance, String user);
 }
