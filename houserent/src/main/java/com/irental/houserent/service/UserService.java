@@ -18,4 +18,8 @@ public interface UserService extends BaseService<User, Long> {
     String findOwnerNums();
 
     String userFeedbackCount();
+
+    Double getUserBlance(Long user);
+
+    void updateUserBalance(Double balance, String user);
 }

@@ -59,7 +59,7 @@ public class House extends BaseEntity {
     /*
      * 月租金额
      * */
-    private Integer monthRent;
+    private Double monthRent;
 
     /*
      * 状态：0未租出/1已租出/-1下架/-2待审核/-3审核不通过

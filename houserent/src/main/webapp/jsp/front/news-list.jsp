@@ -17,7 +17,6 @@
                             <a href="/news/detail/${c.id}"><h4>${c.title}</h4></a>
                         </div>
                         <div class="block-body">
-                                ${}
                                 ${c.summary}
                             <p style="margin-top: 5px;">发布时间：<fmt:formatDate value="${c.createTime}"
                                                                              pattern="yyyy-MM-dd"></fmt:formatDate></p>

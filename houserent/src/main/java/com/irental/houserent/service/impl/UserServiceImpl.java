@@ -58,5 +58,15 @@ public class UserServiceImpl implements UserService {
         return userMapper.userFeedbackCount();
     }
 
+    @Override
+    public Double getUserBlance(Long user) {
+        return userMapper.getUserBlance(user);
+    }
+
+    @Override
+    public void updateUserBalance(Double balance, String user) {
+        userMapper.updateUserBalance(balance, user);
+    }
+
 
 }

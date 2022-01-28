@@ -232,13 +232,14 @@ function confirmAgreement(orderId) {
 /*
 * 模拟支付成功
 * */
-function submitPay(orderId) {
+function submitPay(orderId, payMethod) {
     $.ajax({
         type: "POST",
         url: "/order/pay/submit",
         async: false,
         data: {
-            "orderId": orderId
+            "orderId": orderId,
+            "payMethod": payMethod
         },
         success: function (data) {
             alert(data.msg)

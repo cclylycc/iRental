@@ -26,13 +26,13 @@ public class Order extends BaseEntity {
     private Integer status;
 
     //月租金
-    private Integer monthRent;
+    private Double monthRent;
 
     //出租天数
     private Integer dayNum;
 
     //总金额
-    private Integer totalAmount;
+    private Double totalAmount;
 
     //开始日期
     private Date startDate;

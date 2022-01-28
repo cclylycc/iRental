@@ -44,7 +44,7 @@
                 </li>
                 <li <c:if test="${tab == 'payment'}"> class="active"</c:if>>
                     <a href="/admin/payment" style="color: white">
-                        <i class="ti-money"></i>&nbsp支付管理
+                        <i class="ti-money"></i>&nbsp充值中心
                     </a>
                 </li>
                 <li <c:if test="${tab == 'mark-list'}"> class="active"</c:if>>

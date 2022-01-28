@@ -94,6 +94,9 @@
                                         <textarea class="form-control" name="userDesc">${user.userDesc}</textarea>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <span>爱租房余额：￥${user.balance}</span>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <button class="btn btn-theme bg-2" type="button" onclick="submitProfile()">保存
                                         </button>
                                     </div>

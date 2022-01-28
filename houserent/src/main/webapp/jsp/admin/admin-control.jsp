@@ -92,8 +92,8 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <p class="fw-bold mt-1">交易额</p>
-                                        <h4><b>$ 3,018</b></h4>
+                                        <p class="fw-bold mt-1">账户余额</p>
+                                        <h4><b>￥ ${sessionScope.user.balance}</b></h4>
                                     </div>
                                 </div>
                             </div>

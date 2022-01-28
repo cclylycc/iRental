@@ -39,7 +39,7 @@ public class ErrorController extends BaseController {
      * */
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String error() {
-        Integer statusCode = (Integer) request.getAttribute("java.servlet.error.status_code");
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
         if (statusCode.equals("404")) {
             return "redirect:/404";
         } else if (statusCode.equals("500")) {

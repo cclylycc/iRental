@@ -5,6 +5,7 @@ import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.dto.JsonResult;
 import com.irental.houserent.common.enums.HouseStatusEnum;
 import com.irental.houserent.common.enums.OrderStatusEnum;
+import com.irental.houserent.common.util.BigDecimalUtil;
 import com.irental.houserent.common.util.DateUtil;
 import com.irental.houserent.common.util.MailUtil;
 import com.irental.houserent.entity.House;
@@ -38,6 +39,7 @@ public class OrderController extends BaseController {
 
     @Autowired
     private UserService userService;
+
 
     /*
      * 创建订单
@@ -205,7 +207,11 @@ public class OrderController extends BaseController {
      * */
     @RequestMapping("/order/pay/submit")
     @ResponseBody
-    public JsonResult paySubmit(@RequestParam(value = "orderId") Long orderId) {
+    public JsonResult paySubmit(@RequestParam(value = "orderId") Long orderId, @RequestParam(value = "payMethod") String payMethod) {
+        if (payMethod == null || payMethod.equals("")) {
+            //如未选择支付方式，将默认使用余额支付
+            payMethod = "3";
+        }
         if (getLoginUser() == null) {
             return JsonResult.error("用户未登录");
         }
@@ -238,15 +244,33 @@ public class OrderController extends BaseController {
         if (ownerUser == null) {
             return JsonResult.error("房东用户不存在");
         }
-        order.setStatus(OrderStatusEnum.NORMAL.getValue());
-        orderService.update(order);
 
-        //更新房屋状态和开始、结束时间
-        house.setStatus(HouseStatusEnum.HAS_RENT.getValue());
-        house.setLastOrderStartTime(order.getStartDate());
-        house.setLastOrderEndTime(order.getEndDate());
-        houseService.update(house);
-        return JsonResult.success("支付成功，开始联系房东入住吧");
+        //payMethod有 1：微信支付，2：支付宝支付，3：余额支付
+        if (payMethod.equals("3")) {
+            Double userCurrentBalance = userService.getUserBlance(getLoginUserId());
+            Double cost = order.getTotalAmount();
+            Double balance = BigDecimalUtil.subtraction(userCurrentBalance, cost, 2);
+            if (balance >= 0) {
+                //余额充足，进行支付成功。
+                order.setStatus(OrderStatusEnum.NORMAL.getValue());
+                orderService.update(order);
+                //更新房屋状态和开始、结束时间
+                house.setStatus(HouseStatusEnum.HAS_RENT.getValue());
+                house.setLastOrderStartTime(order.getStartDate());
+                house.setLastOrderEndTime(order.getEndDate());
+                houseService.update(house);
+                userService.updateUserBalance(balance, ownerUser.getUserName());
+                return JsonResult.success("支付成功，开始联系房东入住吧");
+            } else {
+                return JsonResult.error("账户余额不足，请先充值或选择其他支付方式。");
+            }
+        } else if (payMethod.equals("1")) {
+            return JsonResult.error("微信支付功能暂未开通，请选择其他支付方式。");
+        } else if (payMethod.equals("2")) {
+            return JsonResult.error("支付宝支付功能暂未开通，请选择其他支付方式。");
+        } else {
+            return JsonResult.error("所选支付方式暂不支持，请重试选择。");
+        }
     }
 
     /*

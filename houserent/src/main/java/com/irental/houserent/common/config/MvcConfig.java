@@ -50,6 +50,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/admin/order")
                 .addPathPatterns("/admin/mark")
                 .addPathPatterns("/admin/password")
+                .addPathPatterns("/admin/payment")
                 .addPathPatterns("/admin/feedback");
         registry.addInterceptor(new OwnerInterceptor())
                 .addPathPatterns("/admin/house");

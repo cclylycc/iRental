@@ -10,19 +10,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9 col-md-9">
-                            <h3>支付管理</h3>
+                            <h3>充值中心</h3>
                             <div class="pay">
                                 <!--在线充值功能-->
                                 <div class="tr_recharge">
                                     <div class="tr_rechtext">
-                                        <p class="te_retit"><img src="/assets/payment/images/coin.png" alt=""/>充值中心
+                                        <p class="te_retit"><img src="/assets/payment/images/coin.png" alt=""/>第三方充值
                                         </p>
                                         <p>1.您可以为您的账号进行充值，余额可用于支付租房费用等。</p>
                                         <p>2.您可以选择支付宝、微信或者余额卡的付款方式来进行充值。</p>
                                     </div>
-                                        <div class="tr_rechbox">
-                                            <div class="tr_rechhead">
-                                                <img src="${user.userAvatar}"/>
+                                    <div class="tr_rechbox">
+                                        <div class="tr_rechhead">
+                                            <img src="${user.userAvatar}"/>
                                                 <p>充值帐号：
                                                     <a>${user.userName}</a>
                                                 </p>
@@ -89,7 +89,8 @@
                                 <%--礼品卡兑换--%>
                                 <div class="tr_recharge">
                                     <div class="tr_rechtext">
-                                        <p class="te_retit"><img src="/assets/payment/images/coin.png" alt=""/>礼品卡充值
+                                        <p class="te_retit"><img src="/assets/payment/images/giftcard_index.png"
+                                                                 width="30px;" height="30px;"/>礼品卡充值
                                         </p>
                                         <p>1.您可以通过官方购买的礼品卡为您的账号充值。</p>
                                     </div>
