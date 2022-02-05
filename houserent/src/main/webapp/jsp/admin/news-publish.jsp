@@ -21,6 +21,11 @@
                                                 <h3>发布信息</h3>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
+                                                        <label><strong>作者</strong></label>
+                                                        <input type="text" name="author" class="form-control"
+                                                               value="${news.author}">
+                                                    </div>
+                                                    <div class="form-group col-md-12">
                                                         <label><strong>新闻标题</strong></label>
                                                         <input type="text" name="title" class="form-control"
                                                                value="${news.title}" style="width: 1000px;">

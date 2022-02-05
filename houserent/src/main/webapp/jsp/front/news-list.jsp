@@ -14,12 +14,12 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="property_block_wrap style-2">
                         <div class="property_block_wrap_header">
-                            <a href="/news/detail/${c.id}"><h4>${c.title}</h4></a>
+                            <a href="/news/detail/${c.id}"><h3>${c.title}</h3></a>
                         </div>
                         <div class="block-body">
                                 ${c.summary}
-                            <p style="margin-top: 5px;">发布时间：<fmt:formatDate value="${c.createTime}"
-                                                                             pattern="yyyy-MM-dd"></fmt:formatDate></p>
+                            <p style="margin-top: 5px;">作者：${c.author} | 发布时间：<fmt:formatDate value="${c.createTime}"
+                                                                                              pattern="yyyy-MM-dd"></fmt:formatDate></p>
                         </div>
                     </div>
                 </div>
