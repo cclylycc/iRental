@@ -1,5 +1,9 @@
 package com.irental.houserent.common.constant;
 
+import org.springframework.util.ClassUtils;
+
+import java.io.IOException;
+
 /*
  * 常量类
  *
@@ -18,7 +22,8 @@ public class Constant {
     /*
      * 上传目录
      * */
-    public static final String UPLOADS_PATH = System.getProperties().getProperty("user.home") + UPLOADS_ABSOLUTEPATH;
+
+    public static final String UPLOADS_PATH = ClassUtils.getDefaultClassLoader().getResource("static").getPath().replaceFirst("/", "") + UPLOADS_ABSOLUTEPATH;
 
 
     /*
@@ -40,4 +45,12 @@ public class Constant {
      * 首页显示房屋数量 - 定位版
      * */
     public static final Integer INDEX_HOUSE_LOCATION_NUM = 3;
+
+    /*
+     * 当天订单退租服务费收取小数（0.00 - 1.00）
+     * */
+    public static final Double TODAY_ORDER_CANCEL_SERVICE_CHARGE = 0.5;
+
+    public Constant() throws IOException {
+    }
 }

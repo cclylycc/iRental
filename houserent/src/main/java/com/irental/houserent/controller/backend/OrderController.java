@@ -2,6 +2,7 @@ package com.irental.houserent.controller.backend;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irental.houserent.common.base.BaseController;
+import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.dto.JsonResult;
 import com.irental.houserent.common.enums.HouseStatusEnum;
 import com.irental.houserent.common.enums.OrderStatusEnum;
@@ -20,8 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static com.irental.houserent.common.util.GetDaysUtil.differentDaysByMillisecond;
 
 /*
  * 后端订单控制器
@@ -84,8 +89,10 @@ public class OrderController extends BaseController {
         if (!loginUserIsAdmin() && !Objects.equals(getLoginUserId(), order.getCustomerUserId()) && Objects.equals(getLoginUserId(), order.getOwnerUserId())) {
             return JsonResult.error("没有权限");
         }
+
         order.setStatus(OrderStatusEnum.CUSTOMER_CANCEL.getValue());
         orderService.update(order);
+
         return JsonResult.success("取消成功");
     }
 
@@ -107,6 +114,7 @@ public class OrderController extends BaseController {
         }
         order.setStatus(OrderStatusEnum.END_APPLY.getValue());
         orderService.update(order);
+
         return JsonResult.success("申请退租成功，请联系房东审核");
     }
 
@@ -116,7 +124,7 @@ public class OrderController extends BaseController {
      * */
     @RequestMapping(value = "/endPass", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult endOrderPass(@RequestParam("orderId") Long orderId) {
+    public JsonResult endOrderPass(@RequestParam("orderId") Long orderId) throws ParseException {
         //校验订单是否存在
         Order order = orderService.get(orderId);
         if (order == null) {
@@ -140,6 +148,18 @@ public class OrderController extends BaseController {
             house.setStatus(HouseStatusEnum.NOT_RENT.getValue());
             house.setLastOrderEndTime(date);
             houseService.update(house);
+        }
+
+        //若租客提前退租，将退还剩余天数的金额
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date endDayFormat = df.parse(df.format(order.getEndDate()));
+        Date StartDayFormat = df.parse(df.format(order.getStartDate()));
+        Integer livedDay = differentDaysByMillisecond(endDayFormat, StartDayFormat);
+        System.out.println(livedDay);
+        if (livedDay == 0) {
+            Double ZeroDayChargeFee = (order.getMonthRent() / 30) * Constant.TODAY_ORDER_CANCEL_SERVICE_CHARGE;
+
+            return JsonResult.success("由于您退租日期为当天，需要额外收取 " + Constant.TODAY_ORDER_CANCEL_SERVICE_CHARGE * 100 + "% 的房费（一天房价的百分比），共计 " + ZeroDayChargeFee + "元。");
         }
         return JsonResult.success("退租成功");
     }

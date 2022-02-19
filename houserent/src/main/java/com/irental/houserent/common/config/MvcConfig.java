@@ -25,7 +25,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/uploads/**").addResourceLocations("file:///" + Constant.UPLOADS_PATH);
-
     }
 
     @Bean
@@ -62,4 +61,5 @@ public class MvcConfig implements WebMvcConfigurer {
 
 
     }
+
 }

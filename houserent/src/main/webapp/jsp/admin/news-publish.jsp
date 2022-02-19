@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
 <!--富文本编辑器wangEditor-->
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 <link href="https://cdn.staticfile.org/wangEditor/10.0.13/wangEditor.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/wangEditor/10.0.13/fonts/w-e-icon.woff" rel="stylesheet">
 <script src="https://cdn.staticfile.org/wangEditor/10.0.13/wangEditor.min.js"></script>

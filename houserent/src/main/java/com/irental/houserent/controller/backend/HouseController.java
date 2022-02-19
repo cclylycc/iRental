@@ -104,7 +104,6 @@ public class HouseController extends BaseController {
         } catch (Exception e) {
             return JsonResult.error("发布失败，请填写完整信息");
         }
-
         return JsonResult.success("发布成功", house.getId());
     }
 

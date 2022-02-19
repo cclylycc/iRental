@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li <c:if test="${tab == 'payment'}"> class="active"</c:if>>
-                    <a href="/admin/payment" style="color: white">
+                    <a href="/admin/charge" style="color: white">
                         <i class="ti-money"></i>&nbsp充值中心
                     </a>
                 </li>

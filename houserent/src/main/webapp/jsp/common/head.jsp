@@ -33,7 +33,8 @@
     <div class="container">
         <nav class="navigation navigation-landscape">
             <div class="nav-header">
-                <a class="nav-brand" href="/">爱租房</a>
+                <a class="nav-brand" href="/"><img src="/assets/img/irental.png"></a>
+
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">

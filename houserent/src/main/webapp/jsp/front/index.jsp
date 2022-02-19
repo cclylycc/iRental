@@ -399,26 +399,102 @@
     </div>
 </section>
 <%--旅游胜地推荐 结束--%>
-<section class="gray-simple">
+<style>
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        margin: 0 0 30px 0;
+    }
+
+    .home-section-header h2 {
+        position: relative;
+    }
+
+    .home-section-header h2::before,
+    .home-section-header h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 1px;
+        border: 1px solid #222;
+    }
+
+    .home-section-header h2::before {
+        bottom: -8px;
+        width: 60px;
+    }
+
+    .home-section-header h2::after {
+        bottom: -12px;
+        width: 35px;
+    }
+
+    #home-features-section {
+        padding: 80px 0 0 0;
+        min-height: 990px;
+        background: url("assets/img/bg-img.png") center bottom no-repeat #f9f9f9;
+    }
+
+    #home-features-section .feature {
+        margin-bottom: 30px;
+    }
+
+    #home-features-section .feature .icon {
+        margin-bottom: 33px;
+        display: block;
+        min-height: 80px;
+        vertical-align: middle;
+    }
+
+    #home-features-section .feature h6.entry-title {
+        margin: 0 0 15px 0;
+        text-transform: uppercase;
+    }
+
+    #home-features-section .feature p {
+        line-height: 24px;
+        color: #707070;
+    }
+</style>
+<section id="home-features-section" class="gray-simple text-center">
+    <header class="section-header home-section-header">
+        <div class="container">
+            <h2 class="wow slideInRight">旅行安全保障</h2>
+            <p class="wow slideInLeft">爱租房为您们提供全方位的保障计划 · 无忧出行！</p>
+        </div>
+    </header>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h2>旅行安全保证</h2>
+        <div class="row">
+            <div class="col-md-4 col-xs-6">
+                <div class="feature clearfix">
+                    <i class="icon"><img
+                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorHostGuarantee.20c37f9e.svg"
+                            alt="Feature Icon"></i>
+                    <h6 class="entry-title">安心房源保障</h6>
+                    <p><strong>安心</strong> 人工审核房源 入住更放心</p>
+                </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <img src="https://z1.muscache.cn/airbnb/static/packages/IndicatorHostGuarantee.20c37f9e.svg"
-                     class="big-header-capt mb-0">
-                <span class="text-center mb-5">安心房源保障 人工审核房源 入住更放心</span>
+            <div class="col-md-4 col-xs-6">
+                <div class="feature clearfix">
+                    <i class="icon"><img
+                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorExperienceInsurance.903112a9.svg"
+                            alt="Feature Icon"></i>
+                    <h6 class="entry-title">旅行安全保障</h6>
+                    <p><strong>安全</strong> 多重风险控制 保障居住安全</p>
+                </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <img src="https://z1.muscache.cn/airbnb/static/packages/IndicatorExperienceInsurance.903112a9.svg"
-                     class="img-fluid mx-auto">
-                <span>旅行安全保障 多重风险控制 保障居住安全</span>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <img src="https://z1.muscache.cn/airbnb/static/packages/IndicatorCXinsurance.32cdc2f5.svg"
-                     class="img-fluid mx-auto">
-                <span>专业中文客服 +86 4008208820</span>
+            <div class="col-md-4 col-xs-6">
+                <div class="feature clearfix">
+                    <i class="icon"><img
+                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorCXinsurance.32cdc2f5.svg"
+                            alt="Feature Icon"></i>
+                    <h6 class="entry-title">专业中文客服</h6>
+                    <p><strong>在线</strong> 全方位中文服务 复杂问题 随时响应</p>
+                </div>
             </div>
         </div>
     </div>

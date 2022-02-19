@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * */
 @Controller
 @RequestMapping("/admin/")
-public class PaymentController extends BaseController {
+public class ChargeController extends BaseController {
     @Autowired
     private UserService userService;
 
@@ -35,14 +35,14 @@ public class PaymentController extends BaseController {
     /*
      * 个人信息页面
      * */
-    @RequestMapping("/payment")
+    @RequestMapping("/charge")
     public String index(@RequestParam(value = "page", defaultValue = "1") Long pageNumber, @RequestParam(value = "size", defaultValue = "3") Long pageSize, Model model) {
         /*后台控制面板的*/
         User user = getLoginUser();
         model.addAttribute("user", user);
         model.addAttribute("tab", "payment");
         Page page = PageUtil.initMpPage(pageNumber, pageSize);
-        return "admin/payment";
+        return "/admin/charge";
     }
 
 }

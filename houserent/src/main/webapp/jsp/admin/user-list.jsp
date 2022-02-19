@@ -21,18 +21,18 @@
                             </tr>
                             <c:forEach items="${pageInfo.records}" var="c">
                                 <tr>
-                                    <td>
+                                    <td><img src="${c.userAvatar}" class="avatar-70">
                                         <span>
-                                        ID:${c.id} 用户名:${c.userName} 姓名:${c.userDisplayName}</span><br>
+                                        UID:${c.id} 用户名:${c.userName} 姓名:${c.userDisplayName}</span>
                                         <span>证件号:${c.idCard}</span>
                                     </td>
                                     <td>
-                                        <span>${c.email}</span><br>
-                                        <span>${c.phone}</span>
+                                        <span>邮箱：${c.email}</span><br>
+                                        <span>手机号：${c.phone}</span>
                                     </td>
                                     <td>
-                                        <span>${c.hobby}</span><br>
-                                        <span>${c.job}</span>
+                                        <span>兴趣爱好：${c.hobby}</span><br>
+                                        <span>工作：${c.job}</span>
                                     </td>
                                     <td>
                                         <c:choose>
