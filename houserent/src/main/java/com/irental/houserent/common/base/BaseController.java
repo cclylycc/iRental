@@ -37,7 +37,7 @@ public class BaseController {
     /*
      * 判断当前用户是管理员
      * */
-    public boolean loginUserIsAdmin() {
+    public Boolean loginUserIsAdmin() {
         User user = getLoginUser();
         if (user == null) {
             return false;
@@ -48,7 +48,7 @@ public class BaseController {
     /*
      * 判断当前用户是租客
      * */
-    public boolean loginUserIsCustomer() {
+    public Boolean loginUserIsCustomer() {
         User user = getLoginUser();
         if (user == null) {
             return false;
@@ -59,7 +59,7 @@ public class BaseController {
     /*
      * 判断当前用户是房东
      * */
-    public boolean loginUserIsOwner() {
+    public Boolean loginUserIsOwner() {
         User user = getLoginUser();
         if (user == null) {
             return false;
