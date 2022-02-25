@@ -82,8 +82,8 @@ public interface BaseService<E, ID extends Serializable> {
     /*
      * 批量删除
      * */
-    default int batchDelete(List<ID> ids) {
-        return getRepository().deleteBatchIds(ids);
+    default void batchDelete(List<ID> ids) {
+        getRepository().deleteBatchIds(ids);
     }
 
     /*
