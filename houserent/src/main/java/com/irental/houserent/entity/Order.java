@@ -8,15 +8,17 @@ import lombok.Data;
 import java.util.Date;
 
 /*
- * 订单
+ * 订单实体
  * */
 @Data
 @TableName("t_order")
 public class Order extends BaseEntity {
     //租客用户ID
+    //@TableField(value = "customer_id")
     private Long customerUserId;
 
     //房东用户ID
+    //@TableField(value = "owner_id")
     private Long ownerUserId;
 
     //房屋ID

@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 /*
- * 礼品卡
+ * 礼品卡实体
  * */
 @Data
 @TableName("t_giftcard")

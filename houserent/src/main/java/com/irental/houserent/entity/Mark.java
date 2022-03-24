@@ -6,7 +6,7 @@ import com.irental.houserent.common.base.BaseEntity;
 import lombok.Data;
 
 /*
- * 收藏
+ * 收藏实体
  * */
 @Data
 @TableName("t_mark")

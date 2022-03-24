@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /*
- * 房屋信息
+ * 房屋信息实体
  * */
 @Data
 @TableName("t_house")

@@ -104,6 +104,10 @@ public interface BaseService<E, ID extends Serializable> {
     QueryWrapper<E> getQueryWrapper(Map<String, Object> condition);
 
     /*
+     * 获得带参数的查询器
+     * */
+
+    /*
      * 根据查询条件分页查询
      * */
     default Page<E> findAll(Page<E> page, E e) {

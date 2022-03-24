@@ -1,6 +1,5 @@
 package com.irental.houserent.common.config;
 
-import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.interceptor.AdminInterceptor;
 import com.irental.houserent.common.interceptor.CustomerInterceptor;
 import com.irental.houserent.common.interceptor.OwnerInterceptor;
@@ -24,7 +23,9 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler("/uploads/**").addResourceLocations("file:///" + Constant.UPLOADS_PATH);
+        registry.addResourceHandler("/uploads/**").addResourceLocations("classpath:/static/uploads/");
+        //Constant.UPLOADS_PATH
+
     }
 
     @Bean

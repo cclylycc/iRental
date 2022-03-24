@@ -8,7 +8,7 @@ function submitRegister() {
         async: false,
         data: $("#registerForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，前往更新资料
                 window.location.href = "/admin/profile";
             }
@@ -27,7 +27,7 @@ function submitLogin() {
         async: false,
         data: $("#loginForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -46,7 +46,7 @@ function submitHouse() {
         async: false,
         data: $("#houseForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.href = "/admin/house";
             }
@@ -67,7 +67,7 @@ function downHouse(id) {
             "id": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload = "/admin/house";
             }
@@ -87,7 +87,7 @@ function upHouse(id) {
             "id": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload = "/admin/house";
             }
@@ -108,7 +108,7 @@ function checkPassHouse(id) {
             "id": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -128,7 +128,7 @@ function checkRejectHouse(id) {
             "id": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -149,7 +149,7 @@ function deleteHouse(id) {
             "id": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -169,7 +169,7 @@ function submitMark(id) {
             "houseId": id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
@@ -192,7 +192,7 @@ function createOrder() {
             "endDate": endDate
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
@@ -216,7 +216,7 @@ function confirmAgreement(orderId) {
             "orderId": orderId
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
@@ -242,7 +242,7 @@ function submitPay(orderId, payMethod) {
             "payMethod": payMethod
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
@@ -265,7 +265,7 @@ function submitContact() {
         async: false,
         data: $('#contactForm').serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
             }
@@ -285,7 +285,7 @@ function submitProfile() {
         async: false,
         data: $('#profileForm').serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -304,7 +304,7 @@ function cancelOrder(orderId) {
             'orderId': orderId
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -324,7 +324,7 @@ function endOrder(orderId) {
             'orderId': orderId
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -344,7 +344,7 @@ function endOrderPass(orderId) {
             'orderId': orderId
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -364,7 +364,7 @@ function endOrderReject(orderId) {
             'orderId': orderId
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -384,7 +384,7 @@ function cancelMark(id) {
             'id': id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -404,7 +404,7 @@ function deleteNews(id) {
             'id': id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -424,7 +424,7 @@ function submitNews() {
         async: false,
         data: $("#newsForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.href = "/admin/news";
             }
@@ -443,7 +443,7 @@ function submitFeedback() {
         async: false,
         data: $("#feedbackForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -468,7 +468,7 @@ function feedbackReplySumbit() {
         async: false,
         data: $("#feedbackForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -487,7 +487,7 @@ function deleteFeedback(id) {
             'id': id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -507,7 +507,7 @@ function disableUser(id) {
             'id': id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -527,7 +527,7 @@ function enableUser(id) {
             'id': id
         },
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
@@ -547,7 +547,7 @@ function submitPassword() {
         async: false,
         data: $("#passwordForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }
@@ -565,7 +565,7 @@ function redeemGiftCard() {
         async: false,
         data: $("#giftcardForm").serialize(),
         success: function (data) {
-            alert(data.msg)
+            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
             }

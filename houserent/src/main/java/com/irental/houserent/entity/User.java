@@ -5,7 +5,7 @@ import com.irental.houserent.common.base.BaseEntity;
 import lombok.Data;
 
 /*
- * 用户信息
+ * 用户信息实体
  * */
 @Data
 @TableName("t_user")

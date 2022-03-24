@@ -5,7 +5,7 @@ import com.irental.houserent.common.base.BaseEntity;
 import lombok.Data;
 
 /*
- * 用户反馈
+ * 用户反馈实体
  * */
 @Data
 @TableName("t_feedback")

@@ -10,6 +10,7 @@ import com.irental.houserent.common.util.DateUtil;
 import com.irental.houserent.common.util.PageUtil;
 import com.irental.houserent.entity.House;
 import com.irental.houserent.entity.Order;
+import com.irental.houserent.service.FeedbackService;
 import com.irental.houserent.service.HouseService;
 import com.irental.houserent.service.OrderService;
 import com.irental.houserent.service.UserService;
@@ -41,6 +42,9 @@ public class OrderController extends BaseController {
     private HouseService houseService;
 
     @Autowired
+    private FeedbackService feedbackService;
+
+    @Autowired
     private UserService userService;
 
     /*
@@ -61,6 +65,7 @@ public class OrderController extends BaseController {
         }
 
         //如果登录用户是管理员，查询所有订单
+        //condition.setHouseId(20L);
         Page<Order> orderPage = orderService.findAll(page, condition);
         for (Order order : orderPage.getRecords()) {
             //TODO 性能需要优化

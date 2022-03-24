@@ -5,7 +5,7 @@ import com.irental.houserent.common.base.BaseEntity;
 import lombok.Data;
 
 /*
- * 新闻资讯
+ * 新闻资讯实体
  * */
 @Data
 @TableName("t_news")
