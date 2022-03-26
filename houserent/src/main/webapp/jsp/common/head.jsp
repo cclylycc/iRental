@@ -27,7 +27,7 @@
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/slider-bg.js"></script>
     <script src="/assets/js/script.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.staticfile.org/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 <body class="yellow-skin">
 <div class="header header-light dark-text">

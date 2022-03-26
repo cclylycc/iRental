@@ -3,15 +3,21 @@ package com.irental.houserent.controller.front;
 import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.dto.JsonResult;
 import com.irental.houserent.common.enums.UserStatusEnum;
+import com.irental.houserent.common.util.VerificationCode;
 import com.irental.houserent.entity.User;
 import com.irental.houserent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /*
  * 登录相关的控制器
@@ -54,5 +60,15 @@ public class LoginController {
         session.removeAttribute(Constant.SESSION_USER_KEY);
         session.invalidate();
         return "redirect:/";
+    }
+
+    @GetMapping("/verifyCode")
+    public void verifyCode(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+        VerificationCode code = new VerificationCode();
+        BufferedImage image = code.getImage();
+        String text = code.getText();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("verify_code", text);
+        VerificationCode.output(image, resp.getOutputStream());
     }
 }

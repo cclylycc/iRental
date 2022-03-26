@@ -59,8 +59,6 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/admin/news/publish")
                 .addPathPatterns("/admin/user")
                 .addPathPatterns("/admin/control");
-
-
     }
 
 }
