@@ -63,12 +63,12 @@ public class NewsController extends BaseController {
     @ResponseBody
     public JsonResult publishSubmit(News news) {
         try {
-            if (news.getId() == null) {  //如果为空，新增；
+            if (news.getId() == null) {  //如果新闻ID为空的话则新增ID；
                 news.setCreateTime(new Date());
-            } else {  //修改
+            } else {
                 News queryNews = newsService.get(news.getId());
                 if (queryNews == null) {
-                    return JsonResult.error("发布失败，未找到此新闻资讯");
+                    return JsonResult.error("发布失败，未找到此新闻资讯ID");
                 }
             }
             //提取摘要
@@ -83,7 +83,7 @@ public class NewsController extends BaseController {
 
             newsService.insertOrUpdate(news);
         } catch (Exception e) {
-            return JsonResult.error("发布失败，请填写完整信息");
+            return JsonResult.error("发布失败，请将内容补充完整！");
         }
 
         return JsonResult.success("发布成功", news.getId());
@@ -99,7 +99,7 @@ public class NewsController extends BaseController {
         try {
             News news = newsService.get(id);
             if (news == null) {
-                return JsonResult.error("删除失败，未找到新闻资讯。");
+                return JsonResult.error("删除失败，未找到新闻资讯ID。");
             }
             newsService.delete(id);
         } catch (Exception e) {

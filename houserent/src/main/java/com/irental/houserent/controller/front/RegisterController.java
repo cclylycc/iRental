@@ -30,11 +30,11 @@ public class RegisterController extends BaseController {
     @ResponseBody
     public JsonResult registerSubmit(User user, HttpSession session) {
         if (user == null) {
-            return JsonResult.error("非法访问");
+            return JsonResult.error("接收到非法访问，请重试！");
         }
         User user1 = userService.findByUserName(user.getUserName());
         if (user1 != null) {
-            return JsonResult.error("用户已存在！");
+            return JsonResult.error("用户已存在，请重新输入");
         }
 
         user.setIdCard("");
@@ -48,9 +48,9 @@ public class RegisterController extends BaseController {
             userService.insert(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return JsonResult.error("注册失败。");
+            return JsonResult.error("注册失败，请重试！");
         }
         session.setAttribute(Constant.SESSION_USER_KEY, user);
-        return JsonResult.success("注册成功，即将前往完善个人资料。");
+        return JsonResult.success("注册成功！请继续完善个人资料...");
     }
 }

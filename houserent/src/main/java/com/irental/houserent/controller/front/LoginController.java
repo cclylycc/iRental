@@ -35,21 +35,21 @@ public class LoginController {
     @ResponseBody
     public JsonResult loginSubmit(User user, HttpSession session) {
         if (user == null) {
-            return JsonResult.error("非法访问，请重试！");
+            return JsonResult.error("接收到非法操作，请重试！");
         }
         User user1 = userService.findByUserName(user.getUserName());
         if (user1 == null) {
-            return JsonResult.error("用户不存在，请重试。");
+            return JsonResult.error("您输入的用户不存在，请重试。");
         }
         //判断密码是否正确
         if (!user.getUserPass().equals(user1.getUserPass())) {
-            return JsonResult.error("密码错误，请重试。");
+            return JsonResult.error("您输入的密码错误，请重试。");
         }
         if (UserStatusEnum.DISABLE.getValue().equals(user1.getStatus())) {
-            return JsonResult.error("账户已被锁定，请联系我们获取更多帮助。");
+            return JsonResult.error("此账户已被系统锁定，请联系我们获取更多帮助。");
         }
         session.setAttribute(Constant.SESSION_USER_KEY, user1);
-        return JsonResult.success("登录成功！");
+        return JsonResult.success("登录成功，欢迎回来！");
     }
 
     /*

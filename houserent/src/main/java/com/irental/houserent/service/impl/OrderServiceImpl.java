@@ -27,7 +27,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public QueryWrapper<Order> getQueryWrapper(Order order) {
-        return null;
+        QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
+        if (order != null) {
+            if (order.getCustomerUserId() != null) {
+                queryWrapper.eq("customer_user_id", order.getCustomerUserId());
+            } else if (order.getOwnerUserId() != null) {
+                queryWrapper.eq("owner_user_id", order.getOwnerUserId());
+            }
+        }
+        return queryWrapper;
     }
 
     @Override
