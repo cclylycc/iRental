@@ -27,9 +27,15 @@ function submitLogin() {
         async: false,
         data: $("#loginForm").serialize(),
         success: function (data) {
-            swal(data.msg)
+
             if (data.code == 1) { //如果成功，刷新页面
+                swal(data.msg)
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -46,9 +52,14 @@ function submitHouse() {
         async: false,
         data: $("#houseForm").serialize(),
         success: function (data) {
-            swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
+                swal(data.msg)
                 window.location.href = "/admin/house";
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -59,20 +70,36 @@ function submitHouse() {
 * 下架房屋
 * */
 function downHouse(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/down",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload = "/admin/house";
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将下架房屋，确定要下架吗？",
+        icon: "warning",
+        buttons: ["取消", "确定下架"],
+        dangerMode: true,
+    })
+        .then((willDownHouse) => {
+            if (willDownHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/down",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 /*
@@ -89,7 +116,12 @@ function upHouse(id) {
         success: function (data) {
             swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload = "/admin/house";
+                window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -111,6 +143,11 @@ function checkPassHouse(id) {
             swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -131,6 +168,11 @@ function checkRejectHouse(id) {
             swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -141,20 +183,36 @@ function checkRejectHouse(id) {
 * 删除房屋
 * */
 function deleteHouse(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/delete",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将删除房屋，确定要删除吗？",
+        icon: "warning",
+        buttons: ["取消", "确定删除"],
+        dangerMode: true,
+    })
+        .then((willDeleteHouse) => {
+            if (willDeleteHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/delete",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 /*
@@ -172,6 +230,11 @@ function submitMark(id) {
             swal(data.msg)
             if (data.msg == "请先登录") {
                 window.location.href = "/";
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -279,19 +342,34 @@ function submitContact() {
 
 /*个人信息保存*/
 function submitProfile() {
-    $.ajax({
-        type: "POST",
-        url: "/admin/profile/submit",
-        async: false,
-        data: $('#profileForm').serialize(),
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将修改您的个人信息，确定要修改吗？",
+        icon: "warning",
+        buttons: ["取消", "确定更改"],
+        dangerMode: true,
+    })
+        .then((willChangeProfile) => {
+            if (willChangeProfile) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/profile/submit",
+                    async: false,
+                    data: $("#profileForm").serialize(),
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 /*取消订单*/
@@ -308,6 +386,11 @@ function cancelOrder(orderId) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -328,6 +411,11 @@ function endOrder(orderId) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -348,6 +436,11 @@ function endOrderPass(orderId) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -368,6 +461,11 @@ function endOrderReject(orderId) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -388,6 +486,11 @@ function cancelMark(id) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -396,21 +499,36 @@ function cancelMark(id) {
 
 /*删除新闻功能*/
 function deleteNews(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/news/delete",
-        async: false,
-        data: {
-            'id': id
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将删除新闻，确定要删除吗？",
+        icon: "warning",
+        buttons: ["取消", "确定删除"],
+        dangerMode: true,
+    })
+        .then((willDeleteNews) => {
+            if (willDeleteNews) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/news/delete",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 
@@ -418,18 +536,34 @@ function deleteNews(id) {
 * 房屋信息保存
 * */
 function submitNews() {
-    $.ajax({
-        type: "POST",
-        url: "/admin/news/publish/submit",
-        async: false,
-        data: $("#newsForm").serialize(),
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.href = "/admin/news";
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将发布新闻，确定要发布吗？",
+        icon: "warning",
+        buttons: ["取消", "确定发布"],
+        dangerMode: true,
+    })
+        .then((willSubmitNews) => {
+            if (willSubmitNews) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/news/publish/submit",
+                    async: false,
+                    data: $("#newsForm").serialize(),
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 
@@ -446,6 +580,11 @@ function submitFeedback() {
             swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -471,6 +610,11 @@ function feedbackReplySumbit() {
             swal(data.msg)
             if (data.code == 1) { //如果成功，刷新页面
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -491,6 +635,11 @@ function deleteFeedback(id) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -511,6 +660,11 @@ function disableUser(id) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -531,6 +685,11 @@ function enableUser(id) {
             //如果更新，刷新当前页面
             if (data.code == 1) {
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });
@@ -541,18 +700,34 @@ function enableUser(id) {
 * 修改密码
 * */
 function submitPassword() {
-    $.ajax({
-        type: "POST",
-        url: "/admin/password/submit",
-        async: false,
-        data: $("#passwordForm").serialize(),
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将修改您的密码，确定要修改吗？",
+        icon: "warning",
+        buttons: ["取消", "确定更改"],
+        dangerMode: true,
+    })
+        .then((willChangePassword) => {
+            if (willChangePassword) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/password/submit",
+                    async: false,
+                    data: $("#passwordForm").serialize(),
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 }
 
 /*
@@ -565,9 +740,41 @@ function redeemGiftCard() {
         async: false,
         data: $("#giftcardForm").serialize(),
         success: function (data) {
-            swal(data.msg)
+
             if (data.code == 1) { //如果成功，刷新页面
+                swal(data.msg)
                 window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
+            }
+        }
+    });
+}
+
+/*
+* 找回密码功能
+* */
+function submitPasswordReset() {
+    $.ajax({
+        type: "POST",
+        url: "/login/resetPassword",
+        async: false,
+        data: $("#forgetPasswordForm").serialize(),
+        success: function (data) {
+            if (data.code == 1) { //如果成功，刷新页面
+                swal({
+                    text: data.msg,
+                    icon: "success",
+                });
+                window.location.reload();
+            } else {
+                swal({
+                    text: data.msg,
+                    icon: "error",
+                });
             }
         }
     });

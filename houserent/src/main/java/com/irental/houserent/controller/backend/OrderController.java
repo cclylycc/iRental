@@ -58,18 +58,14 @@ public class OrderController extends BaseController {
         if (loginUserIsCustomer()) {
             condition.setCustomerUserId(getLoginUserId());
         }
-
         //如果登录用户是房东，查询房东订单
         if (loginUserIsOwner()) {
             condition.setOwnerUserId(getLoginUserId());
         }
-
         //如果登录用户是管理员，查询所有订单
-        //condition.setHouseId(20L);
         Page<Order> orderPage = orderService.findAll(page, condition);
         for (Order order : orderPage.getRecords()) {
-            //TODO 性能需要优化
-            order.setHouse(houseService.get(order.getHouseId())); // 优化方案 id in ('1'.'2','3')
+            order.setHouse(houseService.get(order.getHouseId()));
             order.setOwnerUser(userService.get(order.getOwnerUserId()));
             order.setCustomerUser(userService.get(order.getCustomerUserId()));
         }

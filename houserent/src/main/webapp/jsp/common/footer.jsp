@@ -321,8 +321,57 @@
                     </div>
 
                     <div class="form-group">
+                        <a href="#" class="text-blue" data-toggle="modal" data-target="#forgetPassword"
+                           one-link-mark="yes">忘记密码？</a>
+                    </div>
+
+                    <div class="form-group">
                         <button type="button" onclick="submitLogin()" class="btn btn-md full-width pop-login bg-2">
                             立即登录
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%--忘记密码 资料找回--%>
+<div class="modal" id="forgetPassword">
+    <div class="modal-dialog">
+        <header>
+            <div class="hm_nav">
+                <h3 class="hm_nav_title">找回密码</h3>
+                <span class="mod-close" data-dismiss="modal"><i class="ti-close"></i></span>
+            </div>
+        </header>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="forgetPasswordForm">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>忘记的账号</label>
+                                <div class="input-with-icon">
+                                    <input type="text" name="userName" class="form-control" placeholder="请输入忘记密码的账号">
+                                    <i class="ti-user"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>电子邮箱</label>
+                                <div class="input-with-icon">
+                                    <input type="text" name="email" class="form-control" placeholder="请输入注册时填写的电子邮箱">
+                                    <i class="ti-unlock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="submitPasswordReset()"
+                                class="btn btn-md full-width pop-login bg-2">
+                            邮件找回
                         </button>
                     </div>
                 </form>

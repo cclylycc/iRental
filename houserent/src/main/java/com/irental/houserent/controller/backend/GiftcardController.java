@@ -46,10 +46,8 @@ public class GiftcardController extends BaseController {
         //进行兑换，将礼品卡设置为 status = -1已使用并且，将使用者设置为当前用户
         giftcardService.redeemGiftcard(series, GiftcardStatusEnum.USED.getValue(), date, user.getUserName());
         Double currentBalance = giftcardService.currentBalance(user.getUserName());
-
         String afterBalance = String.format("%.2f", redeem_value + currentBalance);
         giftcardService.addToUserBalance(afterBalance, user.getUserName());
-
         return JsonResult.success("兑换成功！礼品卡为您兑换了" + redeem_value + "元");
     }
 }

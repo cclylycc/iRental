@@ -45,7 +45,7 @@ public class FeedbackController extends BaseController {
     @ResponseBody
     public JsonResult replySubmit(Feedback feedback) {
         feedbackService.update(feedback);
-        return JsonResult.success("保存成功");
+        return JsonResult.success("保存成功！");
     }
 
 
@@ -58,10 +58,10 @@ public class FeedbackController extends BaseController {
         try {
             Feedback feedback = feedbackService.get(id);
             if (feedback == null) {
-                return JsonResult.error("删除失败，未找到反馈。");
+                return JsonResult.error("删除失败，未找到反馈ID。");
             }
             if (!loginUserIsAdmin() && !Objects.equals(feedback.getUserId(), getLoginUserId())) {
-                return JsonResult.error("无权限");
+                return JsonResult.error("无权限操作！");
             }
             feedbackService.delete(id);
         } catch (Exception e) {

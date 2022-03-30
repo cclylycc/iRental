@@ -56,7 +56,7 @@ public class ProfileController extends BaseController {
         }
         userService.insertOrUpdate(user);
         session.setAttribute(Constant.SESSION_USER_KEY, userService.get(getLoginUserId()));
-        return JsonResult.success("保存成功");
+        return JsonResult.success("保存成功！");
     }
 
 }

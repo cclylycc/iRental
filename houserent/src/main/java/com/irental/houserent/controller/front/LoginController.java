@@ -3,6 +3,7 @@ package com.irental.houserent.controller.front;
 import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.dto.JsonResult;
 import com.irental.houserent.common.enums.UserStatusEnum;
+import com.irental.houserent.common.util.MailUtil;
 import com.irental.houserent.common.util.VerificationCode;
 import com.irental.houserent.entity.User;
 import com.irental.houserent.service.UserService;
@@ -60,6 +61,25 @@ public class LoginController {
         session.removeAttribute(Constant.SESSION_USER_KEY);
         session.invalidate();
         return "redirect:/";
+    }
+
+    /*
+     * 用户密码 邮箱 找回
+     * */
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult resetPassword(User user, HttpSession session) throws Exception {
+        User user1 = userService.findByUserName(user.getUserName());
+        if (user == null) {
+            return JsonResult.error("请填写完整后尝试！");
+        }
+        if (user.getUserName().equals("") || user.getEmail().equals("")) {
+            return JsonResult.error("请填写完整后尝试！");
+        }
+        if (user1.getEmail().equals(user.getEmail())) {
+            MailUtil.sendEmail(user1.getEmail(), "用户找回密码通知", "您正在通过忘记密码功能找回您的原始密码，您当前的账号密码为：" + user1.getUserPass() + " ，如果您未尝试找回密码，请忽略本邮件。");
+        }
+        return JsonResult.success("您的密码已通过邮件的方式发送至" + user1.getEmail() + "，请注意查收。");
     }
 
     @GetMapping("/verifyCode")
