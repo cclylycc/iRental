@@ -1,3 +1,5 @@
+![爱租房LOGO](houserent/src/main/resources/static/assets/img/irental.png)
+
 ### 简介 :wave:
 - 本项目是基于Springboot开发的一款房屋租赁系统。
 - 使用Springboot + JSP + MySQL + MybatisPlus + HTML/CSS/JS/bootstrap 进行开发。
