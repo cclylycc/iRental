@@ -13,9 +13,9 @@ public class MailUtil {
     //发送邮件的账号
     private static final String username = "745287188@qq.com";
     //发送邮件的密码
-    private static final String pwd = "hlzcecasdvcnbdhh";
+    private static final String pwd = "gtusyhphahxsbbeb";
     //发送者姓名
-    private static final String fromname = "Chrislee";
+    private static final String fromname = "爱租房";
 
 
     /*
@@ -40,5 +40,6 @@ public class MailUtil {
 
     public static void main(String[] args) throws Exception {
         sendEmail(username, "测试内容", "测试内容1111222333");
+        System.out.println("邮件发送成功！");
     }
 }

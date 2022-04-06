@@ -60,6 +60,7 @@ public class AdminController extends BaseController {
         model.addAttribute("houseCount", houseCount);
         model.addAttribute("userFeedbackCount", userFeedbackCount);
         model.addAttribute("orderNum", orderNum);
+
         return "admin/admin-control";
     }
 

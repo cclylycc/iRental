@@ -46,24 +46,34 @@ function submitLogin() {
 * 房屋信息保存
 * */
 function submitHouse() {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/publish/submit",
-        async: false,
-        data: $("#houseForm").serialize(),
-        success: function (data) {
-            if (data.code == 1) { //如果成功，刷新页面
-                swal(data.msg)
-                window.location.href = "/admin/house";
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将发布新房源，确定资料填写成功了吗？",
+        icon: "warning",
+        buttons: ["我再看看", "提交审核"],
+        dangerMode: true,
+    })
+        .then((willSubmitHouse) => {
+            if (willSubmitHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/publish/submit",
+                    async: false,
+                    data: $("#houseForm").serialize(),
+                    success: function (data) {
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg), {icon: "success"},
+                                window.location.href = "/admin/house";
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
-
+        });
 }
 
 /*
@@ -233,7 +243,7 @@ function submitMark(id) {
             } else {
                 swal({
                     text: data.msg,
-                    icon: "error",
+                    icon: "success",
                 });
             }
         }
@@ -256,7 +266,7 @@ function createOrder() {
         },
         success: function (data) {
             swal(data.msg)
-            if (data.msg == "请先登录") {
+            if (data.msg == "请先登录账号！") {
                 window.location.href = "/";
             }
             //如果创建成功，跳转到签订合同页面。
@@ -271,24 +281,36 @@ function createOrder() {
 * 完成签订合同步骤
 * */
 function confirmAgreement(orderId) {
-    $.ajax({
-        type: "POST",
-        url: "/order/agreement/submit",
-        async: false,
-        data: {
-            "orderId": orderId
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.msg == "请先登录") {
-                window.location.href = "/";
+    swal({
+        title: "关键操作提醒！",
+        text: "请您认真阅读合同，以免发生纠纷！请确认合同内容是否正确，并且您是否同意上述合同？",
+        icon: "warning",
+        buttons: ["我再看看", "我同意"],
+        dangerMode: true,
+    })
+        .then((willconfirmAgreement) => {
+            if (willconfirmAgreement) {
+                $.ajax({
+                    type: "POST",
+                    url: "/order/agreement/submit",
+                    async: false,
+                    data: {
+                        "orderId": orderId
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.msg == "请先登录") {
+                            window.location.href = "/";
+                        }
+                        //如果创建成功，跳转到支付页面。
+                        if (data.code == 1) {
+                            window.location.href = "/order/pay?orderId=" + data.result;
+                        }
+                    }
+                });
             }
-            //如果创建成功，跳转到支付页面。
-            if (data.code == 1) {
-                window.location.href = "/order/pay?orderId=" + data.result;
-            }
-        }
-    });
+        });
+
 }
 
 
@@ -374,101 +396,148 @@ function submitProfile() {
 
 /*取消订单*/
 function cancelOrder(orderId) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/order/cancel",
-        async: false,
-        data: {
-            'orderId': orderId
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将取消订单，确定吗？",
+        icon: "warning",
+        buttons: ["我点错了", "确定"],
+        dangerMode: true,
+    })
+        .then((willcancelOrder) => {
+            if (willcancelOrder) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/order/cancel",
+                    async: false,
+                    data: {
+                        'orderId': orderId
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
+
 }
 
 
 /*申请退租*/
 function endOrder(orderId) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/order/end",
-        async: false,
-        data: {
-            'orderId': orderId
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将申请订单，如果您是当前租赁当天退租将会收取一定的手续费，确定继续吗？",
+        icon: "warning",
+        buttons: ["我点错了", "帮我提交退租吧！"],
+        dangerMode: true,
+    })
+        .then((willendOrder) => {
+            if (willendOrder) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/order/end",
+                    async: false,
+                    data: {
+                        'orderId': orderId
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
+
 }
 
 
 /*退租申请 通过*/
 function endOrderPass(orderId) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/order/endPass",
-        async: false,
-        data: {
-            'orderId': orderId
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将【通过】退租申请，确定继续吗？",
+        icon: "warning",
+        buttons: ["我点错了", "审核通过！"],
+        dangerMode: true,
+    })
+        .then((willendOrderPass) => {
+            if (willendOrderPass) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/order/endPass",
+                    async: false,
+                    data: {
+                        'orderId': orderId
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
+
 }
 
 
 /*退租申请 拒绝*/
 function endOrderReject(orderId) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/order/endReject",
-        async: false,
-        data: {
-            'orderId': orderId
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将【拒绝】退租申请，确定继续吗？",
+        icon: "warning",
+        buttons: ["我点错了", "审核拒绝！"],
+        dangerMode: true,
+    })
+        .then((willendOrderReject) => {
+            if (willendOrderReject) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/order/endReject",
+                    async: false,
+                    data: {
+                        'orderId': orderId
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
@@ -623,76 +692,110 @@ function feedbackReplySumbit() {
 
 /*删除反馈*/
 function deleteFeedback(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/feedback/delete",
-        async: false,
-        data: {
-            'id': id
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将删除反馈，确定吗？",
+        icon: "warning",
+        buttons: ["取消", "确定删除"],
+        dangerMode: true,
+    })
+        .then((willdisableUser) => {
+            if (willdisableUser) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/feedback/delete",
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
+
 }
 
 
 /*禁用用户*/
 function disableUser(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/user/disable",
-        async: false,
-        data: {
-            'id': id
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将禁用用户，确定吗？",
+        icon: "warning",
+        buttons: ["取消", "确定更改"],
+        dangerMode: true,
+    })
+        .then((willdisableUser) => {
+            if (willdisableUser) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/user/disable",
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
 /*启用用户*/
 function enableUser(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/user/enable",
-        async: false,
-        data: {
-            'id': id
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将启用用户，确定吗？",
+        icon: "warning",
+        buttons: ["取消", "确定更改"],
+        dangerMode: true,
+    })
+        .then((willenableUser) => {
+            if (willenableUser) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/user/enable",
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
@@ -734,24 +837,37 @@ function submitPassword() {
 * REDEEM 兑换充值卡 充值到用户账号余额
 * */
 function redeemGiftCard() {
-    $.ajax({
-        type: "POST",
-        url: "/admin/giftcard/redeem",
-        async: false,
-        data: $("#giftcardForm").serialize(),
-        success: function (data) {
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将兑换礼品卡，确定吗？",
+        icon: "warning",
+        buttons: ["取消", "我要兑换"],
+        dangerMode: true,
+    })
+        .then((willredeemGiftCard) => {
+            if (willredeemGiftCard) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/giftcard/redeem",
+                    async: false,
+                    data: $("#giftcardForm").serialize(),
+                    success: function (data) {
 
-            if (data.code == 1) { //如果成功，刷新页面
-                swal(data.msg)
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+                        if (data.code == 1) { //如果成功，刷新页面
+                            swal(data.msg)
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
+
+
 }
 
 /*
@@ -769,7 +885,6 @@ function submitPasswordReset() {
                     text: data.msg,
                     icon: "success",
                 });
-                window.location.reload();
             } else {
                 swal({
                     text: data.msg,

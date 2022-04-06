@@ -229,14 +229,14 @@ public class HouseController extends BaseController {
         try {
             House house = houseService.get(id);
             if (house == null) {
-                return JsonResult.error("删除失败，未找到房屋。");
+                return JsonResult.error("删除失败，未找到房屋ID。");
             }
             //仅限管理员和房屋所有人有权限删除
-            if (!loginUserIsAdmin() && Objects.equals(house.getUserId(), getLoginUserId())) {
+            if (!loginUserIsAdmin() && !Objects.equals(house.getUserId(), getLoginUserId())) {
                 return JsonResult.error("您无权限删除此房屋");
             }
             if (Objects.equals(house.getStatus(), HouseStatusEnum.HAS_RENT.getValue())) {
-                return JsonResult.error("房屋状态已租住，无法删除。");
+                return JsonResult.error("目前房源正在出租，请等待到期后再试。");
             }
             houseService.delete(id);
         } catch (Exception e) {

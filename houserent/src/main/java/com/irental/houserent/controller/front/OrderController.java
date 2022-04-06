@@ -80,6 +80,7 @@ public class OrderController extends BaseController {
             return JsonResult.error("退租日期格式不合法");
         }
         Date startDate = new Date();
+
         //计算总共天数
         Integer dayNum = DateUtil.daysBetween(startDate, endDate);
         if (dayNum < Constant.MIN_RENT_DAYS) {
@@ -213,39 +214,39 @@ public class OrderController extends BaseController {
             payMethod = "3";
         }
         if (getLoginUser() == null) {
-            return JsonResult.error("用户未登录");
+            return JsonResult.error("请先登录账号！");
         }
         //订单不存在
         Order order = orderService.get(orderId);
         if (order == null) {
-            return JsonResult.error("订单不存在");
+            return JsonResult.error("支付的订单不存在！");
         }
 
         House house = houseService.get(order.getHouseId());
         if (house == null) {
-            return JsonResult.error("房屋信息不存在");
+            return JsonResult.error("房屋信息不存在！");
         }
 
         //登录用户不是该订单的租客、房东或管理员，就无权限查看。
         if (!Objects.equals(getLoginUserId(), order.getCustomerUserId()) && !Objects.equals(getLoginUserId(), order.getOwnerUserId()) && !loginUserIsAdmin()) {
-            return JsonResult.error("没有权限");
+            return JsonResult.error("您暂无权限操作。");
         }
 
         if (Objects.equals(house.getStatus(), HouseStatusEnum.HAS_RENT.getValue())) {
-            return JsonResult.error("房屋已被租出或未释放");
+            return JsonResult.error("房屋已被租出或未释放。");
         }
 
         Order checkOrder = orderService.getCurrentEffectiveOrder(order.getHouseId());
         if (checkOrder != null) {
-            return JsonResult.error("房屋已被租出或未释放");
+            return JsonResult.error("房屋已被租出或未释放。");
         }
 
         User ownerUser = userService.get(house.getUserId());
         if (ownerUser == null) {
-            return JsonResult.error("房东用户不存在");
+            return JsonResult.error("房东用户不存在。");
         }
 
-        //payMethod有 1：微信支付，2：支付宝支付，3：余额支付
+        //payMethod有 1：微信支付，2：支付宝支付，3：余额支付，8888：模拟支付成功
         if (payMethod.equals("3")) {
             Double userCurrentBalance = userService.getUserBlance(getLoginUserId());
             Double cost = order.getTotalAmount();
@@ -268,9 +269,19 @@ public class OrderController extends BaseController {
             return JsonResult.error("微信支付功能暂未开通，请选择其他支付方式。");
         } else if (payMethod.equals("2")) {
             return JsonResult.error("支付宝支付功能暂未开通，请选择其他支付方式。");
+        } else if (payMethod.equals("8888")) {
+            /*用于测试环境下的模拟订单支付成功环境*/
+            order.setStatus(OrderStatusEnum.NORMAL.getValue());
+            orderService.update(order);
+            house.setStatus(HouseStatusEnum.HAS_RENT.getValue());
+            house.setLastOrderStartTime(order.getStartDate());
+            house.setLastOrderEndTime(order.getEndDate());
+            houseService.update(house);
+            return JsonResult.success("模拟支付成功，联系房东入住吧。");
         } else {
-            return JsonResult.error("所选支付方式暂不支持，请重试选择。");
+            return JsonResult.error("未知支付功能参数，请勿修改支付参数！您的IP已被记录。");
         }
+
     }
 
     /*

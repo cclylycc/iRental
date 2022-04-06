@@ -8,7 +8,7 @@
                 <div class="dashboard-body">
                     <div class="dashboard-wraper">
                         <div class="frm_submit_block">
-                            <h4>反馈列表</h4>
+                            <h4>反馈列表&nbsp<a href="/feedback" class="btn btn-theme bg-2 btn-sm">提交反馈</a></h4>
                         </div>
                         <table class="property-table-wrap responsive-table bkmark">
                             <tbody>

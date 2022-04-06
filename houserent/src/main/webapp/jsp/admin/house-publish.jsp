@@ -25,7 +25,9 @@
                                                 <h3>基本信息</h3>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label>出租类型</label>
+                                                        <label>出租类型 <a href="#" class="tip-topdata"
+                                                                       data-tip="整租类型为租客拥有整套房源，合租类型为租客拥有房源其中一间房屋"><i
+                                                                class="ti-help"></i></a></label>
                                                         <select name="rentType" class="form-control">
                                                             <option value="whole"
                                                                     <c:if test="${house.rentType == 'whole'}">selected</c:if>>
@@ -450,7 +452,7 @@
                                             <div class="form-group">
                                                 <div class="col-lg-12 col-md-12">
                                                     <button class="btn btn-theme bg-2" type="button"
-                                                            onclick="submitHouse()">发布
+                                                            onclick="submitHouse()">提交审核
                                                     </button>
                                                 </div>
                                             </div>

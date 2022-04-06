@@ -1,7 +1,5 @@
 package com.irental.houserent.common.constant;
 
-import org.springframework.util.ClassUtils;
-
 import java.io.IOException;
 
 /*
@@ -23,8 +21,8 @@ public class Constant {
      * 上传目录
      * */
 
-    public static final String UPLOADS_PATH = ClassUtils.getDefaultClassLoader().getResource("static").getPath().replaceFirst("/", "") + UPLOADS_ABSOLUTEPATH;
-
+    //public static final String UPLOADS_PATH = ClassUtils.getDefaultClassLoader().getResource("static").getPath().replaceFirst("/", "") + UPLOADS_ABSOLUTE_PATH;
+    public static final String UPLOADS_PATH = System.getProperties().getProperty("user.home") + UPLOADS_ABSOLUTEPATH;
 
     /*
      * 图片session的前缀

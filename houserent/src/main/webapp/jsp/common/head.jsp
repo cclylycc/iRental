@@ -9,7 +9,7 @@
     <title>爱租房</title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/custom.js"></script>
@@ -21,13 +21,15 @@
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
     <script src="/assets/js/lightbox.js"></script>
     <script src="/assets/js/markerclusterer.js"></script>
-    <script src="https://lib.baomitu.com/morris.js/0.5.1/morris.js"></script>
+    <%--    <script src="https://lib.baomitu.com/morris.js/0.5.1/morris.js"></script>--%>
+    <script src="https://cdn.staticfile.org/morris.js/0.5.1/morris.js"></script>
     <script src="/assets/js/raphael.min.js"></script>
     <script src="/assets/js/select2.min.js"></script>
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/slider-bg.js"></script>
     <script src="/assets/js/script.js"></script>
     <script src="https://cdn.staticfile.org/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 </head>
 <body class="yellow-skin">
 <div class="header header-light dark-text">
@@ -66,14 +68,16 @@
                             <div class="btn-group account-drop">
                                 <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown">
                                     <img src="${sessionScope.user.userAvatar}" class="avater-img">
-                                        ${sessionScope.user.userDisplayName}(
+                                        ${sessionScope.user.userDisplayName} &nbsp;
                                     <c:choose>
-                                        <c:when test="${sessionScope.user.role == 'admin'}">管理员</c:when>
-                                        <c:when test="${sessionScope.user.role == 'owner'}">房东</c:when>
-                                        <c:when test="${sessionScope.user.role == 'customer'}">租客</c:when>
-                                        <c:otherwise>未知角色</c:otherwise>
+                                        <c:when test="${sessionScope.user.role == 'admin'}"><span
+                                                class="badge badge-danger">管理员</span></c:when>
+                                        <c:when test="${sessionScope.user.role == 'owner'}"><span
+                                                class="badge badge-primary">房东</span></c:when>
+                                        <c:when test="${sessionScope.user.role == 'customer'}"><span
+                                                class="badge badge-success">租客</span></c:when>
+                                        <c:otherwise><span class="badge badge-warning">未知角色</span></c:otherwise>
                                     </c:choose>
-                                    )
                                 </button>
                                 <c:choose>
                                     <%--管理员--%>

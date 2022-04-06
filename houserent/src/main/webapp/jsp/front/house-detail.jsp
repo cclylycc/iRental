@@ -5,7 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="prt_detail_three_clicks">
-                    <div class="pdt_clicks_title"><h3>${house.title}</h3></div>
+                    <div class="pdt_clicks_title"><h3>${house.title}
+                    <c:choose>
+                    <c:when test="${house.rentType.equals('whole')}">&nbsp;<span class="badge badge-pill badge-success">整租</span></c:when>
+                        <c:when test="${house.rentType.equals('share')}">&nbsp;<span
+                            class="badge badge-pill badge-success">合租</span></c:when>
+                    </c:choose></h3></div>
                     <div class="pdt_clicks_price"><h4>￥${house.monthRent}/月</h4>
                         <p class="price_status">折算 ￥${house.monthRent/30}/日</p></div>
                     <div class="pdt_clicks_location"><i class="ti-location-pin"></i>${house.address}
@@ -212,7 +217,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>入住日期（即今日）</label>
+                                            <label>入住日期（今日）</label>
                                             <div class="cld-box">
                                                 <i class="ti-calendar"></i>
                                                 <input type="text" name="checkin" id="startDate" class="form-control"
@@ -222,7 +227,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>退房日期（请选择）</label>
+                                            <label>退房日期</label>
                                             <div class="cld-box">
                                                 <i class="ti-calendar"></i>
                                                 <input type="text" name="checkout" id="endDate" class="form-control"/>

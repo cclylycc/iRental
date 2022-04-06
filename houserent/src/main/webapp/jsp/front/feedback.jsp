@@ -43,6 +43,9 @@
                                             <textarea class="form-control simple" name="content"></textarea>
                                         </div>
                                     </div>
+                                    <div class="property_block_wrap_header">
+                                        <p>* 您的反馈信息将会在 3 个工作日内回复！</p>
+                                    </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
                                             <button class="btn btn-theme bg-2" type="button" onclick="submitFeedback()">

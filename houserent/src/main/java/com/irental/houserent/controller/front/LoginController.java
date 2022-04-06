@@ -76,10 +76,23 @@ public class LoginController {
         if (user.getUserName().equals("") || user.getEmail().equals("")) {
             return JsonResult.error("请填写完整后尝试！");
         }
-        if (user1.getEmail().equals(user.getEmail())) {
-            MailUtil.sendEmail(user1.getEmail(), "用户找回密码通知", "您正在通过忘记密码功能找回您的原始密码，您当前的账号密码为：" + user1.getUserPass() + " ，如果您未尝试找回密码，请忽略本邮件。");
+        if (user1.getUserName().equals(user.getUserName()) && user1.getEmail().equals(user.getEmail())) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("这是一封找回密码的邮件。").append("<br/>");
+            sb.append("账号：").append(user1.getUserName()).append("<br/>");
+            sb.append("邮箱：").append(user1.getEmail()).append("<br/>");
+            sb.append("原密码：").append(user1.getUserPass()).append("<br/>");
+            sb.append("请立即登录到账号并修改密码，如果不是本人操作，请忽略。").append("<br/>");
+            sb.append("爱租房 2022 Inc.");
+            try {
+                MailUtil.sendEmail(user1.getEmail(), "用户找回密码通知", sb.toString());
+            } catch (Exception e) {
+                return JsonResult.error("未知错误！");
+            }
+            return JsonResult.success("您的密码已通过邮件的方式发送至" + user1.getEmail() + "，请注意查收。");
+        } else {
+            return JsonResult.error("资料找回失败，填写的内容错误。");
         }
-        return JsonResult.success("您的密码已通过邮件的方式发送至" + user1.getEmail() + "，请注意查收。");
     }
 
     @GetMapping("/verifyCode")
