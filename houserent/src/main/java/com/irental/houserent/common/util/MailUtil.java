@@ -11,9 +11,9 @@ public class MailUtil {
     //邮件服务器
     private static final String host = "smtp.qq.com";
     //发送邮件的账号
-    private static final String username = "745287188@qq.com";
+    private static final String username = "YOUREMAIL";
     //发送邮件的密码
-    private static final String pwd = "gtusyhphahxsbbeb";
+    private static final String pwd = "YOURPASSWORD";
     //发送者姓名
     private static final String fromname = "爱租房";
 

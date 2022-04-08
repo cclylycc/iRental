@@ -472,7 +472,7 @@
             <div class="col-md-4 col-xs-6">
                 <div class="feature clearfix">
                     <i class="icon"><img
-                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorHostGuarantee.20c37f9e.svg"
+                            src="/assets/img/safetravel/safehouse.svg"
                             alt="Feature Icon"></i>
                     <h6 class="entry-title">安心房源保障</h6>
                     <p><strong>安心</strong> 人工审核房源 入住更放心</p>
@@ -481,7 +481,7 @@
             <div class="col-md-4 col-xs-6">
                 <div class="feature clearfix">
                     <i class="icon"><img
-                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorExperienceInsurance.903112a9.svg"
+                            src="/assets/img/safetravel/safetravel.svg"
                             alt="Feature Icon"></i>
                     <h6 class="entry-title">旅行安全保障</h6>
                     <p><strong>安全</strong> 多重风险控制 保障居住安全</p>
@@ -490,7 +490,7 @@
             <div class="col-md-4 col-xs-6">
                 <div class="feature clearfix">
                     <i class="icon"><img
-                            src="https://z1.muscache.cn/airbnb/static/packages/IndicatorCXinsurance.32cdc2f5.svg"
+                            src="/assets/img/safetravel/chinesecustomerservice.svg"
                             alt="Feature Icon"></i>
                     <h6 class="entry-title">专业中文客服</h6>
                     <p><strong>在线</strong> 全方位中文服务 复杂问题 随时响应</p>

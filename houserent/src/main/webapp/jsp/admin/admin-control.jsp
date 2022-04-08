@@ -102,7 +102,7 @@
                                     <div class="card-header">
                                         <h4 class="card-title">最新订单信息</h4>
                                         <p class="card-category">
-                                            最新N条订单交易信息</p>
+                                            最新 3 条订单交易信息</p>
                                     </div>
                                     <div class="card-body">
                                         <div id="salesChart" class="chart"></div>
