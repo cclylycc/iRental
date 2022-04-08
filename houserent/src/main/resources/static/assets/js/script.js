@@ -2,18 +2,29 @@
 * 注册提交
 * */
 function submitRegister() {
-    $.ajax({
-        type: "POST",
-        url: "/register/submit",
-        async: false,
-        data: $("#registerForm").serialize(),
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，前往更新资料
-                window.location.href = "/admin/profile";
+    swal({
+        title: "注册提醒",
+        text: "您即将注册成功爱租房用户，注册即同意我们的《用户协议》及《隐私权保护声明》。",
+        icon: "warning",
+        buttons: ["我再看看", "立即注册"],
+        dangerMode: true,
+    })
+        .then((willsubmitRegister) => {
+            if (willsubmitRegister) {
+                $.ajax({
+                    type: "POST",
+                    url: "/register/submit",
+                    async: false,
+                    data: $("#registerForm").serialize(),
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.code == 1) { //如果成功，前往更新资料
+                            window.location.href = "/admin/profile";
+                        }
+                    }
+                });
             }
-        }
-    });
+        });
 
 }
 
@@ -116,25 +127,36 @@ function downHouse(id) {
 * 上架房屋
 * */
 function upHouse(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/up",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将上架房屋，已仔细审核房屋信息？",
+        icon: "warning",
+        buttons: ["我再看看", "立即上架"],
+        dangerMode: true,
+    })
+        .then((willupHouse) => {
+            if (willupHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/up",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.code == 1) { //如果成功，刷新页面
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
@@ -142,50 +164,72 @@ function upHouse(id) {
 * 房屋审核通过
 * */
 function checkPassHouse(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/checkPass",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将审核通过此房屋，已仔细审核房屋信息？",
+        icon: "warning",
+        buttons: ["我再看看", "审核通过"],
+        dangerMode: true,
+    })
+        .then((willcheckPassHouse) => {
+            if (willcheckPassHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/checkPass",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.code == 1) { //如果成功，刷新页面
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 /*
 * 房屋审核驳回
 * */
 function checkRejectHouse(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/house/checkReject",
-        async: false,
-        data: {
-            "id": id
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将驳回此房屋的审核，确定吗？",
+        icon: "warning",
+        buttons: ["我再看看", "确定驳回"],
+        dangerMode: true,
+    })
+        .then((willcheckRejectHouse) => {
+            if (willcheckRejectHouse) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/house/checkReject",
+                    async: false,
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.code == 1) { //如果成功，刷新页面
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
@@ -237,9 +281,9 @@ function submitMark(id) {
             "houseId": id
         },
         success: function (data) {
-            swal(data.msg)
+
             if (data.msg == "请先登录") {
-                window.location.href = "/";
+                swal(data.msg);
             } else {
                 swal({
                     text: data.msg,
@@ -318,25 +362,36 @@ function confirmAgreement(orderId) {
 * 模拟支付成功
 * */
 function submitPay(orderId, payMethod) {
-    $.ajax({
-        type: "POST",
-        url: "/order/pay/submit",
-        async: false,
-        data: {
-            "orderId": orderId,
-            "payMethod": payMethod
-        },
-        success: function (data) {
-            swal(data.msg)
-            if (data.msg == "请先登录") {
-                window.location.href = "/";
+    swal({
+        title: "模拟支付提醒！",
+        text: "您即将模拟支付成功此订单，确定要模拟支付吗？",
+        icon: "warning",
+        buttons: ["我再看看", "模拟支付成功"],
+        dangerMode: true,
+    })
+        .then((willsubmitPay) => {
+            if (willsubmitPay) {
+                $.ajax({
+                    type: "POST",
+                    url: "/order/pay/submit",
+                    async: false,
+                    data: {
+                        "orderId": orderId,
+                        "payMethod": payMethod
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.msg == "请先登录") {
+                            window.location.href = "/";
+                        }
+                        //如果支付成功，跳转到我的家页面。
+                        if (data.code == 1) {
+                            window.location.href = "/admin/home";
+                        }
+                    }
+                });
             }
-            //如果支付成功，跳转到我的家页面。
-            if (data.code == 1) {
-                window.location.href = "/admin/home";
-            }
-        }
-    });
+        });
 }
 
 
@@ -543,26 +598,37 @@ function endOrderReject(orderId) {
 
 /*取消收藏功能*/
 function cancelMark(id) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/mark/cancel",
-        async: false,
-        data: {
-            'id': id
-        },
-        success: function (data) {
-            swal(data.msg)
-            //如果更新，刷新当前页面
-            if (data.code == 1) {
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "关键操作提醒！",
+        text: "您即将取消此收藏，确定要取消吗？",
+        icon: "warning",
+        buttons: ["取消操作", "确定取消收藏"],
+        dangerMode: true,
+    })
+        .then((willcancelMark) => {
+            if (willcancelMark) {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/mark/cancel",
+                    async: false,
+                    data: {
+                        'id': id
+                    },
+                    success: function (data) {
+                        swal(data.msg)
+                        //如果更新，刷新当前页面
+                        if (data.code == 1) {
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 
@@ -640,23 +706,34 @@ function submitNews() {
 * 提交用户反馈
 * */
 function submitFeedback() {
-    $.ajax({
-        type: "POST",
-        url: "/feedback/submit",
-        async: false,
-        data: $("#feedbackForm").serialize(),
-        success: function (data) {
-            swal(data.msg)
-            if (data.code == 1) { //如果成功，刷新页面
-                window.location.reload();
-            } else {
-                swal({
-                    text: data.msg,
-                    icon: "error",
+    swal({
+        title: "即将提交您的反馈！",
+        text: "您即将提交您的反馈，确定要提交吗？",
+        icon: "warning",
+        buttons: ["取消", "确定提交"],
+        dangerMode: true,
+    })
+        .then((willsubmitFeedback) => {
+            if (willsubmitFeedback) {
+                $.ajax({
+                    type: "POST",
+                    url: "/feedback/submit",
+                    async: false,
+                    data: $("#feedbackForm").serialize(),
+                    success: function (data) {
+                        swal(data.msg)
+                        if (data.code == 1) { //如果成功，刷新页面
+                            window.location.reload();
+                        } else {
+                            swal({
+                                text: data.msg,
+                                icon: "error",
+                            });
+                        }
+                    }
                 });
             }
-        }
-    });
+        });
 }
 
 /*

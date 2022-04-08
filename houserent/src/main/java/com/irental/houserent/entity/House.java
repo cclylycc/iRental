@@ -152,6 +152,11 @@ public class House extends BaseEntity {
     private String contactPhone;
 
     /*
+     * 是否为认证房源
+     * */
+    private Integer verified;
+
+    /*
      * 轮播图列表
      * */
     @TableField(exist = false)

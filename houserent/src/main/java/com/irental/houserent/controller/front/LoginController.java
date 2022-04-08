@@ -4,21 +4,15 @@ import com.irental.houserent.common.constant.Constant;
 import com.irental.houserent.common.dto.JsonResult;
 import com.irental.houserent.common.enums.UserStatusEnum;
 import com.irental.houserent.common.util.MailUtil;
-import com.irental.houserent.common.util.VerificationCode;
 import com.irental.houserent.entity.User;
 import com.irental.houserent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /*
  * 登录相关的控制器
@@ -30,13 +24,20 @@ public class LoginController {
     private UserService userService;
 
     /*
-     * 注册提交
+     * 登录提交
      * */
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
     public JsonResult loginSubmit(User user, HttpSession session) {
         if (user == null) {
             return JsonResult.error("接收到非法操作，请重试！");
+        }
+        String random = (String) session.getAttribute("IRENTALSESSIONKEY");
+        if (random == null) {
+            return JsonResult.error("请输入验证码");
+        }
+        if (!random.equals(user.getCode())) {
+            return JsonResult.error("验证码错误");
         }
         User user1 = userService.findByUserName(user.getUserName());
         if (user1 == null) {
@@ -73,6 +74,13 @@ public class LoginController {
         if (user == null) {
             return JsonResult.error("请填写完整后尝试！");
         }
+        String random = (String) session.getAttribute("IRENTALSESSIONKEY");
+        if (random == null) {
+            return JsonResult.error("请输入验证码");
+        }
+        if (!random.equals(user.getCode())) {
+            return JsonResult.error("验证码错误");
+        }
         if (user.getUserName().equals("") || user.getEmail().equals("")) {
             return JsonResult.error("请填写完整后尝试！");
         }
@@ -93,15 +101,5 @@ public class LoginController {
         } else {
             return JsonResult.error("资料找回失败，填写的内容错误。");
         }
-    }
-
-    @GetMapping("/verifyCode")
-    public void verifyCode(HttpServletRequest request, HttpServletResponse resp) throws IOException {
-        VerificationCode code = new VerificationCode();
-        BufferedImage image = code.getImage();
-        String text = code.getText();
-        HttpSession session = request.getSession(true);
-        session.setAttribute("verify_code", text);
-        VerificationCode.output(image, resp.getOutputStream());
     }
 }

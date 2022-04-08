@@ -32,6 +32,16 @@ public class RegisterController extends BaseController {
         if (user == null) {
             return JsonResult.error("接收到非法访问，请重试！");
         }
+        if (user.getUserName().equals("") || user.getEmail().equals("") || user.getPhone().equals("") || user.getUserDisplayName().equals("") || user.getUserPass().equals("") || user.getRole().equals("")) {
+            return JsonResult.error("请完整填写注册资料后再提交！");
+        }
+        String random = (String) session.getAttribute("IRENTALSESSIONKEY");
+        if (random == null) {
+            return JsonResult.error("请输入验证码");
+        }
+        if (!random.equals(user.getCode())) {
+            return JsonResult.error("验证码错误");
+        }
         User user1 = userService.findByUserName(user.getUserName());
         if (user1 != null) {
             return JsonResult.error("用户已存在，请重新输入");

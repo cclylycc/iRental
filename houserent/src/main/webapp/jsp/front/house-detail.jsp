@@ -1,15 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/head.jsp" %>
+<script>
+    document.title = '${house.title}';
+</script>
 <div class="pt-5 pb-5 gray-simple">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="prt_detail_three_clicks">
                     <div class="pdt_clicks_title"><h3>${house.title}
-                    <c:choose>
-                    <c:when test="${house.rentType.equals('whole')}">&nbsp;<span class="badge badge-pill badge-success">整租</span></c:when>
-                        <c:when test="${house.rentType.equals('share')}">&nbsp;<span
-                            class="badge badge-pill badge-success">合租</span></c:when>
+                        <c:choose>
+                            <c:when test="${house.rentType.equals('whole')}">&nbsp;<span class="badge badge-pill badge-success">整租</span></c:when>
+                            <c:when test="${house.rentType.equals('share')}">&nbsp;<span
+                                class="badge badge-pill badge-success">合租</span></c:when>
                     </c:choose></h3></div>
                     <div class="pdt_clicks_price"><h4>￥${house.monthRent}/月</h4>
                         <p class="price_status">折算 ￥${house.monthRent/30}/日</p></div>
@@ -311,8 +314,6 @@
             </div>
         </div>
     </section>
-
-
     <%@ include file="../common/footer.jsp" %>
     <script>
         var now = new Date();

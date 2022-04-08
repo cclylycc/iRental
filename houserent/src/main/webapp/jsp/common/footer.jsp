@@ -270,7 +270,18 @@
                                             <option value="owner">我是房东</option>
                                         </select>
                                     </div>
-
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>验证码</label>
+                                <div clas="input-with-icon">
+                                    <input class="form-control" id="verify_input_register" name="code"
+                                           placeholder="请输入验证码" maxlength="4"><br>
+                                    <i class="ti-flag"></i>
+                                    <a href="javascript:void(0);" title="点击更换验证码">
+                                        <img id="imgVerify_register" src="/getVerify" alt="更换验证码" height="36"
+                                             width="100px" onclick="getVerify(this);">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -315,6 +326,18 @@
                                 <div class="input-with-icon">
                                     <input type="password" name="userPass" class="form-control" placeholder="请输入密码">
                                     <i class="ti-unlock"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>验证码</label>
+                                <div clas="input-with-icon">
+                                    <input class="form-control" id="verify_input_login" name="code" placeholder="请输入验证码"
+                                           maxlength="4"><br>
+                                    <i class="ti-flag"></i>
+                                    <a href="javascript:void(0);" title="点击更换验证码">
+                                        <img id="imgVerify_login" src="/getVerify" alt="更换验证码" height="36" width="100px"
+                                             onclick="getVerify(this);">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -365,6 +388,18 @@
                                     <i class="ti-unlock"></i>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>验证码</label>
+                                <div clas="input-with-icon">
+                                    <input class="form-control" id="verify_input_forget" name="code"
+                                           placeholder="请输入验证码" maxlength="4"><br>
+                                    <i class="ti-flag"></i>
+                                    <a href="javascript:void(0);" title="点击更换验证码">
+                                        <img id="imgVerify_forget" src="/getVerify" alt="更换验证码" height="36"
+                                             width="100px" onclick="getVerify(this);">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -380,3 +415,9 @@
     </div>
 
 </div>
+
+<script>
+    function getVerify(obj) {
+        obj.src = "/getVerify?" + Math.random();
+    }
+</script>

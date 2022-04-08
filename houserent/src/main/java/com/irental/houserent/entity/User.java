@@ -1,5 +1,6 @@
 package com.irental.houserent.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.irental.houserent.common.base.BaseEntity;
 import lombok.Data;
@@ -77,5 +78,11 @@ public class User extends BaseEntity {
      * 现金余额
      * */
     private Double balance;
+
+    /*
+     * 登录验证码
+     * */
+    @TableField(exist = false)
+    private String code;
 
 }
