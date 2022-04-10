@@ -104,8 +104,46 @@
                                         <p class="card-category">
                                             最新 3 条订单交易信息</p>
                                     </div>
+                                    <style>
+                                        table.property-table-wrap th:first-child {
+                                            width: 20%;
+                                            border-radius: 3px 0 0 3px;
+                                        }
+                                    </style>
                                     <div class="card-body">
-                                        <div id="salesChart" class="chart"></div>
+                                        <div id="salesChart" class="chart">
+                                            <table class="property-table-wrap responsive-table">
+                                                <tbody>
+                                                <tr>
+                                                    <th>订单号</th>
+                                                    <th>入住天数</th>
+                                                    <th>创建时间</th>
+                                                    <th>开始时间</th>
+                                                    <th>结束时间</th>
+                                                </tr>
+                                                <c:forEach items="${newestOrder}" var="order">
+                                                    <tr>
+                                                        <td class="dashboard_propert_wrapper">
+                                                            <div class="title">
+                                                                <p>${order.id}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td><span>${order.dayNum}天</span></td>
+                                                        <td><span><fmt:formatDate value="${order.createTime}"
+                                                                                  pattern="yyyy-MM-dd"></fmt:formatDate></span>
+                                                        </td>
+                                                        <td><span><fmt:formatDate value="${order.startDate}"
+                                                                                  pattern="yyyy-MM-dd"></fmt:formatDate></span>
+                                                        </td>
+                                                        <td><span><fmt:formatDate value="${order.endDate}"
+                                                                                  pattern="yyyy-MM-dd"></fmt:formatDate></span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +194,24 @@
                                     <div class="card-body">
                                         <div id="news" class="chart chart-pie">
                                             <table class="property-table-wrap responsive-table bkmark">
-
+                                                <tr>
+                                                    <th>作者</th>
+                                                    <th>标题</th>
+                                                    <th>简介</th>
+                                                    <th>发布时间</th>
+                                                </tr>
+                                                <c:forEach items="${newestNews}" var="news">
+                                                    <tr>
+                                                        <td class="dashboard_propert_wrapper">
+                                                            <span>${news.author}</span></td>
+                                                        <td><span>${news.title}</span></td>
+                                                        <td class="dashboard_property_list_content">
+                                                            <span>${news.summary}</span></td>
+                                                        <td><span><fmt:formatDate value="${news.createTime}"
+                                                                                  pattern="yyyy-MM-dd"></fmt:formatDate></span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </table>
                                         </div>
                                     </div>

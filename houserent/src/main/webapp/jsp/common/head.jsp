@@ -2,14 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width"/>
     <title>爱租房</title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/custom.js"></script>
@@ -21,7 +20,8 @@
     <script src="/assets/js/jquery.magnific-popup.min.js"></script>
     <script src="/assets/js/lightbox.js"></script>
     <script src="/assets/js/markerclusterer.js"></script>
-    <script src="/assets/js/morris.js"></script>
+    <script src="/assets/js/morris.min.js"></script>
+    <%--    <script src="https://lib.baomitu.com/morris.js/0.5.1/morris.js"></script>--%>
     <script src="/assets/js/raphael.min.js"></script>
     <script src="/assets/js/select2.min.js"></script>
     <script src="/assets/js/slick.js"></script>
@@ -36,7 +36,6 @@
         <nav class="navigation navigation-landscape">
             <div class="nav-header">
                 <a class="nav-brand" href="/"><img src="/assets/img/irental.png"></a>
-
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">

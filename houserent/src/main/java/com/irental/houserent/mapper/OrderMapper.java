@@ -18,4 +18,7 @@ public interface OrderMapper extends BaseMapper<Order> {
 
     @Select("select count(id) as order_num from t_order;")
     String orderNum();
+
+    @Select("select * from t_order order by id desc limit 3")
+    List<Order> newestOrderInfo();
 }

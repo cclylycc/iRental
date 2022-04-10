@@ -60,4 +60,9 @@ public class OrderServiceImpl implements OrderService {
     public String orderNum() {
         return orderMapper.orderNum();
     }
+
+    @Override
+    public List<Order> newestOrderInfo() {
+        return orderMapper.newestOrderInfo();
+    }
 }

@@ -20,4 +20,6 @@ public interface OrderService extends BaseService<Order, Long> {
     List<Order> findOverDueOrderList();
 
     String orderNum();
+
+    List<Order> newestOrderInfo();
 }

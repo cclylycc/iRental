@@ -8,6 +8,7 @@ import com.irental.houserent.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -32,5 +33,10 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public QueryWrapper<News> getQueryWrapper(Map<String, Object> condition) {
         return null;
+    }
+
+    @Override
+    public List<News> newestNews() {
+        return newsMapper.newestNews();
     }
 }
