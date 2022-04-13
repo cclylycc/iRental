@@ -10,6 +10,7 @@ import com.irental.houserent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.irental.houserent.common.util.getLocation.getlocation;
@@ -29,6 +30,7 @@ public class IndexController extends BaseController {
     /*
      * 前端首页*/
     @RequestMapping(value = "/")
+    @CrossOrigin(origins = "*")
     public String index(Model model) {
         //获取用户现在的位置（以省级为单位）
         String location = getlocation();

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.TimeZone;
 
@@ -14,6 +15,7 @@ import java.util.TimeZone;
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
+@CrossOrigin(origins = "*")
 @MapperScan("com.irental.houserent.mapper")
 public class Application {
     public static void main(String[] args) {

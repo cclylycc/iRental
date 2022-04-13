@@ -116,12 +116,20 @@
         }
     }
 </script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <%--根据用户地址推荐房屋--%>
 <section class="gray-simple">
     <div class="container">
         <div class="row justify-content-center">
             <div class="sec-heading center">
-                <h2>${userLocation}优质房源</h2>
+                <%--                ${userLocation}--%>
+                <h2 id="userLocationCity">优质房源</h2>
+                <script type="text/javascript">
+                    var lct = returnCitySN.cname
+                    var a = lct.replace("市", "")
+                    var b = a.replace("省", "")
+                    document.getElementById('userLocationCity').innerHTML = b + "优质房源";
+                </script>
                 <p><i class="ti-location-pin"></i>根据您的位置推荐的优质房源</p>
             </div>
         </div>

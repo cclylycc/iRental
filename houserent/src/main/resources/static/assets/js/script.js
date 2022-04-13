@@ -38,7 +38,6 @@ function submitLogin() {
         async: false,
         data: $("#loginForm").serialize(),
         success: function (data) {
-
             if (data.code == 1) { //如果成功，刷新页面
                 swal(data.msg)
                 window.location.reload();
